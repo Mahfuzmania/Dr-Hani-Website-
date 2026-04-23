@@ -50,25 +50,25 @@ export default async function HomePage() {
 
   return (
     <div className="pb-24">
-      <section className="page-shell pt-28 md:pt-36">
-        <div className="hero-shell relative px-6 py-10 md:px-10 md:py-12">
+      <section className="page-shell pt-24 md:pt-36">
+        <div className="hero-shell relative px-5 py-8 md:px-10 md:py-12">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(255,255,255,0.78),transparent_18%),radial-gradient(circle_at_78%_14%,rgba(88,124,173,0.2),transparent_22%),radial-gradient(circle_at_70%_74%,rgba(15,28,44,0.08),transparent_24%)]" />
-          <div className="relative z-10 grid gap-12 lg:grid-cols-[minmax(0,1.02fr)_minmax(360px,0.98fr)] lg:items-center">
+          <div className="relative z-10 grid gap-8 md:gap-12 lg:grid-cols-[minmax(0,1.02fr)_minmax(360px,0.98fr)] lg:items-center">
             <div>
               <p className="eyebrow">Physician and public presence</p>
-              <p className="mt-5 inline-flex items-center gap-2 text-[0.82rem] font-semibold uppercase tracking-[0.14em] text-[rgba(15,28,44,0.44)]">
+              <p className="mt-4 inline-flex items-center gap-2 text-[0.76rem] font-semibold uppercase tracking-[0.12em] text-[rgba(15,28,44,0.44)] sm:mt-5 sm:text-[0.82rem] sm:tracking-[0.14em]">
                 <span className="icon-chip h-8 w-8">
                   <ShieldIcon className="h-4 w-4" />
                 </span>
                 <span>{content.siteSettings.identityLine}</span>
               </p>
-              <h1 className="mt-6 max-w-4xl font-serif text-[3.8rem] leading-[0.92] tracking-[-0.05em] text-[var(--primary)] md:text-[5.8rem] lg:text-[7.1rem]">
+              <h1 className="mt-5 max-w-4xl font-serif text-[3rem] leading-[0.94] tracking-[-0.05em] text-[var(--primary)] sm:text-[3.45rem] md:mt-6 md:text-[5.8rem] lg:text-[7.1rem]">
                 {content.homepage.heroTitle}
               </h1>
-              <p className="mt-8 max-w-xl text-base leading-8 text-[var(--muted)] md:text-[1.12rem] md:leading-9">
+              <p className="mt-6 max-w-xl text-[0.98rem] leading-7 text-[var(--muted)] sm:text-base sm:leading-8 md:mt-8 md:text-[1.12rem] md:leading-9">
                 {content.homepage.heroSubtitle}
               </p>
-              <div className="mt-10 flex flex-wrap items-center gap-6">
+              <div className="mt-8 flex flex-wrap items-center gap-4 sm:gap-6 md:mt-10">
                 <Link href={content.homepage.heroPrimaryCTA.href} className="button-primary">
                   <span>{content.homepage.heroPrimaryCTA.label}</span>
                   <ArrowUpRightIcon className="h-3.5 w-3.5" />
@@ -79,7 +79,7 @@ export default async function HomePage() {
               </div>
             </div>
             <div className="relative z-10">
-              <div className="image-frame relative aspect-[4/5]">
+              <div className="image-frame relative aspect-[4/5] rounded-[1.4rem] md:rounded-[1.25rem]">
                 <Image
                   src={content.homepage.heroImage}
                   alt={content.homepage.heroTitle}

@@ -42,10 +42,10 @@ export function MobileMenu({ settings }: { settings: SiteContent['siteSettings']
         <MenuIcon className="h-5 w-5" />
       </button>
       {open ? (
-        <div className="fixed inset-0 z-50 bg-[rgba(15,28,44,0.18)] backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-[rgba(15,28,44,0.18)] backdrop-blur-sm">
           <div
             id="mobile-nav"
-            className="ml-auto flex min-h-screen w-full max-w-sm flex-col rounded-l-[1.35rem] bg-[var(--surface)] px-6 pb-10 pt-6 shadow-[0_24px_64px_rgba(15,28,44,0.16)] sm:max-w-md"
+            className="ml-auto flex min-h-screen w-full max-w-sm flex-col overflow-y-auto overscroll-contain rounded-l-[1.35rem] bg-[var(--surface)] px-6 pb-10 pt-6 shadow-[0_24px_64px_rgba(15,28,44,0.16)] sm:max-w-md"
           >
             <div className="flex items-start justify-between gap-4">
               <div>

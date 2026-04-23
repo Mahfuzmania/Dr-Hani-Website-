@@ -28,9 +28,12 @@ export function Header({ settings }: { settings: SiteContent['siteSettings'] }) 
   }, [])
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3 md:px-6 md:pt-4">
-      <div className="glass-nav page-shell flex items-center justify-between gap-6 py-4 md:py-5">
-        <Link href="/" className="shrink-0 text-[1.9rem] tracking-[-0.03em] text-[var(--primary)] md:text-[2.08rem]">
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-2.5 md:px-6 md:pt-4">
+      <div className="glass-nav page-shell flex items-center justify-between gap-4 py-3 md:gap-6 md:py-5">
+        <Link
+          href="/"
+          className="max-w-[min(72vw,16rem)] shrink truncate text-[1.46rem] leading-none tracking-[-0.035em] text-[var(--primary)] sm:text-[1.7rem] md:max-w-none md:shrink-0 md:text-[2.08rem]"
+        >
           <span className="font-serif">{settings.fullName}</span>
         </Link>
         <nav className="hidden items-center gap-5 2xl:gap-7 xl:flex" ref={dropdownRef}>
