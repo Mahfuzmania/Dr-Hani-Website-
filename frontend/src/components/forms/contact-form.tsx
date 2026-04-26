@@ -17,7 +17,7 @@ const schema = z.object({
 
 const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL?.trim()
 
-export function ContactForm({ inquiryTypes }: { inquiryTypes: string[] }) {
+export function ContactForm({ framed = true, inquiryTypes }: { framed?: boolean; inquiryTypes: string[] }) {
   const [status, setStatus] = useState<'idle' | 'error' | 'submitting' | 'success'>('idle')
   const [error, setError] = useState<string | null>(null)
 
@@ -61,64 +61,54 @@ export function ContactForm({ inquiryTypes }: { inquiryTypes: string[] }) {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="panel-soft p-8 md:p-12"
-    >
-      <h3 className="font-serif text-[2.45rem] italic leading-tight text-[var(--primary)]">Write a Message</h3>
-      <div className="mt-10 grid gap-10 md:grid-cols-2">
+    <form onSubmit={handleSubmit} className={framed ? 'panel-soft p-8 md:p-12' : 'p-6 md:p-8'}>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="eyebrow">Write a Message</p>
+          <h3 className="mt-4 font-serif text-[2.3rem] italic leading-tight text-[var(--primary-strong)] md:text-[2.6rem]">
+            Contact Dr Umma Hani
+          </h3>
+        </div>
+        <p className="max-w-xs text-[0.88rem] leading-7 text-[var(--muted)]">
+          The form keeps the existing inquiry flow intact while presenting it in a calmer public-profile format.
+        </p>
+      </div>
+      <div className="mt-10 grid gap-6 md:grid-cols-2">
         <label className="block">
-          <span className="inline-flex items-center gap-2 text-[0.84rem] font-semibold uppercase tracking-[0.14em] text-[rgba(15,28,44,0.46)]">
+          <span className="inline-flex items-center gap-2 text-[0.82rem] font-semibold uppercase tracking-[0.14em] text-[rgba(23,32,51,0.52)]">
             <span className="icon-chip h-8 w-8">
               <UserIcon className="h-4 w-4" />
             </span>
             <span>Name</span>
           </span>
-          <input
-            name="name"
-            className="editorial-input"
-            placeholder="Your name"
-          />
+          <input name="name" className="editorial-input mt-3" placeholder="Your name" />
         </label>
         <label className="block">
-          <span className="inline-flex items-center gap-2 text-[0.84rem] font-semibold uppercase tracking-[0.14em] text-[rgba(15,28,44,0.46)]">
+          <span className="inline-flex items-center gap-2 text-[0.82rem] font-semibold uppercase tracking-[0.14em] text-[rgba(23,32,51,0.52)]">
             <span className="icon-chip h-8 w-8">
               <MailIcon className="h-4 w-4" />
             </span>
             <span>Email address</span>
           </span>
-          <input
-            name="email"
-            type="email"
-            className="editorial-input"
-            placeholder="Your email address"
-          />
+          <input name="email" type="email" className="editorial-input mt-3" placeholder="Your email address" />
         </label>
         <label className="block">
-          <span className="inline-flex items-center gap-2 text-[0.84rem] font-semibold uppercase tracking-[0.14em] text-[rgba(15,28,44,0.46)]">
+          <span className="inline-flex items-center gap-2 text-[0.82rem] font-semibold uppercase tracking-[0.14em] text-[rgba(23,32,51,0.52)]">
             <span className="icon-chip h-8 w-8">
               <PhoneIcon className="h-4 w-4" />
             </span>
             <span>Phone</span>
           </span>
-          <input
-            name="phone"
-            className="editorial-input"
-            placeholder="Optional contact number"
-          />
+          <input name="phone" className="editorial-input mt-3" placeholder="Optional contact number" />
         </label>
         <label className="block">
-          <span className="inline-flex items-center gap-2 text-[0.84rem] font-semibold uppercase tracking-[0.14em] text-[rgba(15,28,44,0.46)]">
+          <span className="inline-flex items-center gap-2 text-[0.82rem] font-semibold uppercase tracking-[0.14em] text-[rgba(23,32,51,0.52)]">
             <span className="icon-chip h-8 w-8">
               <DocumentIcon className="h-4 w-4" />
             </span>
             <span>Inquiry type</span>
           </span>
-          <select
-            name="inquiryType"
-            defaultValue={inquiryTypes[0] ?? ''}
-            className="editorial-input"
-          >
+          <select name="inquiryType" defaultValue={inquiryTypes[0] ?? ''} className="editorial-input mt-3">
             {inquiryTypes.map((item) => (
               <option key={item} value={item}>
                 {item}
@@ -127,41 +117,29 @@ export function ContactForm({ inquiryTypes }: { inquiryTypes: string[] }) {
           </select>
         </label>
       </div>
-      <label className="mt-10 block">
-        <span className="inline-flex items-center gap-2 text-[0.84rem] font-semibold uppercase tracking-[0.14em] text-[rgba(15,28,44,0.46)]">
+      <label className="mt-6 block">
+        <span className="inline-flex items-center gap-2 text-[0.82rem] font-semibold uppercase tracking-[0.14em] text-[rgba(23,32,51,0.52)]">
           <span className="icon-chip h-8 w-8">
             <DocumentIcon className="h-4 w-4" />
           </span>
           <span>Subject</span>
         </span>
-        <input
-          name="subject"
-          className="editorial-input"
-          placeholder="A short subject line"
-        />
+        <input name="subject" className="editorial-input mt-3" placeholder="A short subject line" />
       </label>
-      <label className="mt-10 block">
-        <span className="inline-flex items-center gap-2 text-[0.84rem] font-semibold uppercase tracking-[0.14em] text-[rgba(15,28,44,0.46)]">
+      <label className="mt-6 block">
+        <span className="inline-flex items-center gap-2 text-[0.82rem] font-semibold uppercase tracking-[0.14em] text-[rgba(23,32,51,0.52)]">
           <span className="icon-chip h-8 w-8">
             <MessageIcon className="h-4 w-4" />
           </span>
           <span>Message</span>
         </span>
-        <textarea
-          name="message"
-          rows={4}
-          className="editorial-input resize-none"
-          placeholder="Share a little context for your message"
-        />
+        <textarea name="message" rows={5} className="editorial-input mt-3 resize-none" placeholder="Share a little context for your message" />
       </label>
-      {status === 'error' && error ? <p className="mt-6 text-[0.98rem] text-red-700">{error}</p> : null}
+      {status === 'error' && error ? <p className="mt-6 text-[0.95rem] text-[var(--danger)]">{error}</p> : null}
       {status === 'success' ? (
-        <p className="mt-6 text-[0.98rem] text-[var(--success)]">Your message has been sent successfully.</p>
+        <p className="mt-6 text-[0.95rem] text-[var(--success)]">Your message has been sent successfully.</p>
       ) : null}
-      <button
-        type="submit"
-        className="button-primary mt-10"
-      >
+      <button type="submit" disabled={status === 'submitting'} className="button-primary mt-8 disabled:cursor-not-allowed disabled:opacity-70">
         <span className="icon-chip icon-chip-contrast h-8 w-8">
           <SendIcon className="h-4 w-4" />
         </span>

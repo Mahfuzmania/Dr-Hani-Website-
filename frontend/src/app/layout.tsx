@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: '%s | Dr Umma Hani',
   },
   description:
-    "Official profile website for Dr Umma Hani, presenting medical service, community leadership, women's health experience, and public engagement.",
+    'Dr Umma Hani is a Bangladeshi medical doctor and public-facing community leader connecting clinical service, women-focused care, and civic engagement.',
   icons: {
     icon: '/media/about-doctor-portrait.jpg',
     apple: '/media/about-doctor-portrait.jpg',

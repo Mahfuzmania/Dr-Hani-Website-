@@ -2,111 +2,116 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import type { SiteContent } from '../../../../shared/site-content'
-import { ChevronDownIcon } from '../branding/elegant-icons'
 import { MobileMenu } from './mobile-menu'
+import { getHomeSectionHref, homepageNavItems, archiveNavItems } from '@/src/lib/home-nav'
 
 export function Header({ settings }: { settings: SiteContent['siteSettings'] }) {
   const pathname = usePathname()
-  const [openMenu, setOpenMenu] = useState<'services' | null>(null)
-  const dropdownRef = useRef<HTMLDivElement | null>(null)
-  const primaryItems = settings.navigation.filter((item) => item.menu === 'primary')
-  const serviceItems = settings.navigation.filter((item) => item.menu === 'services')
-  const servicesActive = serviceItems.some((item) => item.href === pathname)
+  const onHome = pathname === '/'
+  const [activeSection, setActiveSection] = useState<string>('profile')
+  const [atTop, setAtTop] = useState(true)
 
   useEffect(() => {
-    const onPointerDown = (event: MouseEvent) => {
-      if (!dropdownRef.current?.contains(event.target as Node)) {
-        setOpenMenu(null)
-      }
-    }
+    const onScroll = () => setAtTop(window.scrollY < 24)
 
-    window.addEventListener('mousedown', onPointerDown)
-    return () => window.removeEventListener('mousedown', onPointerDown)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-2.5 md:px-6 md:pt-4">
-      <div className="glass-nav page-shell flex items-center justify-between gap-4 py-3 md:gap-6 md:py-5">
-        <Link
-          href="/"
-          className="max-w-[min(72vw,16rem)] shrink truncate text-[1.46rem] leading-none tracking-[-0.035em] text-[var(--primary)] sm:text-[1.7rem] md:max-w-none md:shrink-0 md:text-[2.08rem]"
-        >
-          <span className="font-serif">{settings.fullName}</span>
-        </Link>
-        <nav className="hidden items-center gap-5 2xl:gap-7 xl:flex" ref={dropdownRef}>
-          {primaryItems.slice(0, 2).map((item) => {
-            const active = pathname === item.href
+  useEffect(() => {
+    if (!onHome) return
 
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`border-b pb-1 text-[0.94rem] font-semibold uppercase tracking-[0.12em] transition-colors 2xl:text-[0.98rem] 2xl:tracking-[0.14em] ${
-                  active
-                    ? 'border-[rgba(15,28,44,0.22)] text-[var(--primary)]'
-                    : 'border-transparent text-[rgba(15,28,44,0.56)] hover:text-[var(--primary)]'
-                }`}
-              >
-                {item.label}
-              </Link>
-            )
-          })}
-          <div className="relative">
-            <button
-              type="button"
-              className={`inline-flex items-center gap-2 border-b pb-1 text-[0.94rem] font-semibold uppercase tracking-[0.12em] transition-colors 2xl:text-[0.98rem] 2xl:tracking-[0.14em] ${
-                servicesActive || openMenu === 'services'
-                  ? 'border-[rgba(15,28,44,0.22)] text-[var(--primary)]'
-                  : 'border-transparent text-[rgba(15,28,44,0.56)] hover:text-[var(--primary)]'
-              }`}
-              aria-expanded={openMenu === 'services'}
-              onClick={() => setOpenMenu((value) => (value === 'services' ? null : 'services'))}
-            >
-              <span>Services</span>
-              <ChevronDownIcon
-                className={`h-3.5 w-3.5 transition-transform ${openMenu === 'services' ? 'rotate-180' : ''}`}
-              />
-            </button>
-            {openMenu === 'services' ? (
-              <div className="absolute right-0 top-[calc(100%+0.9rem)] min-w-[15rem] rounded-[1rem] border border-[rgba(15,28,44,0.08)] bg-[rgba(251,249,245,0.96)] p-3 shadow-[0_20px_56px_rgba(15,28,44,0.12)] backdrop-blur-xl">
-                {serviceItems.map((item) => (
+    const sections = homepageNavItems
+      .map((item) => document.getElementById(item.id))
+      .filter((element): element is HTMLElement => Boolean(element))
+
+    if (!sections.length) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+
+        if (visible?.target?.id) {
+          setActiveSection(visible.target.id)
+        }
+      },
+      {
+        rootMargin: '-20% 0px -54% 0px',
+        threshold: [0.18, 0.35, 0.52],
+      },
+    )
+
+    sections.forEach((section) => observer.observe(section))
+
+    return () => observer.disconnect()
+  }, [onHome])
+
+  return (
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-6 md:pt-5">
+      <div
+        data-top={onHome && atTop ? 'true' : 'false'}
+        className="glass-nav mx-auto flex w-full max-w-[92rem] items-center justify-between gap-4 px-4 py-3 md:px-5 md:py-4"
+      >
+        <Link href="/" className="flex min-w-0 items-center gap-3">
+          <span className="micro-accent-dot shrink-0" />
+          <div className="min-w-0">
+            <p className="truncate font-serif text-[1.35rem] leading-none tracking-[-0.04em] text-[var(--primary-strong)] md:text-[1.85rem]">
+              {settings.fullName}
+            </p>
+            <p className="hidden truncate text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] sm:block">
+              Public profile
+            </p>
+          </div>
+        </Link>
+        <nav className="hidden items-center gap-5 xl:flex">
+          {onHome
+            ? homepageNavItems.map((item) => {
+                const active = activeSection === item.id
+
+                return (
                   <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`block rounded-[0.8rem] px-4 py-3 text-[0.94rem] font-semibold uppercase tracking-[0.12em] transition-colors ${
-                      pathname === item.href
-                        ? 'bg-[rgba(15,28,44,0.06)] text-[var(--primary)]'
-                        : 'text-[rgba(15,28,44,0.64)] hover:bg-[rgba(15,28,44,0.04)] hover:text-[var(--primary)]'
+                    key={item.id}
+                    href={getHomeSectionHref(pathname, item.id)}
+                    className={`nav-link text-[0.76rem] font-semibold uppercase tracking-[0.18em] transition-colors ${
+                      active
+                        ? 'nav-link-active text-[var(--primary-strong)]'
+                        : 'text-[rgba(23,32,51,0.62)] hover:text-[var(--primary-strong)]'
                     }`}
-                    onClick={() => setOpenMenu(null)}
                   >
                     {item.label}
                   </Link>
-                ))}
-              </div>
-            ) : null}
-          </div>
-          {primaryItems.slice(2).map((item) => {
-            const active = pathname === item.href
+                )
+              })
+            : archiveNavItems.map((item) => {
+                const active = pathname === item.href
 
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`border-b pb-1 text-[0.94rem] font-semibold uppercase tracking-[0.12em] transition-colors 2xl:text-[0.98rem] 2xl:tracking-[0.14em] ${
-                  active
-                    ? 'border-[rgba(15,28,44,0.22)] text-[var(--primary)]'
-                    : 'border-transparent text-[rgba(15,28,44,0.56)] hover:text-[var(--primary)]'
-                }`}
-              >
-                {item.label}
-              </Link>
-            )
-          })}
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`nav-link text-[0.76rem] font-semibold uppercase tracking-[0.18em] transition-colors ${
+                      active
+                        ? 'nav-link-active text-[var(--primary-strong)]'
+                        : 'text-[rgba(23,32,51,0.62)] hover:text-[var(--primary-strong)]'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                )
+              })}
         </nav>
+        <div className="hidden xl:block">
+          <Link href={getHomeSectionHref(pathname, 'contact')} className="button-primary px-5 py-3">
+            Contact
+          </Link>
+        </div>
         <div className="xl:hidden">
           <MobileMenu settings={settings} />
         </div>

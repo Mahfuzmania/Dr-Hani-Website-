@@ -1,16 +1,18 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 import type { SiteContent } from '../../../../shared/site-content'
 import { ArrowUpRightIcon, CloseIcon, MailIcon, MenuIcon } from '../branding/elegant-icons'
 import { SocialIcon } from '../branding/social-icon'
+import { archiveNavItems, getHomeSectionHref, homepageNavItems } from '@/src/lib/home-nav'
 
 export function MobileMenu({ settings }: { settings: SiteContent['siteSettings'] }) {
+  const pathname = usePathname()
+  const onHome = pathname === '/'
   const [open, setOpen] = useState(false)
-  const primaryItems = settings.navigation.filter((item) => item.menu === 'primary')
-  const serviceItems = settings.navigation.filter((item) => item.menu === 'services')
 
   useEffect(() => {
     if (!open) return
@@ -34,7 +36,7 @@ export function MobileMenu({ settings }: { settings: SiteContent['siteSettings']
     <>
       <button
         type="button"
-        className="inline-flex items-center text-[var(--primary)]"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(8,32,68,0.08)] bg-[rgba(255,255,255,0.58)] text-[var(--primary-strong)]"
         aria-expanded={open}
         aria-controls="mobile-nav"
         onClick={() => setOpen(true)}
@@ -42,21 +44,21 @@ export function MobileMenu({ settings }: { settings: SiteContent['siteSettings']
         <MenuIcon className="h-5 w-5" />
       </button>
       {open ? (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-[rgba(15,28,44,0.18)] backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-[rgba(7,17,33,0.34)] backdrop-blur-sm">
           <div
             id="mobile-nav"
-            className="ml-auto flex min-h-screen w-full max-w-sm flex-col overflow-y-auto overscroll-contain rounded-l-[1.35rem] bg-[var(--surface)] px-6 pb-10 pt-6 shadow-[0_24px_64px_rgba(15,28,44,0.16)] sm:max-w-md"
+            className="ml-auto flex min-h-screen w-full max-w-sm flex-col overflow-y-auto rounded-l-[1.8rem] border-l border-[rgba(232,222,201,0.86)] bg-[linear-gradient(180deg,rgba(252,250,246,0.98),rgba(247,244,238,0.97))] px-6 pb-10 pt-6 shadow-[0_28px_70px_rgba(8,32,68,0.16)]"
           >
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="eyebrow">Navigation</p>
-                <p className="mt-4 font-serif text-[2.45rem] leading-none text-[var(--primary)]">
+                <p className="mt-4 font-serif text-[2.1rem] leading-none text-[var(--primary-strong)]">
                   {settings.fullName}
                 </p>
               </div>
               <button
                 type="button"
-                className="inline-flex text-[var(--primary)]"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(8,32,68,0.08)] bg-[rgba(255,255,255,0.58)] text-[var(--primary-strong)]"
                 aria-label="Close menu"
                 onClick={() => setOpen(false)}
               >
@@ -64,73 +66,65 @@ export function MobileMenu({ settings }: { settings: SiteContent['siteSettings']
               </button>
             </div>
             <div className="mt-10">
-              <p className="text-[0.88rem] font-semibold uppercase tracking-[0.14em] text-[rgba(15,28,44,0.46)]">
-                Main pages
+              <p className="text-[0.76rem] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
+                {onHome ? 'Homepage sections' : 'Pages'}
               </p>
             </div>
-            <nav className="mt-5 space-y-3">
-              {primaryItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="block rounded-[0.95rem] px-3 py-3 text-[0.98rem] font-semibold uppercase tracking-[0.12em] text-[rgba(15,28,44,0.78)] transition-colors hover:bg-[rgba(15,28,44,0.04)]"
-                  onClick={() => setOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
+            <nav className="mt-4 space-y-2">
+              {onHome
+                ? homepageNavItems.map((item) => (
+                    <Link
+                      key={item.id}
+                      href={getHomeSectionHref(pathname, item.id)}
+                      className="block rounded-[1rem] border border-transparent bg-[rgba(255,255,255,0.56)] px-4 py-3 text-[0.9rem] font-semibold uppercase tracking-[0.14em] text-[rgba(23,32,51,0.82)] transition-colors hover:border-[rgba(232,222,201,0.9)]"
+                      onClick={() => setOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))
+                : archiveNavItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="block rounded-[1rem] border border-transparent bg-[rgba(255,255,255,0.56)] px-4 py-3 text-[0.9rem] font-semibold uppercase tracking-[0.14em] text-[rgba(23,32,51,0.82)] transition-colors hover:border-[rgba(232,222,201,0.9)]"
+                      onClick={() => setOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
             </nav>
             <div className="ghost-line mt-8 pt-8">
-              <p className="text-[0.88rem] font-semibold uppercase tracking-[0.14em] text-[rgba(15,28,44,0.46)]">
-                Services
+              <p className="text-[0.76rem] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
+                Public contact
               </p>
-            </div>
-            <nav className="mt-5 space-y-2">
-              {serviceItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="block rounded-[0.95rem] px-3 py-3 text-[0.96rem] font-semibold uppercase tracking-[0.12em] text-[rgba(15,28,44,0.68)] transition-colors hover:bg-[rgba(15,28,44,0.04)] hover:text-[var(--primary)]"
-                  onClick={() => setOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-            <div className="ghost-line mt-10 pt-8">
-              <p className="eyebrow">Public contact</p>
               <a
                 href={`mailto:${settings.primaryEmail}`}
-                className="mt-4 inline-flex items-center gap-3 font-serif text-[1.22rem] italic text-[var(--primary)]"
+                className="mt-4 inline-flex items-center gap-3 font-serif text-[1.08rem] italic text-[var(--primary-strong)]"
               >
                 <span className="icon-chip h-8 w-8">
-                  <MailIcon className="h-4 w-4 text-[rgba(15,28,44,0.48)]" />
+                  <MailIcon className="h-4 w-4 text-[rgba(8,32,68,0.52)]" />
                 </span>
-                <span>{settings.primaryEmail}</span>
+                <span className="break-all">{settings.primaryEmail}</span>
                 <ArrowUpRightIcon className="h-4 w-4" />
               </a>
             </div>
-            <div className="ghost-line mt-8 pt-8">
-              <p className="eyebrow">Social presence</p>
-              <div className="mt-4 flex flex-col gap-3 text-[0.9rem] font-semibold uppercase tracking-[0.12em] text-[rgba(15,28,44,0.56)]">
-                {settings.socialLinks.map((item) => {
-                  return (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-3"
-                    >
+            {settings.socialLinks.length ? (
+              <div className="ghost-line mt-8 pt-8">
+                <p className="text-[0.76rem] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
+                  Social presence
+                </p>
+                <div className="mt-4 flex flex-col gap-3 text-[0.86rem] font-semibold uppercase tracking-[0.12em] text-[rgba(23,32,51,0.68)]">
+                  {settings.socialLinks.map((item) => (
+                    <a key={item.label} href={item.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3">
                       <span className="icon-chip h-8 w-8">
                         <SocialIcon label={item.label} className="h-4 w-4" />
                       </span>
                       <span>{item.label}</span>
                     </a>
-                  )
-                })}
+                  ))}
+                </div>
               </div>
-            </div>
+            ) : null}
           </div>
         </div>
       ) : null}

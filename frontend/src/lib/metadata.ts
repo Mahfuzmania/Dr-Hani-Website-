@@ -14,11 +14,13 @@ export function buildMetadata(title: string, description: string, path = '/'): M
       url: `${base}${path}`,
       siteName: siteContent.siteSettings.fullName,
       type: 'website',
+      images: ['/media/about-doctor-portrait.jpg'],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${title} | ${siteContent.siteSettings.fullName}`,
       description,
+      images: ['/media/about-doctor-portrait.jpg'],
     },
     alternates: {
       canonical: `${base}${path}`,

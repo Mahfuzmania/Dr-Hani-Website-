@@ -169,7 +169,7 @@ export const siteContent: SiteContent = {
   siteSettings: {
     fullName: 'Dr Umma Hani',
     primaryEmail: 'honeyhaque1078@gmail.com',
-    identityLine: 'Physician. Public Presence. Community Leadership.',
+    identityLine: "Physician. Women's Health. Community Leadership.",
     defaultDescription:
       "Official profile website for Dr Umma Hani, bringing together her medical service, women's health experience, public engagement, and leadership presence.",
     footerText:
@@ -204,32 +204,32 @@ export const siteContent: SiteContent = {
   homepage: {
     heroTitle: 'Dr Umma Hani',
     heroSubtitle:
-      'A physician whose record moves between emergency hospital service, women-focused care, and a public presence shaped by direct contact with people and community life.',
+      'A medical doctor and public-facing community leader connecting clinical service, women-centered care, and civic engagement in Bangladesh.',
     heroImage: '/media/homepage-hero-seated.jpg',
     heroPrimaryCTA: { href: '/about', label: 'Read Her Story' },
     heroSecondaryCTA: { href: '/contact', label: 'Get in Touch' },
     motionVideoIds: ['featured-field', 'women-gathering', 'medical-camp-service'],
     identityPillars: [
       {
-        title: 'Medical Practice',
+        title: 'Physician',
         description:
-          'The foundation is clinical: MBBS training, internship discipline, emergency-duty work, and a professional identity formed through hospital responsibility.',
+          'The public profile remains anchored first in documented medical training, hospital discipline, emergency-duty work, and practical clinical responsibility.',
       },
       {
-        title: "Women's Health Service",
+        title: "Women's Health Advocate",
         description:
-          "Her gynecology and obstetrics appointments give the profile a clear women-centered service thread, widening the story from hospital duty to care, dignity, and access.",
+          "Gynecology and obstetrics-linked appointments give the record a clear women-centered care thread, connecting medical work with dignity, access, and service to women.",
       },
       {
-        title: 'Public Leadership',
+        title: 'Public Leader',
         description:
-          'District programs, neighborhood contact, and recognizable organizational visibility place her in civic life with a steady, documentary kind of authority.',
+          'Community programs, neighborhood contact, and visible participation in public settings place her in civic life with a factual, documentary kind of presence.',
       },
     ],
     aboutPreview:
       'Dr Umma Hani completed MBBS at TMSS Medical College under Rajshahi University, completed a full internship at TMSS Medical College and Rafatullah Community Hospital, and went on to serve in emergency and gynecology-linked hospital roles in both Bogura and Dhaka.',
     missionStatement:
-      "A doctor's profile shaped by clinical discipline, public composure, and a recognisable warmth in community-facing settings.",
+      "A doctor's profile shaped by clinical discipline, women-centered care, and a recognisable calm in community-facing settings.",
     focusAreas: [
       {
         title: 'Emergency and Hospital Service',
