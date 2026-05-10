@@ -1,24 +1,34 @@
 import type { MetadataRoute } from 'next'
 
-import { siteContent } from '../../../shared/site-content'
+import { getSiteUrl } from '@/src/lib/metadata'
+import { siteContentV2 } from '../../../shared/site-content-v2'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = process.env.FRONTEND_URL || 'http://localhost:3000'
-  const staticRoutes = siteContent.siteSettings.navigation.map((item) => ({
-    url: `${base}${item.href}`,
-    changeFrequency: 'weekly' as const,
-    priority: item.href === '/' ? 1 : 0.7,
+  const base = getSiteUrl()
+  const staticRoutes = [
+    '/',
+    '/about',
+    '/medical-service',
+    '/public-service',
+    '/leadership',
+    '/media-events',
+    '/gallery',
+    '/updates',
+    '/contact',
+    '/privacy',
+  ].map((path) => ({
+    url: `${base}${path}`,
+    changeFrequency: path === '/privacy' ? ('yearly' as const) : ('weekly' as const),
+    priority: path === '/' ? 1 : path === '/privacy' ? 0.3 : 0.6,
   }))
 
-  const updateRoutes = siteContent.updates.map((update) => ({
-    url: `${base}/updates/${update.slug}`,
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
+  const updateRoutes = siteContentV2.updates
+    .filter((update) => update.status === 'published')
+    .map((update) => ({
+      url: `${base}/updates/${update.slug}`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    }))
 
-  return [
-    ...staticRoutes,
-    ...updateRoutes,
-    { url: `${base}/privacy`, changeFrequency: 'yearly', priority: 0.3 },
-  ]
+  return [...staticRoutes, ...updateRoutes]
 }

@@ -3,20 +3,22 @@
 import Image from 'next/image'
 import { useEffect, useMemo, useState } from 'react'
 
-import type { GalleryCategory, GalleryItem } from '../../../../shared/site-content'
+import type { GalleryCategory, SiteContentV2 } from '../../../../shared/site-content-v2'
 import { BuildingIcon, CameraIcon, CloseIcon, FlagIcon, HeartIcon } from '../branding/elegant-icons'
+
+type GalleryItem = SiteContentV2['galleryItems'][number]
 
 const labels: Record<GalleryCategory | 'all', string> = {
   all: 'All',
-  'medical-service': 'Medical Service',
-  'community-outreach': 'Community Outreach',
+  medical: 'Medical Service',
+  community: 'Community Outreach',
   events: 'Events',
   leadership: 'Leadership',
 }
 
 const categoryIcons: Record<GalleryCategory, typeof HeartIcon> = {
-  'medical-service': HeartIcon,
-  'community-outreach': BuildingIcon,
+  medical: HeartIcon,
+  community: BuildingIcon,
   events: FlagIcon,
   leadership: CameraIcon,
 }

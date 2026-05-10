@@ -10,24 +10,22 @@ import {
   roles,
 } from './access'
 
-const seoFields = (): Field[] => [
-  {
-    name: 'seo',
-    type: 'group',
-    fields: [
-      {
-        name: 'title',
-        label: 'SEO title',
-        type: 'text',
-      },
-      {
-        name: 'description',
-        label: 'SEO description',
-        type: 'textarea',
-      },
-    ],
-  },
+const galleryCategories = [
+  { label: 'Medical', value: 'medical' },
+  { label: 'Community', value: 'community' },
+  { label: 'Events', value: 'events' },
+  { label: 'Leadership', value: 'leadership' },
 ]
+
+const statusField = (name = 'status'): Field => ({
+  name,
+  type: 'select',
+  defaultValue: 'draft',
+  options: [
+    { label: 'Draft', value: 'draft' },
+    { label: 'Published', value: 'published' },
+  ],
+})
 
 const imageRelationshipField = (name: string, label: string): Field => ({
   name,
@@ -36,31 +34,14 @@ const imageRelationshipField = (name: string, label: string): Field => ({
   relationTo: 'media',
 })
 
-const baseStatusFields: Field[] = [
-  {
-    name: 'status',
-    type: 'select',
-    defaultValue: 'draft',
-    options: [
-      { label: 'Draft', value: 'draft' },
-      { label: 'Published', value: 'published' },
-    ],
-  },
-  {
-    name: 'featured',
-    type: 'checkbox',
-    defaultValue: false,
-  },
-]
-
 export const usersCollection: CollectionConfig = {
   slug: 'users',
+  auth: true,
   admin: {
     group: 'Users & Access',
     useAsTitle: 'name',
     defaultColumns: ['name', 'email', 'role'],
   },
-  auth: true,
   access: {
     read: canReadForReview,
     create: canManageStructuredContent,
@@ -101,8 +82,8 @@ export const mediaCollection: CollectionConfig = {
     delete: canManageMedia,
   },
   admin: {
-    group: 'Media',
-    defaultColumns: ['filename', 'category', 'approvedForHero', 'approvedForGallery'],
+    group: 'Assets',
+    defaultColumns: ['filename', 'category', 'updatedAt'],
   },
   upload: {
     staticDir: 'media',
@@ -110,6 +91,7 @@ export const mediaCollection: CollectionConfig = {
     imageSizes: [
       { name: 'hero', width: 1600, height: 1100, fit: 'cover' },
       { name: 'card', width: 960, height: 720, fit: 'cover' },
+      { name: 'thumb', width: 640, height: 480, fit: 'cover' },
     ],
   },
   fields: [
@@ -118,17 +100,83 @@ export const mediaCollection: CollectionConfig = {
     {
       name: 'category',
       type: 'select',
-      options: [
-        { label: 'Medical Service', value: 'medical-service' },
-        { label: 'Community Outreach', value: 'community-outreach' },
-        { label: 'Events', value: 'events' },
-        { label: 'Leadership', value: 'leadership' },
-      ],
       required: true,
+      options: galleryCategories,
+      defaultValue: 'events',
     },
-    { name: 'tags', type: 'array', fields: [{ name: 'tag', type: 'text' }] },
-    { name: 'approvedForHero', type: 'checkbox', defaultValue: false },
-    { name: 'approvedForGallery', type: 'checkbox', defaultValue: true },
+  ],
+}
+
+export const galleryItemsCollection: CollectionConfig = {
+  slug: 'gallery-items',
+  access: {
+    read: () => true,
+    create: canManageMedia,
+    update: canManageMedia,
+    delete: canManageMedia,
+  },
+  admin: {
+    group: 'Content',
+    useAsTitle: 'title',
+    defaultColumns: ['title', 'category', 'featured', 'sortOrder', 'status'],
+  },
+  fields: [
+    { name: 'title', type: 'text', required: true },
+    imageRelationshipField('image', 'Image'),
+    {
+      name: 'category',
+      type: 'select',
+      required: true,
+      options: galleryCategories,
+      defaultValue: 'events',
+    },
+    { name: 'caption', type: 'textarea' },
+    { name: 'featured', type: 'checkbox', defaultValue: false },
+    { name: 'sortOrder', type: 'number', defaultValue: 0 },
+    statusField(),
+  ],
+}
+
+export const mediaItemsCollection: CollectionConfig = {
+  slug: 'media-items',
+  versions: draftVersionConfig,
+  access: {
+    read: () => true,
+    create: canCreateDrafts,
+    update: canCreateDrafts,
+    delete: canManageStructuredContent,
+  },
+  admin: {
+    group: 'Content',
+    useAsTitle: 'title',
+    defaultColumns: ['title', 'type', 'category', 'featuredOnHomepage', 'status'],
+  },
+  fields: [
+    { name: 'title', type: 'text', required: true },
+    {
+      name: 'type',
+      type: 'select',
+      required: true,
+      defaultValue: 'video',
+      options: [
+        { label: 'Video', value: 'video' },
+        { label: 'Image', value: 'image' },
+        { label: 'Article', value: 'article' },
+      ],
+    },
+    imageRelationshipField('thumbnail', 'Thumbnail'),
+    { name: 'mediaUrl', type: 'text', required: true },
+    { name: 'description', type: 'textarea', required: true },
+    {
+      name: 'category',
+      type: 'select',
+      required: true,
+      options: galleryCategories,
+      defaultValue: 'events',
+    },
+    { name: 'featuredOnHomepage', type: 'checkbox', defaultValue: false },
+    { name: 'sourceLink', type: 'text' },
+    statusField(),
   ],
 }
 
@@ -136,9 +184,9 @@ export const updatesCollection: CollectionConfig = {
   slug: 'updates',
   versions: draftVersionConfig,
   admin: {
-    group: 'Dynamic Content',
+    group: 'Content',
     useAsTitle: 'title',
-    defaultColumns: ['title', 'category', 'publishDate', 'status'],
+    defaultColumns: ['title', 'category', 'publishDate', 'featured', 'pinned', 'status'],
   },
   access: {
     read: () => true,
@@ -150,12 +198,80 @@ export const updatesCollection: CollectionConfig = {
     { name: 'title', type: 'text', required: true },
     { name: 'slug', type: 'text', required: true, unique: true },
     { name: 'summary', type: 'textarea', required: true },
+    { name: 'bodyText', type: 'textarea', required: true },
     imageRelationshipField('coverImage', 'Cover image'),
-    { name: 'content', type: 'richText' },
     { name: 'category', type: 'text', required: true },
     { name: 'publishDate', type: 'date', required: true },
-    ...baseStatusFields,
-    ...seoFields(),
+    { name: 'sourceLink', type: 'text' },
+    { name: 'featured', type: 'checkbox', defaultValue: false },
+    { name: 'pinned', type: 'checkbox', defaultValue: false },
+    statusField(),
+  ],
+}
+
+export const importantNoticesCollection: CollectionConfig = {
+  slug: 'important-notices',
+  versions: draftVersionConfig,
+  admin: {
+    group: 'Content',
+    useAsTitle: 'title',
+    defaultColumns: ['title', 'category', 'pinned', 'startDate', 'expiryDate', 'status'],
+  },
+  access: {
+    read: () => true,
+    create: canCreateDrafts,
+    update: canCreateDrafts,
+    delete: canManageStructuredContent,
+  },
+  fields: [
+    { name: 'title', type: 'text', required: true },
+    { name: 'message', type: 'textarea', required: true },
+    { name: 'category', type: 'text', required: true },
+    { name: 'startDate', type: 'date' },
+    { name: 'expiryDate', type: 'date' },
+    { name: 'pinned', type: 'checkbox', defaultValue: false },
+    statusField(),
+  ],
+}
+
+export const positionsCollection: CollectionConfig = {
+  slug: 'positions',
+  versions: draftVersionConfig,
+  admin: {
+    group: 'Content',
+    useAsTitle: 'title',
+    defaultColumns: ['title', 'organization', 'period', 'featured', 'sortOrder', 'status'],
+  },
+  access: {
+    read: () => true,
+    create: canCreateDrafts,
+    update: canCreateDrafts,
+    delete: canManageStructuredContent,
+  },
+  fields: [
+    { name: 'title', type: 'text', required: true },
+    { name: 'organization', type: 'text', required: true },
+    { name: 'branch', type: 'text' },
+    { name: 'period', type: 'text', required: true },
+    { name: 'description', type: 'textarea', required: true },
+    imageRelationshipField('image', 'Source or role image'),
+    {
+      name: 'sourceType',
+      type: 'select',
+      required: true,
+      defaultValue: 'document',
+      options: [
+        { label: 'Document', value: 'document' },
+        { label: 'News', value: 'news' },
+        { label: 'Public record', value: 'public-record' },
+        { label: 'Internal source', value: 'internal' },
+      ],
+    },
+    { name: 'sourceNote', type: 'textarea' },
+    { name: 'sourceLink', type: 'text' },
+    { name: 'featured', type: 'checkbox', defaultValue: false },
+    { name: 'sortOrder', type: 'number', defaultValue: 0 },
+    statusField(),
   ],
 }
 
@@ -163,7 +279,7 @@ export const eventsCollection: CollectionConfig = {
   slug: 'events',
   versions: draftVersionConfig,
   admin: {
-    group: 'Dynamic Content',
+    group: 'Legacy',
     useAsTitle: 'title',
     defaultColumns: ['title', 'date', 'category', 'status'],
   },
@@ -177,73 +293,18 @@ export const eventsCollection: CollectionConfig = {
     { name: 'title', type: 'text', required: true },
     { name: 'slug', type: 'text', required: true, unique: true },
     { name: 'date', type: 'date', required: true },
-    { name: 'venue', type: 'text' },
     { name: 'summary', type: 'textarea', required: true },
-    { name: 'content', type: 'richText' },
-    imageRelationshipField('coverImage', 'Cover image'),
-    {
-      name: 'galleryImages',
-      type: 'relationship',
-      relationTo: 'media',
-      hasMany: true,
-    },
     { name: 'category', type: 'text', required: true },
-    ...baseStatusFields,
-    ...seoFields(),
-  ],
-}
-
-export const galleryItemsCollection: CollectionConfig = {
-  slug: 'gallery-items',
-  admin: {
-    group: 'Media',
-    useAsTitle: 'title',
-    defaultColumns: ['title', 'category', 'featured', 'visibility'],
-  },
-  access: {
-    read: () => true,
-    create: canManageMedia,
-    update: canManageMedia,
-    delete: canManageMedia,
-  },
-  fields: [
-    { name: 'title', type: 'text', required: true },
-    imageRelationshipField('image', 'Image'),
-    {
-      name: 'category',
-      type: 'select',
-      required: true,
-      options: [
-        { label: 'Medical Service', value: 'medical-service' },
-        { label: 'Community Outreach', value: 'community-outreach' },
-        { label: 'Events', value: 'events' },
-        { label: 'Leadership', value: 'leadership' },
-      ],
-    },
-    { name: 'caption', type: 'textarea' },
-    {
-      name: 'relatedEvent',
-      type: 'relationship',
-      relationTo: 'events',
-    },
-    { name: 'featured', type: 'checkbox', defaultValue: false },
-    { name: 'sortOrder', type: 'number', defaultValue: 0 },
-    {
-      name: 'visibility',
-      type: 'select',
-      defaultValue: 'public',
-      options: [
-        { label: 'Public', value: 'public' },
-        { label: 'Hidden', value: 'hidden' },
-      ],
-    },
+    imageRelationshipField('coverImage', 'Cover image'),
+    statusField(),
   ],
 }
 
 export const contactInquiriesCollection: CollectionConfig = {
   slug: 'contact-inquiries',
+  timestamps: true,
   admin: {
-    group: 'Inquiries',
+    group: 'Inbox',
     useAsTitle: 'subject',
     defaultColumns: ['name', 'email', 'inquiryType', 'status', 'createdAt'],
   },
@@ -253,7 +314,6 @@ export const contactInquiriesCollection: CollectionConfig = {
     update: canManageInquiries,
     delete: canManageInquiries,
   },
-  timestamps: true,
   fields: [
     { name: 'name', type: 'text', required: true },
     { name: 'email', type: 'email', required: true },
@@ -266,7 +326,9 @@ export const contactInquiriesCollection: CollectionConfig = {
       type: 'select',
       defaultValue: 'new',
       options: [
-        { label: 'New', value: 'new' },
+        { label: 'Unread', value: 'new' },
+        { label: 'Read', value: 'read' },
+        { label: 'Archived', value: 'archived' },
         { label: 'In Review', value: 'in-review' },
         { label: 'Closed', value: 'closed' },
       ],
@@ -274,9 +336,6 @@ export const contactInquiriesCollection: CollectionConfig = {
     {
       name: 'internalNotes',
       type: 'textarea',
-      admin: {
-        description: 'Visible to inquiry managers only.',
-      },
     },
   ],
 }
@@ -284,8 +343,11 @@ export const contactInquiriesCollection: CollectionConfig = {
 export const collections: CollectionConfig[] = [
   usersCollection,
   mediaCollection,
-  updatesCollection,
-  eventsCollection,
   galleryItemsCollection,
+  mediaItemsCollection,
+  updatesCollection,
+  importantNoticesCollection,
+  positionsCollection,
+  eventsCollection,
   contactInquiriesCollection,
 ]

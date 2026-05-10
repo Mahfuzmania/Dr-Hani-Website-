@@ -1,0 +1,253 @@
+You are working on the existing Dr Umma Hani website codebase. The site is already designed and deployed, but it needs final professional polish before public release.
+
+Your task is NOT to rebuild the site from scratch. Preserve the existing design direction, page structure, image assets, routes, CMS/admin system, and working functionality. Improve the website as a professional project manager, frontend developer, UX reviewer, and content editor.
+
+Main goals:
+1. Fix the mobile hero section formatting issues.
+2. Remove duplicate hero content.
+3. Remove internal/developer wording from the public website.
+4. Remove public footer reference to Admin localhost:4000.
+5. Reduce repeated/template-like wording across the site.
+6. Improve mobile responsiveness and visual hierarchy.
+7. Keep the tone elegant, calm, credible, medical, women-focused, and community-oriented.
+8. Do not invent new biographical facts, dates, roles, political claims, medical qualifications, or affiliations.
+
+Important content and factual constraints:
+- The public name should be Dr Umma Hani.
+- Keep the core positioning: physician, women’s health, community leadership.
+- Keep medical credibility grounded in existing content only.
+- Keep political/public-service wording restrained and factual.
+- Do not make campaign slogans.
+- Do not exaggerate achievements.
+- Do not invent new public roles.
+- Do not create fake testimonials, fake awards, fake media mentions, or fake statistics.
+- Existing images should be reused carefully with better layout/cropping where needed.
+- Keep all current routes working.
+
+URGENT FIX 1: Mobile hero section
+Audit the homepage hero component and make it mobile-first.
+
+Current issue:
+The hero has duplicate positioning text:
+- “Physician • Women’s Health • Community Leadership”
+- “Physician. Women’s Health. Community Leadership.”
+
+Keep only one:
+“Physician • Women’s Health • Community Leadership”
+
+Recommended mobile hero structure:
+- Small eyebrow/tagline
+- Main heading: Dr Umma Hani
+- One short paragraph
+- Two clean CTA buttons
+- Hero image below text
+- Identity chips/cards below the hero image, not cramped into the first viewport
+
+Use responsive classes so that:
+- Mobile layout is single-column and centered.
+- Desktop layout may remain two-column.
+- Buttons stack on very small screens and align horizontally on larger screens.
+- Hero image uses a stable aspect ratio, preferably aspect-[4/5] or similar.
+- Image should use object-cover and object-top/center depending on best crop.
+- No text overlaps the image.
+- No floating cards should overflow on mobile.
+- No horizontal scroll should appear.
+- Use min-h-[100svh] or controlled spacing only if it does not crowd content on mobile.
+- Test mentally for 360px, 390px, 430px, 768px, 1366px.
+
+Suggested hero copy:
+Eyebrow:
+Physician • Women’s Health • Community Leadership
+
+Heading:
+Dr Umma Hani
+
+Paragraph:
+A Bangladeshi medical doctor whose work connects clinical service, women’s health, and community leadership.
+
+CTA buttons:
+Read Biography
+Contact
+
+URGENT FIX 2: Remove internal/developer language
+Find and replace any public text that sounds like developer notes, repo notes, or CMS migration notes.
+
+Replace:
+“Dates and role labels stay tied to the verified repo sources. Where exact dates are not surfaced cleanly, the timeline remains descriptive rather than invented.”
+
+With:
+“The timeline highlights verified education, hospital appointments, and public-facing milestones from her professional record.”
+
+Replace:
+“The form keeps the existing inquiry flow intact while presenting it in a calmer public-profile format.”
+
+With:
+“Use this form for professional correspondence, event invitations, media requests, and community-service communication.”
+
+Search the whole codebase for these words/phrases and remove or rewrite if they sound repetitive or internal:
+- verified repo sources
+- existing inquiry flow
+- documentary terms
+- public-facing human contact
+- composed public profile
+- restrained
+- site itself
+- archive stays
+- visual record
+- not invented
+- repo
+- localhost
+
+URGENT FIX 3: Remove public Admin localhost link
+The footer currently exposes “Admin localhost:4000”.
+This must not appear on the public website.
+
+Do the following:
+- Remove admin link from the public footer completely.
+- Do not show localhost anywhere in public UI.
+- Keep the admin route protected if it exists.
+- If the project needs a dev-only admin shortcut, render it only when process.env.NODE_ENV === "development", but preferably remove it from the public footer entirely.
+
+URGENT FIX 4: Reduce redundant wording
+Across the website, the same phrases are repeated too often:
+- composed
+- documentary
+- public-facing
+- women-centered
+- visible community presence
+- human contact
+- restrained
+- civic presence
+- medical credibility
+
+Do a careful content pass and make each page feel distinct:
+
+Home:
+Use short identity-driven language. Avoid long explanations.
+
+About:
+Focus on biography, education, internship, hospital service, timeline.
+
+Medical Work:
+Focus on emergency care, women’s health, hospital service, patient communication, clinical responsibility.
+
+Public Work:
+Focus on community visits, public programs, women/family contact, health camps, civic service. Keep it factual and non-slogan-like.
+
+Media:
+Focus on interviews, public appearances, news references, videos. Make this feel curated, not like a raw dump.
+
+Gallery:
+Focus on selected images and categories.
+
+Updates:
+Use dated, factual notes. Avoid repetitive emotional phrases.
+
+Contact:
+Keep direct, professional, and simple.
+
+Suggested replacements:
+1.
+Old:
+“A physician-led profile shaped by care, women-centered service, and visible community presence.”
+
+New:
+“A profile shaped by medical service, women’s health, and community trust.”
+
+2.
+Old:
+“The homepage stays strongest when these three strands remain balanced: medical credibility, women-focused care, and a civic presence presented in documentary terms.”
+
+New:
+“Her public profile brings together three clear strands: medical service, women’s health, and community work.”
+
+3.
+Old:
+“A composed public profile connecting medical work, women-centered care, and documented community presence.”
+
+New:
+“Medical service, women’s health, and community leadership in one public record.”
+
+4.
+Old:
+“Clinical service with public composure and human warmth.”
+
+New:
+“Clinical service, public responsibility, and human connection.”
+
+5.
+Old:
+“Documentary, community-facing, and strongest when presented with restraint.”
+
+New:
+“Community work presented with clarity, care, and factual balance.”
+
+URGENT FIX 5: Improve section rhythm and reduce template feel
+The site currently uses similar repeated section structures. Improve visual rhythm while preserving the design language.
+
+Recommendations:
+- Keep the homepage premium and not overcrowded.
+- Use varied layouts: timeline, feature cards, image-led block, compact stat/credential cards, gallery mosaic.
+- Avoid too many equal-weight cards.
+- On mobile, reduce card density and vertical crowding.
+- Ensure section headings are not too long.
+- Use consistent spacing between sections.
+- Use consistent border radius, shadows, glass effects, and background treatments.
+- Do not overuse glassmorphism. Use it selectively for premium feel.
+- Keep the design elegant, not box-heavy.
+
+Specific UI improvements:
+- Make social links use real recognizable icons for Facebook, Instagram, and LinkedIn if already available in the icon library. If not available, use clean text links with consistent hover states.
+- Make CTA buttons visually distinct: primary and secondary should not look identical.
+- Ensure all cards have enough contrast between text and background.
+- Make image cards consistent in crop and height.
+- Add hover states only where useful.
+- Avoid excessive animation.
+- Respect prefers-reduced-motion.
+
+Mobile QA requirements:
+- No horizontal scroll.
+- Hero text readable.
+- Buttons not cramped.
+- Image not cut awkwardly.
+- Navbar usable.
+- Cards stack cleanly.
+- Footer does not feel cluttered.
+- Contact form fields full-width and readable.
+- Spacing should feel premium, not squeezed.
+
+SEO polish:
+- Ensure every page has a unique title and meta description.
+- Add or verify Open Graph metadata for social sharing.
+- Add descriptive alt text for important images.
+- Do not keyword-stuff.
+- Keep metadata factual.
+
+Performance polish:
+- Use optimized image sizes.
+- Use lazy loading for below-the-fold images.
+- Keep the first hero image priority if appropriate.
+- Avoid heavy unnecessary animations or client components.
+- Check for unused imports and redundant components.
+- Remove dead code created during previous iterations if safe.
+
+Acceptance checklist:
+- The duplicate hero tagline is removed.
+- Mobile hero is clean and responsive.
+- Public footer no longer shows Admin localhost:4000.
+- No public text contains “repo”, “localhost”, “existing inquiry flow”, or developer-facing wording.
+- Content repetition is reduced.
+- All pages keep factual accuracy.
+- No new unverified claims are added.
+- Contact form still works.
+- All existing routes still work.
+- Site looks clean on mobile, tablet, and desktop.
+- Build passes without TypeScript or lint errors.
+
+After making changes:
+1. Run the project locally.
+2. Check all routes.
+3. Run lint/build if available.
+4. Summarize what files were changed.
+5. Summarize what issues were fixed.
+6. Mention any remaining risks or items needing human review.

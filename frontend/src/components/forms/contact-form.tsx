@@ -4,21 +4,19 @@ import type { FormEvent } from 'react'
 import { useState } from 'react'
 import { z } from 'zod'
 
-import { DocumentIcon, MailIcon, MessageIcon, PhoneIcon, SendIcon, UserIcon } from '../branding/elegant-icons'
-
 const schema = z.object({
   name: z.string().min(2, 'Please enter your name.'),
   email: z.email('Please provide a valid email address.'),
   phone: z.string().optional(),
-  inquiryType: z.string().min(2, 'Please select or enter an inquiry type.'),
+  inquiryType: z.string().min(2, 'Please select an inquiry type.'),
   subject: z.string().min(3, 'Please provide a short subject.'),
   message: z.string().min(20, 'Please write a more detailed message.'),
 })
 
 const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL?.trim()
 
-export function ContactForm({ framed = true, inquiryTypes }: { framed?: boolean; inquiryTypes: string[] }) {
-  const [status, setStatus] = useState<'idle' | 'error' | 'submitting' | 'success'>('idle')
+export function ContactForm({ inquiryTypes }: { framed?: boolean; inquiryTypes: string[] }) {
+  const [status, setStatus] = useState<'error' | 'idle' | 'submitting' | 'success'>('idle')
   const [error, setError] = useState<string | null>(null)
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -32,13 +30,13 @@ export function ContactForm({ framed = true, inquiryTypes }: { framed?: boolean;
 
     if (!parsed.success) {
       setStatus('error')
-      setError(parsed.error.issues[0]?.message || 'Please review your submission.')
+      setError(parsed.error.issues[0]?.message || 'Please review your message and try again.')
       return
     }
 
     if (!backendUrl) {
       setStatus('error')
-      setError('Direct form delivery is not configured right now. Please use the public email or social links.')
+      setError('The submission service is not configured right now.')
       return
     }
 
@@ -61,54 +59,26 @@ export function ContactForm({ framed = true, inquiryTypes }: { framed?: boolean;
   }
 
   return (
-    <form onSubmit={handleSubmit} className={framed ? 'panel-soft p-8 md:p-12' : 'p-6 md:p-8'}>
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p className="eyebrow">Write a Message</p>
-          <h3 className="mt-4 font-serif text-[2.3rem] italic leading-tight text-[var(--primary-strong)] md:text-[2.6rem]">
-            Contact Dr Umma Hani
-          </h3>
-        </div>
-        <p className="max-w-xs text-[0.88rem] leading-7 text-[var(--muted)]">
-          The form keeps the existing inquiry flow intact while presenting it in a calmer public-profile format.
-        </p>
-      </div>
-      <div className="mt-10 grid gap-6 md:grid-cols-2">
+    <form
+      onSubmit={handleSubmit}
+      className="panel-solid editorial-card p-6 md:p-8"
+    >
+      <div className="grid gap-5 md:grid-cols-2">
         <label className="block">
-          <span className="inline-flex items-center gap-2 text-[0.82rem] font-semibold uppercase tracking-[0.14em] text-[rgba(23,32,51,0.52)]">
-            <span className="icon-chip h-8 w-8">
-              <UserIcon className="h-4 w-4" />
-            </span>
-            <span>Name</span>
-          </span>
-          <input name="name" className="editorial-input mt-3" placeholder="Your name" />
+          <span className="text-[0.74rem] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">Name</span>
+          <input name="name" className="input-shell mt-3" placeholder="Your name" />
         </label>
         <label className="block">
-          <span className="inline-flex items-center gap-2 text-[0.82rem] font-semibold uppercase tracking-[0.14em] text-[rgba(23,32,51,0.52)]">
-            <span className="icon-chip h-8 w-8">
-              <MailIcon className="h-4 w-4" />
-            </span>
-            <span>Email address</span>
-          </span>
-          <input name="email" type="email" className="editorial-input mt-3" placeholder="Your email address" />
+          <span className="text-[0.74rem] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">Email</span>
+          <input name="email" type="email" className="input-shell mt-3" placeholder="Your email address" />
         </label>
         <label className="block">
-          <span className="inline-flex items-center gap-2 text-[0.82rem] font-semibold uppercase tracking-[0.14em] text-[rgba(23,32,51,0.52)]">
-            <span className="icon-chip h-8 w-8">
-              <PhoneIcon className="h-4 w-4" />
-            </span>
-            <span>Phone</span>
-          </span>
-          <input name="phone" className="editorial-input mt-3" placeholder="Optional contact number" />
+          <span className="text-[0.74rem] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">Phone</span>
+          <input name="phone" className="input-shell mt-3" placeholder="Optional contact number" />
         </label>
         <label className="block">
-          <span className="inline-flex items-center gap-2 text-[0.82rem] font-semibold uppercase tracking-[0.14em] text-[rgba(23,32,51,0.52)]">
-            <span className="icon-chip h-8 w-8">
-              <DocumentIcon className="h-4 w-4" />
-            </span>
-            <span>Inquiry type</span>
-          </span>
-          <select name="inquiryType" defaultValue={inquiryTypes[0] ?? ''} className="editorial-input mt-3">
+          <span className="text-[0.74rem] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">Inquiry type</span>
+          <select name="inquiryType" defaultValue={inquiryTypes[0] ?? ''} className="input-shell mt-3">
             {inquiryTypes.map((item) => (
               <option key={item} value={item}>
                 {item}
@@ -117,32 +87,30 @@ export function ContactForm({ framed = true, inquiryTypes }: { framed?: boolean;
           </select>
         </label>
       </div>
-      <label className="mt-6 block">
-        <span className="inline-flex items-center gap-2 text-[0.82rem] font-semibold uppercase tracking-[0.14em] text-[rgba(23,32,51,0.52)]">
-          <span className="icon-chip h-8 w-8">
-            <DocumentIcon className="h-4 w-4" />
-          </span>
-          <span>Subject</span>
-        </span>
-        <input name="subject" className="editorial-input mt-3" placeholder="A short subject line" />
+      <label className="mt-5 block">
+        <span className="text-[0.74rem] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">Subject</span>
+        <input name="subject" className="input-shell mt-3" placeholder="A short subject line" />
       </label>
-      <label className="mt-6 block">
-        <span className="inline-flex items-center gap-2 text-[0.82rem] font-semibold uppercase tracking-[0.14em] text-[rgba(23,32,51,0.52)]">
-          <span className="icon-chip h-8 w-8">
-            <MessageIcon className="h-4 w-4" />
-          </span>
-          <span>Message</span>
-        </span>
-        <textarea name="message" rows={5} className="editorial-input mt-3 resize-none" placeholder="Share a little context for your message" />
+      <label className="mt-5 block">
+        <span className="text-[0.74rem] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">Message</span>
+        <textarea
+          name="message"
+          rows={6}
+          className="input-shell mt-3 resize-none"
+          placeholder="Share a little context for your message"
+        />
       </label>
-      {status === 'error' && error ? <p className="mt-6 text-[0.95rem] text-[var(--danger)]">{error}</p> : null}
-      {status === 'success' ? (
-        <p className="mt-6 text-[0.95rem] text-[var(--success)]">Your message has been sent successfully.</p>
+      {status === 'error' && error ? (
+        <p className="mt-5 text-sm text-[#8f3d34]">{error}</p>
       ) : null}
-      <button type="submit" disabled={status === 'submitting'} className="button-primary mt-8 disabled:cursor-not-allowed disabled:opacity-70">
-        <span className="icon-chip icon-chip-contrast h-8 w-8">
-          <SendIcon className="h-4 w-4" />
-        </span>
+      {status === 'success' ? (
+        <p className="mt-5 text-sm text-[var(--navy)]">Your message has been sent successfully.</p>
+      ) : null}
+      <button
+        type="submit"
+        disabled={status === 'submitting'}
+        className="button-primary mt-6 px-6 py-4 text-[0.74rem] font-semibold uppercase tracking-[0.18em] disabled:cursor-not-allowed disabled:opacity-70"
+      >
         {status === 'submitting' ? 'Sending...' : 'Send Message'}
       </button>
     </form>

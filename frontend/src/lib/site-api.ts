@@ -1,32 +1,14 @@
 import { cache } from 'react'
 
-import { siteContent, type SiteContent } from '../../../shared/site-content'
+import { siteContentV2, type SiteContentV2 } from '../../../shared/site-content-v2'
 
 const getBackendUrl = () => process.env.NEXT_PUBLIC_BACKEND_URL?.trim()
 
-function normalizeContent(content: SiteContent): SiteContent {
-  const replacements = [
-    ['â€™', "'"],
-    ['â€œ', '"'],
-    ['â€', '"'],
-    ['â€”', ' - '],
-    ['â€¢', '- '],
-  ] as const
-
-  let serialized = JSON.stringify(content)
-
-  for (const [from, to] of replacements) {
-    serialized = serialized.split(from).join(to)
-  }
-
-  return JSON.parse(serialized) as SiteContent
-}
-
-export const getSiteContent = cache(async (): Promise<SiteContent> => {
+export const getSiteContent = cache(async (): Promise<SiteContentV2> => {
   const backendUrl = getBackendUrl()
 
   if (!backendUrl) {
-    return normalizeContent(siteContent)
+    return siteContentV2
   }
 
   try {
@@ -38,8 +20,8 @@ export const getSiteContent = cache(async (): Promise<SiteContent> => {
       throw new Error(`Backend responded with ${response.status}`)
     }
 
-    return normalizeContent((await response.json()) as SiteContent)
+    return (await response.json()) as SiteContentV2
   } catch {
-    return normalizeContent(siteContent)
+    return siteContentV2
   }
 })

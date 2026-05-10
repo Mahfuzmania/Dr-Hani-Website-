@@ -1,7 +1,9 @@
 import type { MetadataRoute } from 'next'
 
+import { getSiteUrl } from '@/src/lib/metadata'
+
 export default function robots(): MetadataRoute.Robots {
-  const base = process.env.FRONTEND_URL || 'http://localhost:3000'
+  const base = getSiteUrl()
 
   return {
     rules: {

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dr. Umma Hani | Physician &amp; Community Leader</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,700;1,400&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#adc7ff",
+                    "surface-bright": "#f9f9ff",
+                    "secondary-fixed": "#b6eaff",
+                    "on-tertiary-fixed-variant": "#564500",
+                    "on-surface": "#121b2e",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#0d5bbc",
+                    "primary": "#00408b",
+                    "secondary-container": "#86ddfd",
+                    "on-primary-fixed-variant": "#004493",
+                    "primary-container": "#0057b8",
+                    "surface-container-high": "#e1e8ff",
+                    "surface-container-highest": "#d9e2fc",
+                    "surface-variant": "#d9e2fc",
+                    "on-secondary-fixed-variant": "#004e60",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#424752",
+                    "surface-container-low": "#f1f3ff",
+                    "primary-fixed": "#d8e2ff",
+                    "on-secondary-container": "#006279",
+                    "on-tertiary-fixed": "#231b00",
+                    "surface-dim": "#d1daf4",
+                    "secondary": "#00677f",
+                    "on-tertiary-container": "#4d3e00",
+                    "outline-variant": "#c2c6d4",
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#adc7ff",
+                    "tertiary": "#725c00",
+                    "background": "#f9f9ff",
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#cba81b",
+                    "secondary-fixed-dim": "#7ad2f1",
+                    "outline": "#727784",
+                    "inverse-surface": "#273044",
+                    "tertiary-fixed": "#ffe07e",
+                    "on-background": "#121b2e",
+                    "on-secondary-fixed": "#001f28",
+                    "surface-container": "#e9edff",
+                    "on-primary-container": "#bfd2ff",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#edf0ff",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed-dim": "#e9c339",
+                    "on-primary-fixed": "#001a41",
+                    "surface": "#f9f9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "80px",
+                    "container-max": "1280px",
+                    "unit": "8px",
+                    "margin-mobile": "20px",
+                    "stack-sm": "16px",
+                    "stack-md": "32px",
+                    "margin-desktop": "64px",
+                    "gutter": "32px"
+            },
+            "fontFamily": {
+                    "display-xl": ["Noto Serif"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Noto Serif"],
+                    "label-caps": ["Inter"],
+                    "headline-lg": ["Noto Serif"]
+            },
+            "fontSize": {
+                    "display-xl": ["84px", {"lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(24px);
+            border: 1px solid #E8DEC9;
+        }
+        .orb {
+            filter: blur(80px);
+            border-radius: 50%;
+            position: absolute;
+            z-index: -1;
+        }
+        .mesh-texture {
+            background-image: radial-gradient(#00408b11 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .cinematic-shadow {
+            box-shadow: 0 40px 80px -20px rgba(8, 32, 68, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-[#F7F4EE] font-body-md text-on-surface overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-white/40 dark:bg-slate-900/40 backdrop-blur-md border-b border-[#E8DEC9] dark:border-slate-800 shadow-[0_8px_32px_0_rgba(8,32,68,0.05)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="font-serif text-2xl font-bold text-blue-900 dark:text-blue-100">Dr. Umma Hani</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-blue-900 dark:text-blue-200 border-b-2 border-blue-800 dark:border-blue-400 pb-1 font-serif text-lg tracking-tight transition-all duration-300" href="#about">About</a>
+<a class="text-blue-800/70 dark:text-slate-400 font-medium font-serif text-lg tracking-tight hover:text-blue-900 dark:hover:text-blue-200 transition-all duration-300" href="#expertise">Expertise</a>
+<a class="text-blue-800/70 dark:text-slate-400 font-medium font-serif text-lg tracking-tight hover:text-blue-900 dark:hover:text-blue-200 transition-all duration-300" href="#timeline">Timeline</a>
+<a class="text-blue-800/70 dark:text-slate-400 font-medium font-serif text-lg tracking-tight hover:text-blue-900 dark:hover:text-blue-200 transition-all duration-300" href="#media">Media</a>
+<a class="text-blue-800/70 dark:text-slate-400 font-medium font-serif text-lg tracking-tight hover:text-blue-900 dark:hover:text-blue-200 transition-all duration-300" href="#contact">Contact</a>
+</nav>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-medium transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg">Book Consultation</button>
+</div>
+</header>
+<!-- Cinematic Hero -->
+<section class="relative min-h-screen flex items-center pt-24 overflow-hidden mesh-texture">
+<div class="orb w-[600px] h-[600px] bg-secondary-container/30 -top-20 -left-20 animate-pulse"></div>
+<div class="orb w-[400px] h-[400px] bg-primary/20 -bottom-20 -right-20"></div>
+<div class="max-w-7xl mx-auto px-8 w-full grid md:grid-cols-2 gap-16 items-center">
+<!-- Left Content -->
+<div class="relative z-10">
+<span class="font-label-caps text-primary tracking-[0.2em] mb-4 block">PHYSICIAN • WOMEN’S HEALTH • COMMUNITY LEADERSHIP</span>
+<h1 class="font-display-xl text-display-xl text-primary mb-6">Dr. Umma Hani</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg mb-10 leading-relaxed">
+                    A medical doctor and public-facing community leader connecting clinical service, women-centered care, and civic engagement in Bangladesh.
+                </p>
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-medium flex items-center gap-2 group transition-all cinematic-shadow hover:-translate-y-1">
+                        Read Biography
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="glass-panel px-8 py-4 rounded-full font-medium text-primary hover:bg-white/60 transition-all">Contact</button>
+</div>
+</div>
+<!-- Right Content -->
+<div class="relative">
+<div class="absolute -z-10 w-[120%] h-[120%] bg-primary/10 rounded-full blur-3xl -top-10 -left-10"></div>
+<!-- Main Portrait Frame -->
+<div class="relative glass-panel p-4 rounded-[40px] cinematic-shadow rotate-3 hover:rotate-0 transition-transform duration-700">
+<img class="w-full h-[600px] object-cover rounded-[32px]" data-alt="dignified portrait of a South Asian female doctor in a white medical coat, smiling warmly, professional indoor setting with soft cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe_LGTcVdU0iqNzgotvYnl4kmr6ILmWHlkwEabp-Hzzw8_ZdRg_lrZ5jFN2Ef37fF0m6FXrReU-uJpZxov1hYLHUkB-Jd66WxeKTzZHQdYGl-NVWyLEPtfQ_J0OpbOxbsgn8D8Ph1Tjexe7qULNcbD6JycoEjudTyhuYI_AwkQbMjvbci4rTG9ozZ9fIfYW0cciBswQyBKETfHa4pjx9dRka4lgUk94T3cI_izJFRuMeqI0zwjVxcZ_EXsFhmAvWxH9i7JaiWAO_U"/>
+<!-- Floating mini-cards -->
+<div class="absolute -left-12 top-1/4 glass-panel p-4 rounded-2xl flex items-center gap-3 animate-bounce shadow-xl" style="animation-duration: 5s">
+<div class="w-10 h-10 bg-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl">medical_services</span>
+</div>
+<span class="font-bold text-primary">Medical Service</span>
+</div>
+<div class="absolute -right-8 bottom-1/4 glass-panel p-4 rounded-2xl flex items-center gap-3 animate-bounce shadow-xl" style="animation-duration: 7s">
+<div class="w-10 h-10 bg-tertiary-container/30 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-xl">female</span>
+</div>
+<span class="font-bold text-primary">Women's Health</span>
+</div>
+<div class="absolute left-1/2 -bottom-6 -translate-x-1/2 glass-panel p-4 rounded-2xl flex items-center gap-3 shadow-xl">
+<div class="w-10 h-10 bg-primary-fixed rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl">groups</span>
+</div>
+<span class="font-bold text-primary">Community Outreach</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Identity Snapshot -->
+<section class="py-stack-lg bg-surface-bright/50" id="expertise">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid md:grid-cols-3 gap-8">
+<div class="glass-panel p-10 rounded-[32px] cinematic-shadow translate-y-8 hover:translate-y-0 transition-transform duration-500">
+<div class="w-16 h-16 bg-primary-fixed-dim/20 rounded-full flex items-center justify-center mb-8 relative">
+<span class="material-symbols-outlined text-primary text-3xl">stethoscope</span>
+<div class="absolute top-0 right-0 w-3 h-3 bg-tertiary-container rounded-full"></div>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Physician</h3>
+<p class="text-on-surface-variant leading-relaxed">Dedicated medical practitioner providing emergency care and clinical excellence in hospital environments.</p>
+</div>
+<div class="glass-panel p-10 rounded-[32px] cinematic-shadow hover:-translate-y-4 transition-transform duration-500 bg-white/60">
+<div class="w-16 h-16 bg-secondary-container/20 rounded-full flex items-center justify-center mb-8 relative">
+<span class="material-symbols-outlined text-secondary text-3xl">health_and_safety</span>
+<div class="absolute top-0 right-0 w-3 h-3 bg-primary rounded-full"></div>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Health Advocate</h3>
+<p class="text-on-surface-variant leading-relaxed">Pioneering awareness for women's reproductive health and mental well-being across diverse communities.</p>
+</div>
+<div class="glass-panel p-10 rounded-[32px] cinematic-shadow translate-y-12 hover:translate-y-0 transition-transform duration-500">
+<div class="w-16 h-16 bg-tertiary-fixed/20 rounded-full flex items-center justify-center mb-8 relative">
+<span class="material-symbols-outlined text-tertiary text-3xl">diversity_3</span>
+<div class="absolute top-0 right-0 w-3 h-3 bg-secondary rounded-full"></div>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Public Leader</h3>
+<p class="text-on-surface-variant leading-relaxed">Bridging the gap between policy and public through active civic engagement and leadership roles.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Biography + Timeline -->
+<section class="py-stack-lg overflow-hidden" id="timeline">
+<div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-20 items-center">
+<div class="relative">
+<div class="aspect-[4/5] bg-surface-container-high rounded-[48px] overflow-hidden relative shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="professional candid shot of a doctor in discussion, soft warm morning light hitting a clinical workspace, serene and focused atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMdueJOAcWCz7Ci79ProitDr_4u8K0Dl2smDEu8OadKvwtlWDtL5j34AxKG187-aGEVZTOLBEO9W3ooVtKwf-MxgoWtQ3IXib6RcLaPtXYmOT7oK4pMI91yuk5X53bv0qLrkltH_Zp38727cFhJCw0GFkFaO2OW1V9uoYF-YU15z6DMAJY5UABOkfk2IVcOPYAjXBqlohtXVmsEcjvBLIop42RGHxVRpBOZ7dWRB2ndgOn8NGFWIdjZsQHFC5cMW47ti0SUgNrBkk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+</div>
+<!-- Decorative element -->
+<div class="absolute -bottom-10 -right-10 w-48 h-48 border-[12px] border-tertiary-container/20 rounded-full"></div>
+</div>
+<div class="space-y-12">
+<div>
+<span class="font-label-caps text-tertiary mb-4 block">OUR JOURNEY</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6">A Legacy of Service</h2>
+<p class="text-body-lg text-on-surface-variant mb-8">Dr. Umma Hani’s path is defined by a commitment to the underserved. From her early clinical training to her current role as a community voice, every milestone is a step toward a healthier Bangladesh.</p>
+</div>
+<!-- Timeline -->
+<div class="relative pl-12 space-y-10">
+<div class="absolute left-4 top-0 bottom-0 w-[2px] bg-secondary-container"></div>
+<div class="relative">
+<div class="absolute -left-[38px] top-1 w-6 h-6 bg-white border-4 border-tertiary-container rounded-full z-10"></div>
+<h4 class="font-bold text-primary mb-1">Medical Education</h4>
+<p class="text-sm text-on-surface-variant">MBBS, Graduated with distinction in Community Medicine.</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[38px] top-1 w-6 h-6 bg-white border-4 border-primary rounded-full z-10"></div>
+<h4 class="font-bold text-primary mb-1">Internship Training</h4>
+<p class="text-sm text-on-surface-variant">Rotation in Gynae &amp; Surgery at leading state hospital.</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[38px] top-1 w-6 h-6 bg-white border-4 border-secondary rounded-full z-10"></div>
+<h4 class="font-bold text-primary mb-1">Hospital Service</h4>
+<p class="text-sm text-on-surface-variant">Full-time Clinical Officer in Emergency Care Unit.</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[38px] top-1 w-6 h-6 bg-white border-4 border-tertiary-container rounded-full z-10"></div>
+<h4 class="font-bold text-primary mb-1">Public Presence</h4>
+<p class="text-sm text-on-surface-variant">Leadership in national health advocacy programs.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Medical & Women's Health Work -->
+<section class="py-stack-lg bg-surface-container-low/30 mesh-texture">
+<div class="max-w-7xl mx-auto px-8 text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary">Core Clinical Domains</h2>
+<p class="text-on-surface-variant mt-4">Merging rigorous science with empathetic care delivery.</p>
+</div>
+<div class="max-w-7xl mx-auto px-8 grid md:grid-cols-3 gap-8">
+<div class="bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-white border-b-primary/10 shadow-sm hover:shadow-xl transition-all">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary" data-weight="fill">emergency</span>
+</div>
+<h3 class="font-headline-md text-2xl text-primary mb-4">Emergency Care</h3>
+<ul class="space-y-3 text-on-surface-variant text-sm">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Acute Trauma Management</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Critical Case Stabilization</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Post-Operative Monitoring</li>
+</ul>
+</div>
+<div class="bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-white border-b-secondary/10 shadow-sm hover:shadow-xl transition-all translate-y-4">
+<div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary" data-weight="fill">pregnant_woman</span>
+</div>
+<h3 class="font-headline-md text-2xl text-primary mb-4">Women's Health</h3>
+<ul class="space-y-3 text-on-surface-variant text-sm">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span> Antenatal Care Programs</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span> Reproductive Health Rights</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span> Adolescent Girl Wellness</li>
+</ul>
+</div>
+<div class="bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-white border-b-tertiary/10 shadow-sm hover:shadow-xl transition-all">
+<div class="w-12 h-12 bg-tertiary/10 rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-tertiary" data-weight="fill">volunteer_activism</span>
+</div>
+<h3 class="font-headline-md text-2xl text-primary mb-4">Health Outreach</h3>
+<ul class="space-y-3 text-on-surface-variant text-sm">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-tertiary rounded-full"></span> Rural Health Workshops</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-tertiary rounded-full"></span> Vaccine Awareness Camps</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-tertiary rounded-full"></span> Preventive Education</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Public / Community Presence -->
+<section class="py-stack-lg bg-primary relative overflow-hidden text-white">
+<div class="orb w-[500px] h-[500px] bg-secondary-container/20 -top-40 -right-40"></div>
+<div class="orb w-[300px] h-[300px] bg-sky-400/10 bottom-0 left-0"></div>
+<div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-16 items-center">
+<div class="space-y-8">
+<h2 class="font-headline-lg text-headline-lg text-white">Voice of the People</h2>
+<p class="text-body-lg text-primary-fixed leading-relaxed">"True healing happens when medical expertise meets grassroots understanding. My role is to bridge that gap for every woman in my community."</p>
+<div class="flex items-center gap-6 p-6 glass-panel border-white/20 rounded-2xl">
+<div class="w-16 h-16 bg-tertiary-fixed text-primary rounded-full flex items-center justify-center font-bold text-2xl">“</div>
+<p class="italic text-white/90">Leading through action and advocacy to create a sustainable healthcare ecosystem in Bangladesh.</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-4 pt-12">
+<img class="w-full h-64 object-cover rounded-3xl shadow-xl" data-alt="Dr Hani speaking at a community gathering of women in Bangladesh, outdoor setting, daylight, expressive and engaging moment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg8nCkSivQbum84L87fQqo1wvs2rZdWic9XMbkgYjBxsSjMig8hJfzCmLoMV2-sX29IYzojVaGZ9HnTy6xN2_oC-sG4-roxXiB-7bdXxQbb27hUbiQuz_NikP1i9f-Y1WqyT6rKBYU0YieiUBI6owQxWXunFgeNPiHhm0rmrG2I5LwlME2m3ZZCHIoSqmZUXYw7fuxcW65q3tKnJcIS-N9ie9tlMPQ90ach-Kb2yZxiMp_pbuERMwWdZG6exvYww3nelWvFxh9UB4"/>
+<img class="w-full h-48 object-cover rounded-3xl shadow-xl" data-alt="hands of a doctor holding the hands of an elderly woman, close up, warm lighting, compassionate medical gesture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvUGz4lywiqdmFxSCjz-YNMUk3hskBrEIvPElrUdRWANnIDNUrVNyQTUn66eUlj63MMRQmdcP9u6GKQaFMCNNhZLCVX6_dE-RPW2PGnDuW_dPH7PwV1YRoBoMGfH5j7lRLtoa6PKNJ5caiihrdRvwkGUxFzYhcbtPhhcIkHXrdqbO-z5XKKI2ApTsQC4cAFnugwTEA8VY8Omda515yOv5UEtax2YTBE-mRpQ_fBYMw-FR8wtJPfm43u0dIhXYbZcFWYq_oxpSAum0"/>
+</div>
+<div class="space-y-4">
+<img class="w-full h-48 object-cover rounded-3xl shadow-xl" data-alt="Dr Hani participating in a high-level medical panel discussion, microphones visible, professional conference background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwTE7l7i7YVJDtrvbVKPNmpv5Awl12YrSyxd2u-vdmlYJWf4rZPeocwunsxgGIAlzVY0NNXylEFJcpf9qIRAp5zYMYqtm4y3Ep2Gt29pST1cWYAL8oimw7AyFoH4Fn6P6yRMQFt_rSbmU_0GYOi0MSQZw7jkvNFkqhMvolNm7fcMbHnnAoafiLFX2RvHJJlK_GtD50cplHwbMJMRlZycDhV5feanySW1NSLhpTh37F4rCz87ucdsGgfh0EnNI2iXK8SLM4K6p73fM"/>
+<img class="w-full h-64 object-cover rounded-3xl shadow-xl" data-alt="vibrant street scene in Bangladesh with health awareness posters being displayed by community leaders" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS4P0G6HkkhgseaAXe1OMP4iG1wKTyXxj_XiJmVAxoGfvjoQ5zQ5cRep7CcuAMMA562ev22ymCZGpP4Om2VKJWlGJNSzevIyHHPLGbjkUqweuJIHzuR8USZ20wCJVehJPJRaEy36GtwfTyCtwMo4yAKwV7M8hMn1ScesVr7iYSSZvDXM_S-8-OARDR1aN3gEa4fvPK3-CmIeXrYNaulqDdLTxxHxAVXodAIf7jGR8jOWWyXSxp-xkbjGG4uZVGfx4Hy67VPSf1a9g"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Media & Gallery -->
+<section class="py-stack-lg" id="media">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+<div>
+<span class="font-label-caps text-primary mb-4 block">MEDIA GALLERY</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Moments in Motion</h2>
+</div>
+<div class="flex gap-2">
+<span class="bg-primary text-on-primary px-4 py-1.5 rounded-full text-sm font-medium">All</span>
+<span class="bg-surface-container text-on-surface-variant px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer hover:bg-surface-container-high">Medical</span>
+<span class="bg-surface-container text-on-surface-variant px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer hover:bg-surface-container-high">Community</span>
+<span class="bg-surface-container text-on-surface-variant px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer hover:bg-surface-container-high">Advocacy</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-[32px] cinematic-shadow">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="wide shot of a modern hospital ward at dusk with soft lighting, symbolizing the professional environment of Dr Hani" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgdbe51tgYI8XDR_4IzDq2s7dtCAx41HqNwW68bV_InE72bLiuRfqK-E_K3DtNkkOUV7_AYuAk9jEzp4Ei7o8AVTyeF0oSUr88TFLul85jAo62QrQ2Dla99jdNWUSMjX4D2xBmvn4QPaJDpWLoQ1n5a_GQRD_roZ02KwiIP8NLTvBQNNDnXXOqKMpveIQEny2WL_JwX_qP0TP4Zh87bOM7MZS6zTnMEUQ55bd_2Sfw4T77PERczPJo_K5vjlooCq6qkhW-naGtwc0"/>
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-6xl">play_circle</span>
+</div>
+</div>
+<div class="relative group overflow-hidden rounded-[24px]">
+<img class="w-full h-64 object-cover transition-transform group-hover:scale-110" data-alt="close up of medical instruments including a stethoscope and prescription pad on a clean wooden table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8Oy207d5Tf7MMAo6eeKYyQuG3z-u9-FJdFtcb040bvxc-2WU3Zrh4tEPVWwWqEsixeODWYFrN3m4fUHe4alysS1v_m_ryaTkdRaYt0QxOW6vIm8A1FHWO1uh5rwNUcDTP731_d9jR2wLJ3L5EmULLL2nCygbU9NB33wVwYUL7NA2fZUix7jA9LnI4YPvAIu-z8Z3TpU_ald2IOGM9OxO-Fp2iNbS6AX6Rf_bICmddAVbKbZ84hrlNOTG9GtGVVhxzWw-PXHk5hLk"/>
+</div>
+<div class="relative group overflow-hidden rounded-[24px]">
+<img class="w-full h-64 object-cover transition-transform group-hover:scale-110" data-alt="professional portrait of Dr Hani with a bright smile, wearing a stethoscope, neutral studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-xBjEfBioAy08_X7clGXpTyZyOURICXZzuXcHc6tF2D1YN-47nyGogYIfsU3viNQ93lzAbJIfmzkyarRuCaWRWFdk7OPdNOU733mh8OfkPDBW4a8Kma9WbjAib9p276cBjlKRkZ0I5PBQapAiEUYfkb6ZEnfo6-W83-nrbbWitVeSs6mh9hLbMaS22iJyFxuULYb0khva0qij0ksJkIe7upcMkTsLHYyqiBS1qIZbHyOoLyfhiKO2ZETM-zKhiIpb2FUGAb1bSzw"/>
+</div>
+<div class="md:col-span-2 relative group overflow-hidden rounded-[24px]">
+<img class="w-full h-64 object-cover transition-transform group-hover:scale-105" data-alt="aerial view of a medical camp in a rural Bangladeshi village, organized tents and people gathering for care" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU8ONcBUCbdVrpNQ_0nDQt0hnkgkSTH9tjxs_fErw5VC9jOIgAEMjf_p6kWBTIJlxZW5AbqwLfZklvMmP1p0tOkpXBlosiEuQE3Wde5RJgTCd6rZ6tDx9Rpjdv1gETUCcyyGtuPcJNHoaO7A1Zj5_70dD5NraLx2fP3LuBkv8q1Wpv608BmpfLNmh2SP9_-XnEj5BDkaaR8cc-AVY4eMF0wRIpTYTZhtUOyJEZW2hZNAD6T5_LsLB2wXlB1sxwIt2i4qnNyiY1xf4"/>
+</div>
+<div class="relative group overflow-hidden rounded-[24px]">
+<img class="w-full h-64 object-cover transition-transform group-hover:scale-110" data-alt="a stack of medical journals and educational pamphlets for women's health awareness" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfAVrKDXuHSLnEiRDBTaByFlpHODXmAHHFYkd7WREpfPEqjWlgnj9G9XP2gnS9Fl-PdiGpmSS0ALBdXp36KmdBQaBobCjGGRWKqYY1TbobZmRPFCk5_ByEXzZh8px_ZOAiOMLNuFjtyYTR4zjD2N4cqXo6fdIwYNLW4_1TaRd8rSEfwhH2Ll8FllNqpCxjZ4thQ4xPOpR-bsRTg0S1rxBcJYLsVBZZWRQj-z2fv_MH5Yu8dOxBtzxLRqhtGIS206qrtsO3hIraBh0"/>
+</div>
+<div class="relative group overflow-hidden rounded-[24px]">
+<img class="w-full h-64 object-cover transition-transform group-hover:scale-110" data-alt="warm sunbeams hitting a hospital waiting area with comfortable seating and greenery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQuQHJHaqnLAwc0dLpT7lQfUHNqHkmOp5OcuzeJ8Pk9KeAQyaEh_3NKZHYCfN0sxqLbZ1vTnQWZlMWpAL9t0vuSh_eakQ6m5Z7rT2rbFqm3VTIT1d-GUDYPB1iH-er0H5z83K2sGzQf9oC-gT40eRYYMAl4C6XNZ_KWA8oLdHwsGj-514fWzrouoZGOWrmxx876v309o8v23MD_8UxK6l8XEjl-CcDXmijrNXImB63DEIfFRXiJGF3s-y_O3OoUHVLmvUscmi1vjc"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Updates / Public Notes -->
+<section class="py-stack-lg bg-[#FFF9EE]">
+<div class="max-w-7xl mx-auto px-8">
+<h2 class="font-headline-md text-headline-md text-primary mb-12 text-center">Perspectives &amp; Updates</h2>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-white p-8 rounded-2xl shadow-sm border-t-4 border-primary hover:shadow-md transition-shadow">
+<span class="text-xs font-bold text-primary uppercase tracking-widest mb-4 block">Medical Note</span>
+<h4 class="font-bold text-xl text-on-surface mb-3">Post-Pandemic Healthcare Resilience</h4>
+<p class="text-on-surface-variant text-sm mb-6">Reflecting on how community health structures have adapted in the last two years...</p>
+<a class="text-primary font-bold text-sm flex items-center gap-1 hover:underline" href="#">Read Full Note <span class="material-symbols-outlined text-sm">open_in_new</span></a>
+</div>
+<div class="bg-white p-8 rounded-2xl shadow-sm border-t-4 border-secondary hover:shadow-md transition-shadow">
+<span class="text-xs font-bold text-secondary uppercase tracking-widest mb-4 block">Community Update</span>
+<h4 class="font-bold text-xl text-on-surface mb-3">Rural Outreach Project: 2024</h4>
+<p class="text-on-surface-variant text-sm mb-6">Our recent visit to the Rangpur division focused on adolescent maternal health awareness...</p>
+<a class="text-secondary font-bold text-sm flex items-center gap-1 hover:underline" href="#">See Progress <span class="material-symbols-outlined text-sm">open_in_new</span></a>
+</div>
+<div class="bg-white p-8 rounded-2xl shadow-sm border-t-4 border-tertiary-container hover:shadow-md transition-shadow">
+<span class="text-xs font-bold text-tertiary uppercase tracking-widest mb-4 block">Advocacy</span>
+<h4 class="font-bold text-xl text-on-surface mb-3">Mental Health in Primary Care</h4>
+<p class="text-on-surface-variant text-sm mb-6">Why integrating mental health checks in regular checkups is vital for women's wellbeing...</p>
+<a class="text-tertiary font-bold text-sm flex items-center gap-1 hover:underline" href="#">View Article <span class="material-symbols-outlined text-sm">open_in_new</span></a>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-stack-lg bg-primary relative overflow-hidden" id="contact">
+<div class="orb w-[600px] h-[600px] bg-secondary-container/10 -top-20 -left-20"></div>
+<div class="orb w-[400px] h-[400px] bg-sky-600/10 -bottom-20 -right-20"></div>
+<div class="max-w-4xl mx-auto px-8 relative z-10">
+<div class="text-center mb-12">
+<h2 class="font-display-xl text-4xl text-white mb-4">Get in Touch</h2>
+<p class="text-primary-fixed">For professional, public, and media communication.</p>
+</div>
+<div class="glass-panel bg-white/10 p-10 rounded-[32px] border-white/20">
+<form class="space-y-6">
+<div class="grid md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold text-white/70 uppercase tracking-widest ml-1">Full Name</label>
+<input class="w-full bg-white/10 border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:ring-secondary-container focus:border-secondary-container" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-white/70 uppercase tracking-widest ml-1">Email Address</label>
+<input class="w-full bg-white/10 border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:ring-secondary-container focus:border-secondary-container" placeholder="john@example.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-white/70 uppercase tracking-widest ml-1">Subject</label>
+<select class="w-full bg-white/10 border-white/20 rounded-xl px-4 py-3 text-white/70 focus:ring-secondary-container focus:border-secondary-container">
+<option class="bg-primary">Professional Consultation</option>
+<option class="bg-primary">Media Inquiry</option>
+<option class="bg-primary">Speaking Engagement</option>
+<option class="bg-primary">Other</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-white/70 uppercase tracking-widest ml-1">Your Message</label>
+<textarea class="w-full bg-white/10 border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:ring-secondary-container focus:border-secondary-container" placeholder="How can we collaborate?" rows="5"></textarea>
+</div>
+<button class="w-full bg-white text-primary font-bold py-4 rounded-xl hover:bg-secondary-container transition-colors shadow-lg">Send Message</button>
+</form>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-12 bg-[#FFF9EE] dark:bg-slate-950 border-t border-[#E8DEC9] dark:border-slate-800">
+<div class="flex flex-col items-center gap-6 max-w-7xl mx-auto px-4 text-center">
+<div class="font-serif text-xl text-blue-900 dark:text-blue-100 italic">Dr. Umma Hani</div>
+<div class="flex gap-8 text-blue-800/60 dark:text-slate-500 font-serif text-sm tracking-wide">
+<a class="hover:text-blue-700 dark:hover:text-blue-300 transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-blue-700 dark:hover:text-blue-300 transition-colors" href="#">Medical Disclaimer</a>
+<a class="hover:text-blue-700 dark:hover:text-blue-300 transition-colors" href="#">Terms of Service</a>
+</div>
+<div class="text-blue-800/60 dark:text-slate-500 font-serif text-sm tracking-wide">
+                © 2024 Dr. Umma Hani. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>

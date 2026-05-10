@@ -1,12 +1,12 @@
-# Dr. Umma Hani Website
+# Dr Umma Hani Website
 
-Separated frontend and backend implementation for a verified editorial website for **Dr. Umma Hani**.
+Separated frontend and backend implementation for a verified editorial website for **Dr Umma Hani**.
 
 ## Stack
 
 - `frontend`: Next.js 16, TypeScript, Tailwind CSS, Framer Motion
 - `backend`: Next.js 16, Payload CMS 3, PostgreSQL, Payload admin
-- shared verified content source in `shared/site-content.ts`
+- shared verified content source in `shared/site-content-v2.ts`
 
 ## Workspace layout
 
@@ -35,6 +35,7 @@ Separated frontend and backend implementation for a verified editorial website f
 - Payload collections:
   - `users`
   - `media`
+  - `positions`
   - `updates`
   - `events`
   - `gallery-items`
@@ -52,7 +53,7 @@ Separated frontend and backend implementation for a verified editorial website f
 
 ## Verified content policy
 
-- Public launch name: `Dr. Umma Hani`
+- Public launch name: `Dr Umma Hani`
 - Public launch email: `honeyhaque1078@gmail.com`
 - Phone is intentionally not published in v1
 - Public content is sourced from the uploaded CV/screenshots and approved media only
@@ -103,7 +104,7 @@ Optional variable:
 ## Data flow
 
 - The public website requests structured data from `backend/api/public/site`
-- If the backend is unavailable during build/runtime, the frontend falls back to `shared/site-content.ts`
+- If the backend is unavailable during build/runtime, the frontend falls back to `shared/site-content-v2.ts`
 - The contact form posts to `backend/api/public/contact`
 - Payload collections/globals are ready for admin-managed content, while the shared verified content layer keeps the frontend stable before CMS population is complete
 
@@ -130,6 +131,7 @@ npm run build -w backend
 ## Notes
 
 - The current frontend is intentionally seeded from verified source material rather than invented filler content.
-- The backend public site endpoint currently returns the shared verified content source. This keeps frontend/backend separated while leaving the Payload schema and admin ready for fuller CMS population.
+- The backend public site endpoint maps Payload content into the shared `SiteContentV2` public contract and falls back to the verified shared source when CMS data is unavailable.
 - Social links remain unpublished until explicitly approved.
-- Updates remain empty by design until titles, dates, and context are explicitly verified.
+- Updates and positions should be published only when titles, dates, source notes, and image context are verified.
+- Production media uploads can use S3-compatible storage by setting `S3_BUCKET`, `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY`, and related optional S3/R2 variables in the backend environment.

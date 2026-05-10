@@ -1,42 +1,41 @@
 :root,
 html[data-theme='light'] {
-  --font-body: 'Manrope', 'Helvetica Neue', Arial, sans-serif;
-  --font-serif: 'Newsreader', Georgia, serif;
-  --style-radius-s: 12px;
-  --style-radius-m: 18px;
-  --style-radius-l: 24px;
-  --theme-bg: #fbf8f2;
-  --theme-input-bg: rgba(255, 255, 255, 0.9);
-  --theme-text: #122033;
-  --theme-border-color: rgba(15, 28, 44, 0.1);
-  --theme-elevation-0: #ffffff;
-  --theme-elevation-50: #f7f3ec;
-  --theme-elevation-100: #f1ece4;
-  --theme-elevation-150: #e8e2da;
-  --theme-elevation-200: #ddd6ce;
-  --theme-elevation-250: #d1c8bf;
-  --theme-elevation-300: #b7aea5;
-  --theme-elevation-350: #9c958d;
-  --theme-elevation-400: #827b75;
-  --theme-elevation-450: #67615d;
+  --font-body: var(--font-sans), 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
+  --style-radius-s: 8px;
+  --style-radius-m: 12px;
+  --style-radius-l: 16px;
+  --theme-bg: #fbf7ef;
+  --theme-input-bg: rgba(255, 253, 248, 0.96);
+  --theme-text: #142844;
+  --theme-border-color: rgba(231, 219, 194, 0.96);
+  --theme-elevation-0: #fffdf8;
+  --theme-elevation-50: #f7f0e4;
+  --theme-elevation-100: #f3ecdd;
+  --theme-elevation-150: #ebdfc7;
+  --theme-elevation-200: #dfcfb1;
+  --theme-elevation-250: #d6c093;
+  --theme-elevation-300: #b7aa97;
+  --theme-elevation-350: #968d7f;
+  --theme-elevation-400: #7d766c;
+  --theme-elevation-450: #66615b;
   --theme-elevation-500: #4d4a49;
-  --theme-elevation-550: #3f434c;
-  --theme-elevation-600: #354150;
-  --theme-elevation-650: #2c3745;
-  --theme-elevation-700: #24303d;
-  --theme-elevation-750: #1c2835;
-  --theme-elevation-800: #162331;
-  --theme-elevation-850: #12202d;
-  --theme-elevation-900: #0f1c2c;
-  --theme-elevation-950: #0a1420;
+  --theme-elevation-550: #40474f;
+  --theme-elevation-600: #314663;
+  --theme-elevation-650: #243955;
+  --theme-elevation-700: #1a2f4a;
+  --theme-elevation-750: #152741;
+  --theme-elevation-800: #102238;
+  --theme-elevation-850: #0c1d31;
+  --theme-elevation-900: #081b37;
+  --theme-elevation-950: #061428;
 }
 
 body,
 .payload-admin {
   background:
-    radial-gradient(circle at top left, rgba(15, 28, 44, 0.08), transparent 28%),
-    radial-gradient(circle at 88% 6%, rgba(15, 28, 44, 0.06), transparent 20%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.22)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0)),
+    radial-gradient(circle at top left, rgba(207, 248, 251, 0.24), transparent 20%),
     var(--theme-bg);
   color: var(--theme-text);
   font-family: var(--font-body);
@@ -69,11 +68,13 @@ body,
 .list-controls,
 .card {
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 244, 238, 0.86)),
+    linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(243, 236, 221, 0.92)),
     var(--theme-elevation-0);
-  border: 1px solid rgba(15, 28, 44, 0.08);
-  box-shadow: 0 20px 56px rgba(15, 28, 44, 0.08);
-  backdrop-filter: blur(14px);
+  border: 1px solid rgba(231, 219, 194, 0.96);
+  box-shadow:
+    0 18px 42px rgba(8, 27, 55, 0.06),
+    inset 0 0 0 1px rgba(207, 248, 251, 0.12);
+  backdrop-filter: blur(8px);
 }
 
 .nav__brand {
@@ -82,7 +83,7 @@ body,
 }
 
 .btn {
-  border-radius: 999px;
+  border-radius: 10px;
 }
 
 .btn--style-primary {
@@ -94,7 +95,7 @@ body,
 .btn--style-secondary,
 .btn--style-subtle,
 .btn--style-pill {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 0 0 1px rgba(207, 248, 251, 0.1);
 }
 
 .field-type input,
@@ -104,18 +105,22 @@ body,
 .auth-fields .api-key__toggle-button,
 .toolbar-input,
 .live-preview-toolbar-controls__size {
-  border-radius: 14px;
-  border-color: rgba(15, 28, 44, 0.12);
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 12px 26px rgba(15, 28, 44, 0.05);
+  border-radius: 10px;
+  border-color: rgba(231, 219, 194, 0.96);
+  background: rgba(255, 253, 248, 0.96);
+  box-shadow:
+    0 10px 22px rgba(8, 27, 55, 0.04),
+    inset 0 0 0 1px rgba(207, 248, 251, 0.08);
 }
 
 .field-type input:focus,
 .field-type textarea:focus,
 .field-type select:focus,
 .auth-fields input:focus {
-  border-color: rgba(15, 28, 44, 0.26);
-  box-shadow: 0 16px 30px rgba(15, 28, 44, 0.08);
+  border-color: rgba(144, 232, 246, 0.84);
+  box-shadow:
+    0 14px 28px rgba(8, 27, 55, 0.07),
+    0 0 0 4px rgba(144, 232, 246, 0.1);
 }
 
 .collection-edit__auth,
@@ -128,5 +133,5 @@ body,
 .template-default__wrap,
 .render-fields,
 .render-document-fields {
-  border-color: rgba(15, 28, 44, 0.08);
+  border-color: rgba(231, 219, 194, 0.96);
 }

@@ -1,14 +1,24 @@
-@import url("https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 :root {
-  --background: #fbf8f2;
-  --foreground: #122033;
-  --surface: rgba(255, 255, 255, 0.9);
-  --line: rgba(15, 28, 44, 0.1);
-  --accent: #d8e6f1;
-  --font-sans: "Manrope", "Helvetica Neue", Arial, sans-serif;
-  --font-serif: "Newsreader", Georgia, serif;
+  --background: #fbf7ef;
+  --background-cream: #f3ecdd;
+  --foreground: #142844;
+  --navy: #081b37;
+  --navy-soft: #102a4c;
+  --muted: #5b6c82;
+  --cyan: #90e8f6;
+  --cyan-soft: rgba(144, 232, 246, 0.12);
+  --gold: #d6b04b;
+  --gold-soft: #eac85a;
+  --warm-border: #e7dbc2;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
 }
 
 html,
@@ -18,10 +28,114 @@ body {
 
 body {
   background:
-    radial-gradient(circle at top left, rgba(15, 28, 44, 0.08), transparent 28%),
-    radial-gradient(circle at 85% 8%, rgba(15, 28, 44, 0.06), transparent 22%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.3)),
-    var(--background);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0)),
+    radial-gradient(circle at top left, rgba(207, 248, 251, 0.3), transparent 22%),
+    linear-gradient(180deg, var(--background), var(--background-cream));
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.admin-card {
+  border: 1px solid rgba(231, 219, 194, 0.96);
+  background:
+    linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(243, 236, 221, 0.94));
+  box-shadow:
+    0 18px 42px rgba(8, 27, 55, 0.06),
+    inset 0 0 0 1px rgba(207, 248, 251, 0.12);
+}
+
+.admin-panel {
+  border: 1px solid rgba(231, 219, 194, 0.96);
+  background:
+    linear-gradient(180deg, rgba(255, 252, 246, 0.96), rgba(243, 236, 221, 0.92));
+  box-shadow:
+    0 14px 34px rgba(8, 27, 55, 0.05),
+    inset 0 0 0 1px rgba(207, 248, 251, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.admin-contrast {
+  border: 1px solid rgba(214, 176, 75, 0.22);
+  background:
+    linear-gradient(140deg, rgba(214, 176, 75, 0.06), rgba(214, 176, 75, 0) 32%),
+    radial-gradient(circle at top right, rgba(144, 232, 246, 0.12), transparent 24%),
+    linear-gradient(180deg, var(--navy-soft), var(--navy));
+  box-shadow:
+    0 28px 64px rgba(8, 27, 55, 0.18),
+    inset 0 0 0 1px rgba(207, 248, 251, 0.08);
+}
+
+.admin-field {
+  border: 1px solid rgba(231, 219, 194, 0.98);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(243, 236, 221, 0.92));
+  box-shadow:
+    0 10px 22px rgba(8, 27, 55, 0.04),
+    inset 0 0 0 1px rgba(207, 248, 251, 0.08);
+}
+
+.admin-field:focus {
+  border-color: rgba(144, 232, 246, 0.84);
+  box-shadow:
+    0 14px 28px rgba(8, 27, 55, 0.07),
+    0 0 0 4px rgba(144, 232, 246, 0.1);
+  outline: none;
+}
+
+.admin-pill,
+.admin-pill-contrast,
+.admin-button-primary,
+.admin-button-secondary {
+  border-radius: 0.9rem;
+}
+
+.admin-pill,
+.admin-pill.rounded-full,
+.admin-pill.rounded-\[1rem\] {
+  border: 1px solid rgba(231, 219, 194, 0.96);
+  background:
+    linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(243, 236, 221, 0.94));
+  box-shadow: inset 0 0 0 1px rgba(207, 248, 251, 0.12);
+  border-radius: 0.9rem !important;
+}
+
+.admin-pill-contrast,
+.admin-pill-contrast.rounded-full,
+.admin-pill-contrast.rounded-\[1rem\],
+.admin-pill-contrast.rounded-\[1\.6rem\] {
+  border: 1px solid rgba(207, 248, 251, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(214, 176, 75, 0.1);
+  border-radius: 0.95rem !important;
+}
+
+.admin-button-primary,
+.admin-button-primary.rounded-full {
+  border: 1px solid rgba(214, 176, 75, 0.28);
+  background:
+    linear-gradient(180deg, var(--navy-soft), var(--navy));
+  box-shadow:
+    0 16px 32px rgba(8, 27, 55, 0.16),
+    inset 0 1px 0 rgba(207, 248, 251, 0.16);
+  border-radius: 0.9rem !important;
+}
+
+.admin-button-secondary,
+.admin-button-secondary.rounded-full {
+  border: 1px solid rgba(231, 219, 194, 0.96);
+  background:
+    linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(243, 236, 221, 0.94));
+  box-shadow:
+    0 12px 24px rgba(8, 27, 55, 0.05),
+    inset 0 0 0 1px rgba(207, 248, 251, 0.1);
+  border-radius: 0.9rem !important;
 }

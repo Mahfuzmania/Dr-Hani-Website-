@@ -4,7 +4,7 @@ export default function BackendHomePage() {
   return (
     <main className="mx-auto flex min-h-screen max-w-3xl flex-col justify-center px-6 py-24">
       <p className="text-sm uppercase tracking-[0.28em] text-slate-700">Backend Service</p>
-      <h1 className="mt-4 text-4xl font-semibold text-slate-900">Dr. Umme Hani CMS/API</h1>
+      <h1 className="mt-4 text-4xl font-semibold text-slate-900">Dr Umma Hani CMS/API</h1>
       <p className="mt-4 max-w-2xl text-base leading-7 text-slate-700">
         This application hosts the Payload admin panel, structured collections and globals,
         public site JSON endpoints, and the inquiry submission API used by the separate frontend.
