@@ -1,3 +1,7 @@
+import { publications, type Publication } from './publications'
+import { biography, editorialActivities } from './editorial-profile'
+import { editorialGallery } from './editorial-gallery'
+
 export type GalleryCategory = 'medical' | 'community' | 'events' | 'leadership'
 
 export type InquiryType =
@@ -8,6 +12,8 @@ export type InquiryType =
   | 'Media request'
 
 export type SiteContentV2 = {
+  contentStatus?: 'snapshot' | 'cms' | 'unavailable'
+  publications: Publication[]
   contact: {
     intro: string
     inquiryTypes: InquiryType[]
@@ -16,6 +22,8 @@ export type SiteContentV2 = {
     altText: string
     caption: string
     category: GalleryCategory
+    event?: string
+    relatedActivity?: string
     featuredOnHomepage: boolean
     id: string
     image: string
@@ -138,7 +146,7 @@ export type SiteContentV2 = {
   }>
 }
 
-export const siteContentV2: SiteContentV2 = {
+const originalContent: Omit<SiteContentV2, 'publications'> = {
   siteSettings: {
     fullName: 'Dr Umma Hani',
     identityLine: "Physician - Women's Health - Community Leadership",
@@ -610,4 +618,49 @@ export const siteContentV2: SiteContentV2 = {
       },
     ],
   },
+}
+
+// Retain historical source material above; publish only the reconciled profile below.
+export const siteContentV2: SiteContentV2 = {
+  ...originalContent,
+  publications,
+  siteSettings: {
+    ...originalContent.siteSettings,
+    identityLine: 'Physician · Columnist · Community leadership',
+    seoDescription: 'The professional profile, published writing, and community work of Dr Umma Hani, a Bangladeshi physician and columnist.',
+    socialLinks: [
+      { label: 'Facebook', href: 'https://www.facebook.com/honey.haque.37' },
+      { label: 'Instagram', href: 'https://www.instagram.com/priethy13/' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/dr-umme-hani-a60b561a4/' },
+    ],
+  },
+  homepage: {
+    ...originalContent.homepage,
+    heroEyebrow: 'Physician · Columnist · Community leadership',
+    heroSubtitle: 'A life in medicine. A voice in public life. Writing and working for healthier, more inclusive communities.',
+    biographySummary: biography[0],
+    ctaPrimaryLabel: 'About Dr Hani', ctaSecondaryLabel: 'Explore her writing',
+  },
+  profile: {
+    ...originalContent.profile,
+    storyParagraphs: biography,
+    journeyTimeline: originalContent.profile.journeyTimeline
+      .filter((item) => !item.title.includes('Central Parliament'))
+      .map((item) => item.title.includes('Bangladesh Specialized Hospital') ? {
+        period: 'Hospital service', title: 'Bangladesh Specialized Hospital',
+        description: 'Medical officer service at Bangladesh Specialized Hospital in Dhaka forms part of her professional record.',
+      } : item),
+    medicalCards: [
+      { title: 'Hospital service', body: 'Her professional record includes medical officer service at Bangladesh Specialized Hospital and emergency care at Famous Specialized Hospital in Dhaka.', image: '/media/bedside-review.jpg' },
+      { title: 'Women’s health', body: 'Earlier Gynae and Obs appointments at TMSS and Shaheed Ziaur Rahman hospitals connect her clinical work with women’s health.', image: '/media/about-doctor-portrait.jpg' },
+    ],
+    publicWorkCards: [
+      { title: 'Community health', body: 'Participation in student and neighbourhood health programmes extends her work beyond hospital settings.' },
+      { title: 'Writing and discussion', body: 'Her published essays explore women’s participation, child protection, youth opportunity, and public responsibility.' },
+    ],
+  },
+  positions: originalContent.positions.filter((item) => item.id !== 'chhatra-dal-central-vice-president-2026').map(({ sourceNote: _note, ...item }) => item),
+  updates: [...editorialActivities, ...originalContent.updates.filter((item) => item.id !== 'chhatra-dal-central-vice-president-2026')],
+  mediaItems: originalContent.mediaItems.filter((item) => item.type !== 'article'),
+  galleryItems: [...editorialGallery, ...originalContent.galleryItems.map((item, index) => ({ ...item, event: item.category === 'medical' ? 'Medical service' : 'Community and public work', sortOrder: index + 30, caption: item.altText, featuredOnHomepage: item.id === 'medical-camp-team' }))],
 }

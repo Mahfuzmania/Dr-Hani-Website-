@@ -1,4 +1,5 @@
 import type { CollectionConfig, Field } from 'payload'
+import { publicationsCollection } from './publications'
 
 import {
   canCreateDrafts,
@@ -8,6 +9,8 @@ import {
   canReadForReview,
   draftVersionConfig,
   roles,
+  publishedContent,
+  publishedGallery,
 } from './access'
 
 const galleryCategories = [
@@ -110,7 +113,7 @@ export const mediaCollection: CollectionConfig = {
 export const galleryItemsCollection: CollectionConfig = {
   slug: 'gallery-items',
   access: {
-    read: () => true,
+    read: publishedGallery,
     create: canManageMedia,
     update: canManageMedia,
     delete: canManageMedia,
@@ -123,6 +126,9 @@ export const galleryItemsCollection: CollectionConfig = {
   fields: [
     { name: 'title', type: 'text', required: true },
     imageRelationshipField('image', 'Image'),
+    { name: 'externalId', type: 'text', unique: true, index: true },
+    { name: 'event', type: 'text' },
+    { name: 'relatedActivity', type: 'text' },
     {
       name: 'category',
       type: 'select',
@@ -141,7 +147,7 @@ export const mediaItemsCollection: CollectionConfig = {
   slug: 'media-items',
   versions: draftVersionConfig,
   access: {
-    read: () => true,
+    read: publishedContent,
     create: canCreateDrafts,
     update: canCreateDrafts,
     delete: canManageStructuredContent,
@@ -189,7 +195,7 @@ export const updatesCollection: CollectionConfig = {
     defaultColumns: ['title', 'category', 'publishDate', 'featured', 'pinned', 'status'],
   },
   access: {
-    read: () => true,
+    read: publishedContent,
     create: canCreateDrafts,
     update: canCreateDrafts,
     delete: canManageStructuredContent,
@@ -218,7 +224,7 @@ export const importantNoticesCollection: CollectionConfig = {
     defaultColumns: ['title', 'category', 'pinned', 'startDate', 'expiryDate', 'status'],
   },
   access: {
-    read: () => true,
+    read: publishedContent,
     create: canCreateDrafts,
     update: canCreateDrafts,
     delete: canManageStructuredContent,
@@ -243,7 +249,7 @@ export const positionsCollection: CollectionConfig = {
     defaultColumns: ['title', 'organization', 'period', 'featured', 'sortOrder', 'status'],
   },
   access: {
-    read: () => true,
+    read: publishedContent,
     create: canCreateDrafts,
     update: canCreateDrafts,
     delete: canManageStructuredContent,
@@ -267,7 +273,7 @@ export const positionsCollection: CollectionConfig = {
         { label: 'Internal source', value: 'internal' },
       ],
     },
-    { name: 'sourceNote', type: 'textarea' },
+    { name: 'sourceNote', type: 'textarea', access: { read: ({ req }) => Boolean(req.user) } },
     { name: 'sourceLink', type: 'text' },
     { name: 'featured', type: 'checkbox', defaultValue: false },
     { name: 'sortOrder', type: 'number', defaultValue: 0 },
@@ -284,7 +290,7 @@ export const eventsCollection: CollectionConfig = {
     defaultColumns: ['title', 'date', 'category', 'status'],
   },
   access: {
-    read: () => true,
+    read: publishedContent,
     create: canCreateDrafts,
     update: canCreateDrafts,
     delete: canManageStructuredContent,
@@ -341,6 +347,7 @@ export const contactInquiriesCollection: CollectionConfig = {
 }
 
 export const collections: CollectionConfig[] = [
+  publicationsCollection,
   usersCollection,
   mediaCollection,
   galleryItemsCollection,

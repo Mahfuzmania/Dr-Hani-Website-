@@ -1,4 +1,4 @@
-import type { Access, CollectionConfig } from 'payload'
+import type { Access, CollectionConfig, Where } from 'payload'
 
 export const roles = [
   'super-admin',
@@ -58,6 +58,12 @@ export const canReadForReview: Access = ({ req }) => {
       ].includes(role),
   )
 }
+
+// Existing collections use their original status field as the publication gate.
+const publishedWhere: Where = { status: { equals: 'published' } }
+export const publishedContent: Access = ({ req }) => req.user ? true : publishedWhere
+
+export const publishedGallery: Access = ({ req }) => req.user ? true : { status: { equals: 'published' } }
 
 export const denyAll: Access = () => false
 

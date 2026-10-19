@@ -22,6 +22,9 @@ function buildRemotePatterns() {
 }
 
 const nextConfig: NextConfig = {
+  async headers() {
+    return process.env.VERCEL_ENV === 'preview' || process.env.SITE_NOINDEX === 'true' ? [{ source: '/:path*', headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' }] }] : []
+  },
   images: {
     remotePatterns: buildRemotePatterns(),
   },

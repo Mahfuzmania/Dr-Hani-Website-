@@ -1,5 +1,6 @@
 {
   "name": "dr-umma-hani-website",
+  "type": "module",
   "private": true,
   "version": "0.1.0",
   "workspaces": [
@@ -11,6 +12,14 @@
     "dev:backend": "npm run dev -w backend",
     "build": "npm run build -w frontend && npm run build -w backend",
     "lint": "npm run lint -w frontend && npm run lint -w backend",
-    "typecheck": "npm run typecheck -w frontend && npm run typecheck -w backend"
+    "typecheck": "npm run typecheck -w frontend && npm run typecheck -w backend",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "test:cms": "node --import tsx scripts/verify-editorial-cms.mts",
+    "editorial:register": "node --import tsx scripts/source-register.mts",
+    "editorial:media": "node scripts/prepare-editorial-media.mjs",
+    "editorial:import": "node --import tsx scripts/import-editorial.mts"
+  },
+  "devDependencies": {
+    "tsx": "4.21.0"
   }
 }

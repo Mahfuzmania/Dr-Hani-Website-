@@ -1,5 +1,7 @@
 import type { SiteContentV2 } from '../../../shared/site-content-v2'
 import { siteContentV2 } from '../../../shared/site-content-v2'
+import { publicPublications } from '../../../shared/publication-contract'
+import type { Where } from 'payload'
 
 type CmsClient = {
   find: (args: {
@@ -7,6 +9,7 @@ type CmsClient = {
     depth?: number
     limit?: number
     pagination?: boolean
+    where?: Where
     sort?: string
   }) => Promise<{ docs?: unknown[] }>
   findGlobal: (args: { slug: string; depth?: number }) => Promise<unknown>
@@ -111,11 +114,11 @@ function socialLinks(rows: unknown, fallback: SiteContentV2['siteSettings']['soc
   return values.length ? values : fallback
 }
 
-function mapGalleryItems(docs: unknown[] | undefined, backendUrl: string, fallback: SiteContentV2['galleryItems']) {
-  if (!docs?.length) return fallback
+function mapGalleryItems(docs: unknown[] | undefined, backendUrl: string) {
+  if (!docs?.length) return []
 
   const mapped = docs
-    .map((doc) => {
+    .map((doc): SiteContentV2['galleryItems'][number] | null => {
       if (!isObject(doc)) return null
       const id = doc.id != null ? String(doc.id) : null
       const title = asString(doc.title)
@@ -132,6 +135,8 @@ function mapGalleryItems(docs: unknown[] | undefined, backendUrl: string, fallba
         altText,
         caption,
         category: normalizeCategory(doc.category),
+        event: asString(doc.event) ?? asString(media?.category) ?? 'Selected photographs',
+        relatedActivity: asString(doc.relatedActivity) ?? undefined,
         featuredOnHomepage: asBoolean(doc.featured),
         sortOrder: typeof doc.sortOrder === 'number' ? doc.sortOrder : 0,
         status,
@@ -139,11 +144,11 @@ function mapGalleryItems(docs: unknown[] | undefined, backendUrl: string, fallba
     })
     .filter((value): value is SiteContentV2['galleryItems'][number] => Boolean(value))
 
-  return mapped.length ? mapped : fallback
+  return mapped
 }
 
-function mapMediaItems(docs: unknown[] | undefined, backendUrl: string, fallback: SiteContentV2['mediaItems']) {
-  if (!docs?.length) return fallback
+function mapMediaItems(docs: unknown[] | undefined, backendUrl: string) {
+  if (!docs?.length) return []
 
   const mapped: SiteContentV2['mediaItems'] = []
 
@@ -171,11 +176,11 @@ function mapMediaItems(docs: unknown[] | undefined, backendUrl: string, fallback
     })
   }
 
-  return mapped.length ? mapped : fallback
+  return mapped
 }
 
-function mapUpdates(docs: unknown[] | undefined, backendUrl: string, fallback: SiteContentV2['updates']) {
-  if (!docs?.length) return fallback
+function mapUpdates(docs: unknown[] | undefined, backendUrl: string) {
+  if (!docs?.length) return []
 
   const mapped: SiteContentV2['updates'] = []
 
@@ -188,7 +193,7 @@ function mapUpdates(docs: unknown[] | undefined, backendUrl: string, fallback: S
     const category = asString(doc.category)
     const date = asString(doc.publishDate)
     const bodyText = asString(doc.bodyText)
-    if (!id || !title || !slug || !summary || !category || !date || !bodyText) continue
+    if (!id || !title || !slug || !summary || !category || !date || !Number.isFinite(Date.parse(date)) || !bodyText) continue
 
     mapped.push({
       id,
@@ -211,11 +216,11 @@ function mapUpdates(docs: unknown[] | undefined, backendUrl: string, fallback: S
     })
   }
 
-  return mapped.length ? mapped : fallback
+  return mapped
 }
 
-function mapNotices(docs: unknown[] | undefined, fallback: SiteContentV2['importantNotices']) {
-  if (!docs?.length) return fallback
+function mapNotices(docs: unknown[] | undefined) {
+  if (!docs?.length) return []
 
   const mapped: SiteContentV2['importantNotices'] = []
 
@@ -239,7 +244,7 @@ function mapNotices(docs: unknown[] | undefined, fallback: SiteContentV2['import
     })
   }
 
-  return mapped.length ? mapped : fallback
+  return mapped
 }
 
 function normalizeSourceType(value: unknown): SiteContentV2['positions'][number]['sourceType'] {
@@ -255,8 +260,8 @@ function normalizeSourceType(value: unknown): SiteContentV2['positions'][number]
   }
 }
 
-function mapPositions(docs: unknown[] | undefined, backendUrl: string, fallback: SiteContentV2['positions']) {
-  if (!docs?.length) return fallback
+function mapPositions(docs: unknown[] | undefined, backendUrl: string) {
+  if (!docs?.length) return []
 
   const mapped: SiteContentV2['positions'] = []
 
@@ -286,22 +291,24 @@ function mapPositions(docs: unknown[] | undefined, backendUrl: string, fallback:
     })
   }
 
-  return mapped.length ? mapped : fallback
+  return mapped
 }
 
 export async function getPublicSiteContent(cms: CmsClient, backendUrl: string): Promise<SiteContentV2> {
   const fallback = siteContentV2
+  const published: Where = { status: { equals: 'published' } }
 
-  const [siteSettingsGlobal, homepageGlobal, privacyPageGlobal, galleryItemsResult, mediaItemsResult, updatesResult, noticesResult, positionsResult] =
+  const [siteSettingsGlobal, homepageGlobal, privacyPageGlobal, galleryItemsResult, mediaItemsResult, updatesResult, noticesResult, positionsResult, publicationsResult] =
     await Promise.all([
       cms.findGlobal({ slug: 'site-settings', depth: 1 }),
       cms.findGlobal({ slug: 'homepage', depth: 1 }),
       cms.findGlobal({ slug: 'privacy-page', depth: 1 }),
-      cms.find({ collection: 'gallery-items', depth: 1, limit: 100, pagination: false, sort: 'sortOrder' }),
-      cms.find({ collection: 'media-items', depth: 1, limit: 100, pagination: false, sort: '-updatedAt' }),
-      cms.find({ collection: 'updates', depth: 1, limit: 100, pagination: false, sort: '-publishDate' }),
-      cms.find({ collection: 'important-notices', depth: 1, limit: 50, pagination: false, sort: '-updatedAt' }),
-      cms.find({ collection: 'positions', depth: 1, limit: 50, pagination: false, sort: 'sortOrder' }),
+      cms.find({ collection: 'gallery-items', where: { status: { equals: 'published' } }, depth: 1, limit: 100, pagination: false, sort: 'sortOrder' }),
+      cms.find({ collection: 'media-items', where: published, depth: 1, limit: 100, pagination: false, sort: '-updatedAt' }),
+      cms.find({ collection: 'updates', where: published, depth: 1, limit: 100, pagination: false, sort: '-publishDate' }),
+      cms.find({ collection: 'important-notices', where: published, depth: 1, limit: 50, pagination: false, sort: '-updatedAt' }),
+      cms.find({ collection: 'positions', where: published, depth: 1, limit: 50, pagination: false, sort: 'sortOrder' }),
+      cms.find({ collection: 'publications', depth: 1, limit: 1000, pagination: false, where: { and: [{ status: { equals: 'published' } }, { _status: { equals: 'published' } }] } }),
     ])
   const siteSettingsRecord = (siteSettingsGlobal as Record<string, unknown> | null) ?? {}
   const homepageRecord = (homepageGlobal as Record<string, unknown> | null) ?? {}
@@ -310,6 +317,20 @@ export async function getPublicSiteContent(cms: CmsClient, backendUrl: string): 
 
   return {
     ...fallback,
+    contentStatus: 'cms',
+    publications: publicPublications((publicationsResult.docs ?? []).map((doc) => {
+      if (!isObject(doc)) return null
+      return {
+        id: asString(doc.externalId) || String(doc.id), kind: doc.kind, title: doc.title, summary: doc.summary,
+        topics: Array.isArray(doc.topics) ? doc.topics.map((topic) => isObject(topic) ? topic.label : topic) : [],
+        sources: Array.isArray(doc.sources) ? doc.sources.map((source) => {
+          if (!isObject(source)) return null
+          return { ...source, publishedAt: asString(source.publishedAt)?.slice(0, 10) || undefined, dateLabel: asString(source.dateLabel) || undefined }
+        }) : [],
+        image: resolveMediaUrl(doc.image, backendUrl) || asString(doc.imagePath) || undefined,
+        relatedActivity: asString(doc.relatedActivity) || undefined, featured: asBoolean(doc.featured), status: doc.status,
+      }
+    })),
     siteSettings: {
       ...fallback.siteSettings,
       fullName: asString(siteSettingsRecord.fullName) ?? fallback.siteSettings.fullName,
@@ -347,10 +368,10 @@ export async function getPublicSiteContent(cms: CmsClient, backendUrl: string): 
       intro: asString(privacyRecord.intro) ?? fallback.privacyPage.intro,
       sections: textSections(privacyRecord.sections, fallback.privacyPage.sections),
     },
-    galleryItems: mapGalleryItems(galleryItemsResult.docs, backendUrl, fallback.galleryItems),
-    mediaItems: mapMediaItems(mediaItemsResult.docs, backendUrl, fallback.mediaItems),
-    updates: mapUpdates(updatesResult.docs, backendUrl, fallback.updates),
-    importantNotices: mapNotices(noticesResult.docs, fallback.importantNotices),
-    positions: mapPositions(positionsResult.docs, backendUrl, fallback.positions),
+    galleryItems: mapGalleryItems(galleryItemsResult.docs, backendUrl),
+    mediaItems: mapMediaItems(mediaItemsResult.docs, backendUrl),
+    updates: mapUpdates(updatesResult.docs, backendUrl),
+    importantNotices: mapNotices(noticesResult.docs),
+    positions: mapPositions(positionsResult.docs, backendUrl),
   }
 }

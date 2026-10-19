@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import type { SiteContentV2 } from '../../../../shared/site-content-v2'
 import { SocialIcon } from '../branding/social-icon'
@@ -8,6 +9,7 @@ export function Footer({ settings }: { settings: SiteContentV2['siteSettings'] }
   return (
     <footer className="border-t border-[rgba(231,219,194,0.92)] bg-[linear-gradient(180deg,rgba(255,255,255,0.24),rgba(255,249,238,0.22))]">
       <div className="page-shell py-12">
+        <nav className="site-footer-links" aria-label="Footer navigation"><Link href="/about">Biography</Link><Link href="/writing">Writing</Link><Link href="/media-events">Press & interviews</Link><Link href="/gallery">Gallery</Link><Link href="/updates">Updates</Link><Link href="/privacy">Privacy</Link></nav>
         <FadeUp>
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-xl">

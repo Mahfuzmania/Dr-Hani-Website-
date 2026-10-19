@@ -1,0 +1,98 @@
+[
+  {
+    "source": "New images\\WhatsApp Image 2026-10-17 at 6.56.28 PM.jpeg",
+    "derivative": "frontend\\public\\media\\new\\conference-portrait.webp",
+    "originalBytes": 114905,
+    "derivativeBytes": 72350
+  },
+  {
+    "source": "New images\\WhatsApp Image 2026-10-17 at 6.56.29 PM (1).jpeg",
+    "derivative": "frontend\\public\\media\\new\\dialogue-portrait-a.webp",
+    "originalBytes": 217348,
+    "derivativeBytes": 156822
+  },
+  {
+    "source": "New images\\WhatsApp Image 2026-10-17 at 6.56.29 PM.jpeg",
+    "derivative": "frontend\\public\\media\\new\\dialogue-portrait-b.webp",
+    "originalBytes": 229287,
+    "derivativeBytes": 161042
+  },
+  {
+    "source": "New images\\WhatsApp Image 2026-10-17 at 6.56.30 PM (1).jpeg",
+    "derivative": "frontend\\public\\media\\new\\dialogue-portrait-c.webp",
+    "originalBytes": 167050,
+    "derivativeBytes": 119842
+  },
+  {
+    "source": "New images\\WhatsApp Image 2026-10-17 at 6.56.30 PM (2).jpeg",
+    "derivative": "frontend\\public\\media\\new\\dialogue-portrait-d.webp",
+    "originalBytes": 217178,
+    "derivativeBytes": 160986
+  },
+  {
+    "source": "New images\\WhatsApp Image 2026-10-17 at 6.56.30 PM.jpeg",
+    "derivative": "frontend\\public\\media\\new\\dialogue-portrait-e.webp",
+    "originalBytes": 227378,
+    "derivativeBytes": 167462
+  },
+  {
+    "source": "New images\\WhatsApp Image 2026-10-17 at 6.56.31 PM (1).jpeg",
+    "derivative": "frontend\\public\\media\\new\\dhaka-dialogue-backdrop.webp",
+    "originalBytes": 159378,
+    "derivativeBytes": 101126
+  },
+  {
+    "source": "New images\\WhatsApp Image 2026-10-17 at 6.56.31 PM.jpeg",
+    "derivative": "frontend\\public\\media\\new\\dhaka-dialogue-conversation.webp",
+    "originalBytes": 247234,
+    "derivativeBytes": 197664
+  },
+  {
+    "source": "New images\\WhatsApp Image 2026-10-17 at 6.56.32 PM.jpeg",
+    "derivative": "frontend\\public\\media\\new\\bay-of-bengal-2026.webp",
+    "originalBytes": 127966,
+    "derivativeBytes": 74344
+  },
+  {
+    "source": "New images\\WhatsApp Image 2026-10-17 at 6.56.33 PM (1).jpeg",
+    "derivative": "frontend\\public\\media\\new\\courtesy-group.webp",
+    "originalBytes": 121595,
+    "derivativeBytes": 76636
+  },
+  {
+    "source": "New images\\WhatsApp Image 2026-10-17 at 6.56.33 PM (2).jpeg",
+    "derivative": "frontend\\public\\media\\new\\courtesy-office.webp",
+    "originalBytes": 119875,
+    "derivativeBytes": 86462
+  },
+  {
+    "source": "New images\\WhatsApp Image 2026-10-17 at 6.56.33 PM.jpeg",
+    "derivative": "frontend\\public\\media\\new\\courtesy-portrait.webp",
+    "originalBytes": 150031,
+    "derivativeBytes": 113598
+  },
+  {
+    "source": "New images\\WhatsApp Image 2026-10-17 at 6.56.34 PM (1).jpeg",
+    "derivative": "frontend\\public\\media\\new\\doctors-backdrop.webp",
+    "originalBytes": 137487,
+    "derivativeBytes": 86872
+  },
+  {
+    "source": "New images\\WhatsApp Image 2026-10-17 at 6.56.34 PM (2).jpeg",
+    "derivative": "frontend\\public\\media\\new\\public-flag.webp",
+    "originalBytes": 67955,
+    "derivativeBytes": 53668
+  },
+  {
+    "source": "New images\\WhatsApp Image 2026-10-17 at 6.56.34 PM.jpeg",
+    "derivative": "frontend\\public\\media\\new\\doctors-gathering.webp",
+    "originalBytes": 246381,
+    "derivativeBytes": 169948
+  },
+  {
+    "source": "New images\\WhatsApp Image 2026-10-17 at 6.56.35 PM.jpeg",
+    "derivative": "frontend\\public\\media\\new\\public-placard.webp",
+    "originalBytes": 228427,
+    "derivativeBytes": 156256
+  }
+]

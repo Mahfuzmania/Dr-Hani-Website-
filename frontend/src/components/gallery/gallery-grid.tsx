@@ -1,145 +1,176 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useMemo, useState } from 'react'
-
-import type { GalleryCategory, SiteContentV2 } from '../../../../shared/site-content-v2'
-import { BuildingIcon, CameraIcon, CloseIcon, FlagIcon, HeartIcon } from '../branding/elegant-icons'
+import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
+import { X, ArrowLeft, ArrowRight } from 'lucide-react'
+import type { SiteContentV2 } from '../../../../shared/site-content-v2'
 
 type GalleryItem = SiteContentV2['galleryItems'][number]
-
-const labels: Record<GalleryCategory | 'all', string> = {
-  all: 'All',
-  medical: 'Medical Service',
-  community: 'Community Outreach',
+const labels = {
+  medical: 'Medical service',
+  community: 'Community',
   events: 'Events',
-  leadership: 'Leadership',
-}
-
-const categoryIcons: Record<GalleryCategory, typeof HeartIcon> = {
-  medical: HeartIcon,
-  community: BuildingIcon,
-  events: FlagIcon,
-  leadership: CameraIcon,
+  leadership: 'Public work',
 }
 
 export function GalleryGrid({ items }: { items: GalleryItem[] }) {
-  const [activeCategory, setActiveCategory] = useState<GalleryCategory | 'all'>('all')
+  const [category, setCategory] = useState('')
+  const [event, setEvent] = useState('')
   const [openId, setOpenId] = useState<string | null>(null)
-
+  const dialog = useRef<HTMLDialogElement>(null)
+  const opener = useRef<HTMLButtonElement | null>(null)
   useEffect(() => {
     if (!openId) return
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setOpenId(null)
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    dialog.current?.showModal()
+    return () => {
+      document.body.style.overflow = previousOverflow
     }
-
-    window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
   }, [openId])
-
-  const filtered = useMemo(
-    () => items.filter((item) => activeCategory === 'all' || item.category === activeCategory),
-    [activeCategory, items],
+  const published = items.filter((item) => item.status === 'published')
+  const filtered = published.filter(
+    (item) => (!category || item.category === category) && (!event || item.event === event),
   )
-
-  const selected = filtered.find((item) => item.id === openId) || null
-
+  const events = [
+    ...new Set(published.map((item) => item.event).filter((value): value is string => Boolean(value))),
+  ].sort()
+  const selected = filtered.find((item) => item.id === openId)
+  const index = filtered.findIndex((item) => item.id === openId)
+  function move(amount: number) {
+    if (filtered.length) setOpenId(filtered[(index + amount + filtered.length) % filtered.length].id)
+  }
+  function open(item: GalleryItem, button: HTMLButtonElement) {
+    opener.current = button
+    setOpenId(item.id)
+  }
   return (
-    <div className="space-y-8">
-      <div className="flex flex-wrap gap-x-6 gap-y-3">
-        {Object.entries(labels).map(([value, label]) => (
-          <button
-            key={value}
-            type="button"
-            className={`border-b pb-1 text-[0.84rem] font-semibold uppercase tracking-[0.14em] transition ${
-              activeCategory === value
-                ? 'border-[rgba(15,28,44,0.24)] text-[var(--primary)]'
-                : 'border-transparent text-[rgba(15,28,44,0.46)] hover:text-[var(--primary)]'
-            }`}
-            onClick={() => setActiveCategory(value as GalleryCategory | 'all')}
-          >
-            {label}
-          </button>
-        ))}
+    <>
+      <div className="archive-filters gallery-filters">
+        <label>
+          Category
+          <select className="input-shell" value={category} onChange={(e) => setCategory(e.target.value)}>
+            <option value="">All categories</option>
+            {Object.entries(labels).map(([value, label]) => (
+              <option key={value} value={value}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Event
+          <select className="input-shell" value={event} onChange={(e) => setEvent(e.target.value)}>
+            <option value="">All events</option>
+            {events.map((label) => (
+              <option key={label}>{label}</option>
+            ))}
+          </select>
+        </label>
       </div>
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {filtered.map((item, index) => (
+      <p role="status" className="archive-count">
+        {filtered.length} photographs
+      </p>
+      <div className="gallery-grid">
+        {filtered.map((item) => (
           <button
             key={item.id}
             type="button"
-            className={`group block text-left ${index % 3 === 1 ? 'md:translate-y-8' : ''}`}
-            onClick={() => setOpenId(item.id)}
+            className="gallery-tile"
+            onClick={(e) => open(item, e.currentTarget)}
+            aria-label={`View photograph: ${item.title}`}
           >
-            <div className="image-frame relative aspect-[4/5] overflow-hidden">
+            <span className="gallery-image">
               <Image
                 src={item.image}
                 alt={item.altText}
                 fill
-                className="object-cover transition duration-700 group-hover:scale-[1.03]"
-                sizes="(min-width: 1280px) 28vw, (min-width: 768px) 45vw, 100vw"
+                sizes="(min-width:1024px) 29vw, (min-width:640px) 45vw, 92vw"
+                className="object-cover"
               />
-            </div>
-            <div className="pt-5">
-              <p className="inline-flex items-center gap-2 text-[0.84rem] font-semibold uppercase tracking-[0.14em] text-[rgba(15,28,44,0.46)]">
-                {(() => {
-                  const Icon = categoryIcons[item.category]
-                  return (
-                    <span className="icon-chip h-8 w-8">
-                      <Icon className="h-4 w-4" strokeWidth={1.8} />
-                    </span>
-                  )
-                })()}
-                <span>{labels[item.category]}</span>
-              </p>
-              <h3 className="mt-3 font-serif text-[1.95rem] leading-tight text-[var(--primary)]">{item.title}</h3>
-              <p className="mt-3 text-[1.04rem] leading-8 text-[var(--muted)]">{item.caption}</p>
-            </div>
+            </span>
+            <span className="gallery-category">{item.event || labels[item.category]}</span>
+            <span className="gallery-title">{item.title}</span>
+            <span className="gallery-caption">{item.caption}</span>
           </button>
         ))}
       </div>
-      {selected ? (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(8,18,35,0.84)] p-5"
-          role="dialog"
-          aria-modal="true"
-          onClick={() => setOpenId(null)}
-        >
-          <div
-            className="relative w-full max-w-5xl overflow-hidden bg-[var(--surface)] shadow-[0_28px_90px_rgba(8,18,35,0.35)]"
-            onClick={(event) => event.stopPropagation()}
+      {!filtered.length && (
+        <div className="empty-state">
+          <h2>No photographs found</h2>
+          <p>Choose another event or category.</p>
+          <button
+            className="button-secondary"
+            onClick={() => {
+              setCategory('')
+              setEvent('')
+            }}
           >
-            <button
-              type="button"
-              className="absolute right-4 top-4 z-10 inline-flex items-center gap-2 rounded-full bg-[rgba(251,249,245,0.92)] px-3 py-2 text-sm font-semibold text-[var(--primary)] shadow-[0_14px_34px_rgba(8,18,35,0.2)]"
-              onClick={() => setOpenId(null)}
-            >
-              <span className="icon-chip h-8 w-8">
-                <CloseIcon className="h-4 w-4" />
-              </span>
-              <span>Close</span>
-            </button>
-            <div className="relative aspect-[4/3]">
-              <Image src={selected.image} alt={selected.altText} fill className="object-contain" sizes="90vw" />
-            </div>
-            <div className="p-8 md:p-10">
-              <p className="inline-flex items-center gap-2 text-[0.84rem] font-semibold uppercase tracking-[0.14em] text-[rgba(15,28,44,0.46)]">
-                {(() => {
-                  const Icon = categoryIcons[selected.category]
-                  return (
-                    <span className="icon-chip h-8 w-8">
-                      <Icon className="h-4 w-4" strokeWidth={1.8} />
-                    </span>
-                  )
-                })()}
-                <span>{labels[selected.category]}</span>
-              </p>
-              <h3 className="mt-3 font-serif text-[2.55rem] leading-tight text-[var(--primary)]">{selected.title}</h3>
-              <p className="mt-4 max-w-3xl text-[1.06rem] leading-8 text-[var(--muted)]">{selected.caption}</p>
-            </div>
-          </div>
+            Clear filters
+          </button>
         </div>
-      ) : null}
-    </div>
+      )}
+      <dialog
+        ref={dialog}
+        className="gallery-dialog"
+        aria-labelledby="gallery-dialog-title"
+        onKeyDown={(e) => {
+          if (e.key === 'ArrowLeft') move(-1)
+          if (e.key === 'ArrowRight') move(1)
+        }}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) dialog.current?.close()
+        }}
+        onClose={() => {
+          setOpenId(null)
+          opener.current?.focus()
+        }}
+      >
+        <div className="gallery-dialog-content">
+          <button
+            className="gallery-close"
+            autoFocus
+            onClick={() => dialog.current?.close()}
+            aria-label="Close photograph"
+          >
+            <X size={24} />
+          </button>
+          {selected && (
+            <>
+              <div className="gallery-dialog-image">
+                <Image
+                  src={selected.image}
+                  alt={selected.altText}
+                  fill
+                  sizes="90vw"
+                  className="object-contain"
+                />
+              </div>
+              <div className="gallery-dialog-caption">
+                <h2 id="gallery-dialog-title">{selected.title}</h2>
+                <p>{selected.caption}</p>
+                {selected.relatedActivity && (
+                  <Link className="text-link" href={`/updates/${selected.relatedActivity}`}>
+                    Read related activity
+                  </Link>
+                )}
+                <div className="gallery-controls">
+                  <button className="menu-toggle" onClick={() => move(-1)} aria-label="Previous photograph">
+                    <ArrowLeft size={20} />
+                  </button>
+                  <span aria-live="polite">
+                    {index + 1} / {filtered.length}
+                  </span>
+                  <button className="menu-toggle" onClick={() => move(1)} aria-label="Next photograph">
+                    <ArrowRight size={20} />
+                  </button>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      </dialog>
+    </>
   )
 }

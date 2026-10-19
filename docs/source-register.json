@@ -1,0 +1,515 @@
+{
+  "researchedOn": "2026-10-20",
+  "publications": [
+    {
+      "id": "public-trust-national-renewal",
+      "kind": "essay",
+      "title": "কথার ঊর্ধ্বে কাজ: গণআস্থা ও জাতীয় পুনর্গঠনের নতুন দিগন্ত",
+      "summary": "An argument for earning public trust through accountable institutions, accessible services, and practical improvements in everyday life.",
+      "topics": [
+        "Public life",
+        "Governance"
+      ],
+      "featured": true,
+      "status": "published",
+      "sources": [
+        {
+          "publisher": "Daily Sun",
+          "url": "https://bangla.daily-sun.com/opinion/59086",
+          "byline": "ডা. উম্মে হানি পৃথ্বী",
+          "publishedAt": "2026-10-17"
+        }
+      ],
+      "verificationStatus": "publisher-source-reviewed"
+    },
+    {
+      "id": "women-capability-society",
+      "kind": "essay",
+      "title": "নারীর সক্ষমতা বনাম সমাজের ধারণা",
+      "summary": "How expectations at home, in the workplace, and in public life shape women’s confidence, opportunities, and freedom to make decisions.",
+      "topics": [
+        "Women",
+        "Society"
+      ],
+      "featured": true,
+      "status": "published",
+      "sources": [
+        {
+          "publisher": "Daily Sun",
+          "url": "https://bangla.daily-sun.com/opinion/58443",
+          "byline": "ডা. উম্মে হানি পৃথ্বী",
+          "publishedAt": "2026-10-09"
+        }
+      ],
+      "verificationStatus": "publisher-source-reviewed"
+    },
+    {
+      "id": "women-leadership-participation",
+      "kind": "essay",
+      "title": "নারী নেতৃত্ব: রাজনীতিকে ভয় নয়, পরিবর্তনের অংশ হিসেবে দেখা",
+      "summary": "A reflection on the conditions women need to participate in politics with safety, dignity, preparation, and a meaningful voice in decisions.",
+      "topics": [
+        "Women",
+        "Leadership"
+      ],
+      "featured": true,
+      "status": "published",
+      "sources": [
+        {
+          "publisher": "Daily Sun",
+          "url": "https://bangla.daily-sun.com/opinion/58055",
+          "byline": "ডা. উম্মে হানি পৃথ্বী",
+          "dateLabel": "October 2026"
+        }
+      ],
+      "verificationStatus": "publisher-source-reviewed"
+    },
+    {
+      "id": "child-protection-warning-signs",
+      "kind": "essay",
+      "title": "নীরবতা নয়, সুরক্ষা: শিশুর যৌন নির্যাতনের সতর্কসংকেত ও সহায়তার পথ",
+      "summary": "A discussion of recognising changes in a child’s behaviour, listening without blame, and making it safer for children to seek support.",
+      "topics": [
+        "Health",
+        "Children"
+      ],
+      "featured": false,
+      "status": "published",
+      "sources": [
+        {
+          "publisher": "Daily Sun",
+          "url": "https://bangla.daily-sun.com/opinion/54382",
+          "byline": "ডা. উম্মে হানি পৃথ্বী",
+          "publishedAt": "2026-08-25"
+        }
+      ],
+      "verificationStatus": "publisher-source-reviewed"
+    },
+    {
+      "id": "youth-policy-implementation",
+      "kind": "essay",
+      "title": "ঘোষণা থেকে বাস্তবায়ন: তরুণের বাংলাদেশ কত দূরে?",
+      "summary": "An examination of youth opportunity, skills, and entrepreneurship, and the importance of turning policy announcements into implementation.",
+      "topics": [
+        "Youth",
+        "Public life"
+      ],
+      "featured": false,
+      "status": "published",
+      "sources": [
+        {
+          "publisher": "Daily Sun",
+          "url": "https://bangla.daily-sun.com/opinion/53759",
+          "byline": "ডা. উম্মে হানি পৃথ্বী",
+          "publishedAt": "2026-08-17"
+        }
+      ],
+      "verificationStatus": "publisher-source-reviewed"
+    },
+    {
+      "id": "women-to-leadership",
+      "kind": "essay",
+      "title": "নারী থেকে নেতৃত্ব: বেগম খালেদা জিয়া",
+      "summary": "A personal political essay reflecting on Khaleda Zia’s legacy through women’s education, participation, and leadership.",
+      "topics": [
+        "Women",
+        "Leadership"
+      ],
+      "featured": false,
+      "status": "published",
+      "sources": [
+        {
+          "publisher": "Ekushey TV",
+          "url": "https://www.ekushey-tv.com/নারী-থেকে-নেতৃত্ব-বেগম-খালেদা-জিয়া/1360873111111177536",
+          "byline": "ডা. উম্মে হানি পৃথ্বী",
+          "publishedAt": "2026-08-15"
+        },
+        {
+          "publisher": "Agamir Somoy",
+          "url": "https://www.agamirsomoy.com/miscellaneous/e40tfbidfvy8",
+          "byline": "ডা. উম্মে হানি পৃথ্বী",
+          "publishedAt": "2026-08-15"
+        }
+      ],
+      "verificationStatus": "publisher-source-reviewed"
+    },
+    {
+      "id": "bytt-udyog-press",
+      "kind": "report",
+      "title": "Youth entrepreneurship and access to finance",
+      "summary": "Daily Sun reports on a BYTT press conference calling for wider age eligibility in the UDYOG programme, naming Dr Umme Hani Prithwi among the participants.",
+      "topics": [
+        "Youth",
+        "Public life"
+      ],
+      "featured": true,
+      "status": "published",
+      "relatedActivity": "bytt-youth-finance-2026",
+      "sources": [
+        {
+          "publisher": "Daily Sun",
+          "url": "https://www.daily-sun.com/index.php/bangladesh/899625/bytt-calls-for-35-yr-age-limit-in-bangladesh-bank-s-loan-scheme",
+          "byline": "Daily Sun Report, DU",
+          "publishedAt": "2026-09-24"
+        }
+      ],
+      "verificationStatus": "publisher-source-reviewed"
+    },
+    {
+      "id": "reserved-seat-nomination-press",
+      "kind": "report",
+      "title": "Reserved-seat nomination-form collection",
+      "summary": "Reports on her collection of a BNP nomination form for a reserved women’s parliamentary seat. These reports describe the application stage.",
+      "topics": [
+        "Public life"
+      ],
+      "featured": false,
+      "status": "published",
+      "relatedActivity": "reserved-seat-nomination-form-2026",
+      "image": "/media/nomination-form-desk.jpg",
+      "sources": [
+        {
+          "publisher": "Banglanews24",
+          "url": "https://www.banglanews24.com/politics/news/bd/1647903.details",
+          "byline": "Staff Correspondent",
+          "publishedAt": "2026-04-11"
+        },
+        {
+          "publisher": "Jagonews24",
+          "url": "https://www.jagonews24.com/politics/news/1109481",
+          "byline": "Jagonews24",
+          "publishedAt": "2026-04-11"
+        },
+        {
+          "publisher": "Creative Dinajpur",
+          "url": "https://creativedinajpur.com/article/2883/",
+          "byline": "Staff Reporter",
+          "publishedAt": "2026-04-11"
+        }
+      ],
+      "verificationStatus": "publisher-source-reviewed"
+    },
+    {
+      "id": "bogura-public-activity-press",
+      "kind": "report",
+      "title": "Public activity in Bogura",
+      "summary": "Newspaper coverage names her among doctors taking part in election-related outreach in Bogura. Reports of the same activity are collected here.",
+      "topics": [
+        "Public life"
+      ],
+      "featured": false,
+      "status": "published",
+      "sources": [
+        {
+          "publisher": "Bangladesh Pratidin",
+          "url": "https://www.bd-pratidin.com/election/2026/01/26/1209413",
+          "byline": "Bangladesh Pratidin",
+          "publishedAt": "2026-01-26"
+        },
+        {
+          "publisher": "Kalbela",
+          "url": "https://www.kalbela.com/politics/260589",
+          "byline": "Kalbela Reporter",
+          "publishedAt": "2026-01-26"
+        },
+        {
+          "publisher": "Ittefaq",
+          "url": "https://www.ittefaq.com.bd/amp/773111/তারেক-রহমানের-দুটি-আসনে-গনসংযোগে-ব‍্যস্ত-দলের",
+          "byline": "Ittefaq Report",
+          "publishedAt": "2026-02-04"
+        }
+      ],
+      "verificationStatus": "publisher-source-reviewed"
+    },
+    {
+      "id": "rayerbazar-health-camp-press",
+      "kind": "report",
+      "title": "A community health camp in Rayerbazar",
+      "summary": "RTV reports on a free health and awareness camp at a Rayerbazar temple, naming her as The Bangladesh Resonaire’s public relations coordinator at the event.",
+      "topics": [
+        "Health",
+        "Community"
+      ],
+      "featured": true,
+      "status": "published",
+      "relatedActivity": "rayerbazar-health-camp-2025",
+      "sources": [
+        {
+          "publisher": "RTV",
+          "url": "https://rtvonline.com/capital/346004",
+          "byline": "RTV News",
+          "publishedAt": "2025-09-29"
+        }
+      ],
+      "verificationStatus": "publisher-source-reviewed"
+    },
+    {
+      "id": "nursing-help-desk-press",
+      "kind": "report",
+      "title": "Support for nursing examination candidates",
+      "summary": "RTV covers a help desk at Dhaka College for nursing licensing examination candidates and includes her comments on supporting nursing students.",
+      "topics": [
+        "Health",
+        "Community"
+      ],
+      "featured": false,
+      "status": "published",
+      "sources": [
+        {
+          "publisher": "RTV",
+          "url": "https://rtvonline.com/health/345467",
+          "byline": "RTV / IM"
+        }
+      ],
+      "verificationStatus": "publisher-source-reviewed"
+    },
+    {
+      "id": "jagannath-health-camp-press",
+      "kind": "report",
+      "title": "Healthcare support for Jagannath University students",
+      "summary": "Coverage of a three-day camp names her among the participating doctors. The reported 1,800 students were served by the whole multi-doctor programme.",
+      "topics": [
+        "Health",
+        "Community"
+      ],
+      "featured": true,
+      "status": "published",
+      "relatedActivity": "jagannath-university-health-camp-2025",
+      "image": "/media/camp-consultation.jpg",
+      "sources": [
+        {
+          "publisher": "Kalbela",
+          "url": "https://www.kalbela.com/dainikshiksha/campus/226197",
+          "byline": "JnU Correspondent",
+          "publishedAt": "2025-09-25"
+        },
+        {
+          "publisher": "Sarabangla",
+          "url": "https://sarabangla.net/politics/post-1061001/",
+          "byline": "JnU Correspondent",
+          "publishedAt": "2025-09-25"
+        },
+        {
+          "publisher": "Asian TV Online",
+          "url": "https://www.asiantvonline.com/news/campus/412a-20250926",
+          "byline": "Srijon Saha, JnU Correspondent",
+          "publishedAt": "2025-09-26"
+        },
+        {
+          "publisher": "Rupali Bangladesh",
+          "url": "https://www.rupalibangladesh.com/educational-news/campus/77525",
+          "byline": "JnU Correspondent",
+          "publishedAt": "2025-09-25"
+        },
+        {
+          "publisher": "Banglabazar Patrika",
+          "url": "https://banglabazarpatrika.net/education/2025-09-25/7c72p34yn0",
+          "byline": "Arafat Chowdhury, JnU Correspondent",
+          "publishedAt": "2025-09-25"
+        },
+        {
+          "publisher": "Amar Sangbad",
+          "url": "https://www.amarsangbad.com/education/news/324813",
+          "byline": "Amar Sangbad",
+          "publishedAt": "2025-09-25"
+        }
+      ],
+      "verificationStatus": "publisher-source-reviewed",
+      "eventDate": "23–25 September 2025"
+    }
+  ],
+  "captions": [
+    {
+      "id": "dhaka-dialogue-backdrop",
+      "title": "Dhaka Dialogue",
+      "image": "/media/new/dhaka-dialogue-backdrop.webp",
+      "altText": "Dr Umma Hani beside the Dhaka Dialogue banner on ending digital and AI-facilitated violence against women.",
+      "caption": "At the Dhaka Dialogue on ending digital and AI-facilitated violence against women.",
+      "category": "events",
+      "event": "Dhaka Dialogue",
+      "featuredOnHomepage": true,
+      "sortOrder": 1,
+      "status": "published"
+    },
+    {
+      "id": "dhaka-dialogue-conversation",
+      "title": "Conversation at the dialogue",
+      "image": "/media/new/dhaka-dialogue-conversation.webp",
+      "altText": "Dr Umma Hani in conversation with another attendee in the dialogue venue.",
+      "caption": "A conversation at the Dhaka Dialogue venue.",
+      "category": "events",
+      "event": "Dhaka Dialogue",
+      "featuredOnHomepage": false,
+      "sortOrder": 2,
+      "status": "published"
+    },
+    {
+      "id": "bay-of-bengal-2026",
+      "title": "Bay of Bengal Conversation 2026",
+      "image": "/media/new/bay-of-bengal-2026.webp",
+      "altText": "Dr Umma Hani standing beside the Centre for Governance Studies Bay of Bengal Conversation 2026 backdrop.",
+      "caption": "At Bay of Bengal Conversation 2026, organised by the Centre for Governance Studies.",
+      "category": "events",
+      "event": "Bay of Bengal Conversation 2026",
+      "featuredOnHomepage": true,
+      "sortOrder": 3,
+      "status": "published"
+    },
+    {
+      "id": "doctors-gathering",
+      "title": "Doctors’ gathering",
+      "image": "/media/new/doctors-gathering.webp",
+      "altText": "Dr Umma Hani beside a Doctors Association of Bangladesh gathering backdrop.",
+      "caption": "At a Doctors Association of Bangladesh gathering.",
+      "category": "medical",
+      "event": "Doctors’ gathering",
+      "featuredOnHomepage": true,
+      "sortOrder": 4,
+      "status": "published"
+    },
+    {
+      "id": "conference-portrait",
+      "title": "Conference portrait",
+      "event": "Bay of Bengal Conversation 2026",
+      "image": "/media/new/conference-portrait.webp",
+      "altText": "Dr Umma Hani at a bay of bengal conversation 2026 setting.",
+      "caption": "Conference portrait",
+      "category": "events",
+      "featuredOnHomepage": false,
+      "sortOrder": 5,
+      "status": "draft"
+    },
+    {
+      "id": "dialogue-portrait-a",
+      "title": "Dialogue portrait",
+      "event": "Dhaka Dialogue",
+      "image": "/media/new/dialogue-portrait-a.webp",
+      "altText": "Dr Umma Hani at a dhaka dialogue setting.",
+      "caption": "Dialogue portrait",
+      "category": "events",
+      "featuredOnHomepage": false,
+      "sortOrder": 6,
+      "status": "draft"
+    },
+    {
+      "id": "dialogue-portrait-b",
+      "title": "Dialogue portrait",
+      "event": "Dhaka Dialogue",
+      "image": "/media/new/dialogue-portrait-b.webp",
+      "altText": "Dr Umma Hani at a dhaka dialogue setting.",
+      "caption": "Dialogue portrait",
+      "category": "events",
+      "featuredOnHomepage": false,
+      "sortOrder": 7,
+      "status": "draft"
+    },
+    {
+      "id": "dialogue-portrait-c",
+      "title": "Dialogue portrait",
+      "event": "Dhaka Dialogue",
+      "image": "/media/new/dialogue-portrait-c.webp",
+      "altText": "Dr Umma Hani at a dhaka dialogue setting.",
+      "caption": "Dialogue portrait",
+      "category": "events",
+      "featuredOnHomepage": false,
+      "sortOrder": 8,
+      "status": "draft"
+    },
+    {
+      "id": "dialogue-portrait-d",
+      "title": "Dialogue portrait",
+      "event": "Dhaka Dialogue",
+      "image": "/media/new/dialogue-portrait-d.webp",
+      "altText": "Dr Umma Hani at a dhaka dialogue setting.",
+      "caption": "Dialogue portrait",
+      "category": "events",
+      "featuredOnHomepage": false,
+      "sortOrder": 9,
+      "status": "draft"
+    },
+    {
+      "id": "dialogue-portrait-e",
+      "title": "Dialogue portrait",
+      "event": "Dhaka Dialogue",
+      "image": "/media/new/dialogue-portrait-e.webp",
+      "altText": "Dr Umma Hani at a dhaka dialogue setting.",
+      "caption": "Dialogue portrait",
+      "category": "events",
+      "featuredOnHomepage": false,
+      "sortOrder": 10,
+      "status": "draft"
+    },
+    {
+      "id": "courtesy-group",
+      "title": "Courtesy visit",
+      "event": "Courtesy visits",
+      "image": "/media/new/courtesy-group.webp",
+      "altText": "Dr Umma Hani at a courtesy visits setting.",
+      "caption": "Courtesy visit",
+      "category": "events",
+      "featuredOnHomepage": false,
+      "sortOrder": 11,
+      "status": "draft"
+    },
+    {
+      "id": "courtesy-portrait",
+      "title": "Courtesy visit",
+      "event": "Courtesy visits",
+      "image": "/media/new/courtesy-portrait.webp",
+      "altText": "Dr Umma Hani at a courtesy visits setting.",
+      "caption": "Courtesy visit",
+      "category": "events",
+      "featuredOnHomepage": false,
+      "sortOrder": 12,
+      "status": "draft"
+    },
+    {
+      "id": "courtesy-office",
+      "title": "Courtesy visit",
+      "event": "Courtesy visits",
+      "image": "/media/new/courtesy-office.webp",
+      "altText": "Dr Umma Hani at a courtesy visits setting.",
+      "caption": "Courtesy visit",
+      "category": "events",
+      "featuredOnHomepage": false,
+      "sortOrder": 13,
+      "status": "draft"
+    },
+    {
+      "id": "doctors-backdrop",
+      "title": "Doctors’ gathering",
+      "event": "Doctors’ gathering",
+      "image": "/media/new/doctors-backdrop.webp",
+      "altText": "Dr Umma Hani at a doctors’ gathering setting.",
+      "caption": "Doctors’ gathering",
+      "category": "events",
+      "featuredOnHomepage": false,
+      "sortOrder": 14,
+      "status": "draft"
+    },
+    {
+      "id": "public-flag",
+      "title": "Public gathering",
+      "event": "Public activities",
+      "image": "/media/new/public-flag.webp",
+      "altText": "Dr Umma Hani at a public activities setting.",
+      "caption": "Public gathering",
+      "category": "events",
+      "featuredOnHomepage": false,
+      "sortOrder": 15,
+      "status": "draft"
+    },
+    {
+      "id": "public-placard",
+      "title": "Public gathering",
+      "event": "Public activities",
+      "image": "/media/new/public-placard.webp",
+      "altText": "Dr Umma Hani at a public activities setting.",
+      "caption": "Public gathering",
+      "category": "events",
+      "featuredOnHomepage": false,
+      "sortOrder": 16,
+      "status": "draft"
+    }
+  ]
+}

@@ -23,6 +23,7 @@
 
 # production
 /build
+/.review-deployment/
 /backend/media/
 /backend/payload-local.db
 /backend/payload-local.db-shm

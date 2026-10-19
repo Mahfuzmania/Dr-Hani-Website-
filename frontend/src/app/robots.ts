@@ -1,9 +1,10 @@
 import type { MetadataRoute } from 'next'
 
-import { getSiteUrl } from '@/src/lib/metadata'
+import { getSiteUrl, isReviewDeployment } from '@/src/lib/metadata'
 
 export default function robots(): MetadataRoute.Robots {
   const base = getSiteUrl()
+  if (isReviewDeployment()) return { rules: { userAgent: '*', disallow: '/' } }
 
   return {
     rules: {
