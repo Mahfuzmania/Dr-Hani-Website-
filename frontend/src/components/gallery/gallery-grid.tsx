@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
-import { X, ArrowLeft, ArrowRight } from 'lucide-react'
+import { X, ArrowLeft, ArrowRight, Expand } from 'lucide-react'
 import type { SiteContentV2 } from '../../../../shared/site-content-v2'
 
 type GalleryItem = SiteContentV2['galleryItems'][number]
@@ -14,7 +14,13 @@ const labels = {
   leadership: 'Public work',
 }
 
-export function GalleryGrid({ items }: { items: GalleryItem[] }) {
+export function GalleryGrid({
+  items,
+  portfolio = false,
+}: {
+  items: GalleryItem[]
+  portfolio?: boolean
+}) {
   const [category, setCategory] = useState('')
   const [event, setEvent] = useState('')
   const [openId, setOpenId] = useState<string | null>(null)
@@ -34,12 +40,15 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
     (item) => (!category || item.category === category) && (!event || item.event === event),
   )
   const events = [
-    ...new Set(published.map((item) => item.event).filter((value): value is string => Boolean(value))),
+    ...new Set(
+      published.map((item) => item.event).filter((value): value is string => Boolean(value)),
+    ),
   ].sort()
   const selected = filtered.find((item) => item.id === openId)
   const index = filtered.findIndex((item) => item.id === openId)
   function move(amount: number) {
-    if (filtered.length) setOpenId(filtered[(index + amount + filtered.length) % filtered.length].id)
+    if (filtered.length)
+      setOpenId(filtered[(index + amount + filtered.length) % filtered.length].id)
   }
   function open(item: GalleryItem, button: HTMLButtonElement) {
     opener.current = button
@@ -47,37 +56,65 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
   }
   return (
     <>
-      <div className="archive-filters gallery-filters">
-        <label>
-          Category
-          <select className="input-shell" value={category} onChange={(e) => setCategory(e.target.value)}>
-            <option value="">All categories</option>
-            {Object.entries(labels).map(([value, label]) => (
-              <option key={value} value={value}>
+      <div className={`gallery-toolbar ${portfolio ? 'gallery-toolbar-portfolio' : ''}`}>
+        <div className="gallery-tabs" role="group" aria-label="Photograph categories">
+          <button
+            type="button"
+            aria-pressed={!category}
+            onClick={() => {
+              setCategory('')
+              setEvent('')
+            }}
+          >
+            All photographs
+          </button>
+          {Object.entries(labels)
+            .filter(([value]) => published.some((item) => item.category === value))
+            .map(([value, label]) => (
+              <button
+                key={value}
+                type="button"
+                aria-pressed={category === value}
+                onClick={() => {
+                  setCategory(value)
+                  setEvent('')
+                }}
+              >
                 {label}
-              </option>
+              </button>
             ))}
-          </select>
-        </label>
-        <label>
-          Event
-          <select className="input-shell" value={event} onChange={(e) => setEvent(e.target.value)}>
-            <option value="">All events</option>
-            {events.map((label) => (
-              <option key={label}>{label}</option>
-            ))}
-          </select>
-        </label>
+        </div>
+        {!portfolio && (
+          <div className="gallery-event-filter">
+            <label>
+              Event
+              <select
+                className="input-shell"
+                value={event}
+                onChange={(e) => setEvent(e.target.value)}
+              >
+                <option value="">All events</option>
+                {events.map((label) => (
+                  <option key={label}>{label}</option>
+                ))}
+              </select>
+            </label>
+          </div>
+        )}
+        <p role="status" className="gallery-result-count">
+          {filtered.length} photographs
+        </p>
       </div>
-      <p role="status" className="archive-count">
-        {filtered.length} photographs
-      </p>
-      <div className="gallery-grid">
-        {filtered.map((item) => (
+      <div
+        className={`gallery-grid ${portfolio ? 'gallery-grid-portfolio' : 'gallery-grid-archive'}`}
+      >
+        {filtered.map((item, itemIndex) => (
           <button
             key={item.id}
+            id={`photo-${item.id}`}
             type="button"
             className="gallery-tile"
+            data-photo-id={item.id}
             onClick={(e) => open(item, e.currentTarget)}
             aria-label={`View photograph: ${item.title}`}
           >
@@ -86,13 +123,25 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
                 src={item.image}
                 alt={item.altText}
                 fill
-                sizes="(min-width:1024px) 29vw, (min-width:640px) 45vw, 92vw"
+                sizes={
+                  portfolio && itemIndex === 0
+                    ? '(min-width:1024px) 48vw, (min-width:640px) 48vw, 94vw'
+                    : '(min-width:1024px) 32vw, (min-width:640px) 48vw, 94vw'
+                }
                 className="object-cover"
               />
             </span>
-            <span className="gallery-category">{item.event || labels[item.category]}</span>
-            <span className="gallery-title">{item.title}</span>
-            <span className="gallery-caption">{item.caption}</span>
+            <span className="gallery-tile-copy">
+              <span className="gallery-category">
+                {item.event && !item.title.toLowerCase().includes(item.event.toLowerCase())
+                  ? item.event
+                  : labels[item.category]}
+              </span>
+              <span className="gallery-title">{item.title}</span>
+            </span>
+            <span className="gallery-expand" aria-hidden="true">
+              <Expand size={18} />
+            </span>
           </button>
         ))}
       </div>
@@ -156,13 +205,21 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
                   </Link>
                 )}
                 <div className="gallery-controls">
-                  <button className="menu-toggle" onClick={() => move(-1)} aria-label="Previous photograph">
+                  <button
+                    className="menu-toggle"
+                    onClick={() => move(-1)}
+                    aria-label="Previous photograph"
+                  >
                     <ArrowLeft size={20} />
                   </button>
                   <span aria-live="polite">
                     {index + 1} / {filtered.length}
                   </span>
-                  <button className="menu-toggle" onClick={() => move(1)} aria-label="Next photograph">
+                  <button
+                    className="menu-toggle"
+                    onClick={() => move(1)}
+                    aria-label="Next photograph"
+                  >
                     <ArrowRight size={20} />
                   </button>
                 </div>

@@ -637,9 +637,9 @@ export const siteContentV2: SiteContentV2 = {
   homepage: {
     ...originalContent.homepage,
     heroEyebrow: 'Physician · Columnist · Community leadership',
-    heroSubtitle: 'A life in medicine. A voice in public life. Writing and working for healthier, more inclusive communities.',
-    biographySummary: biography[0],
-    ctaPrimaryLabel: 'About Dr Hani', ctaSecondaryLabel: 'Explore her writing',
+    heroSubtitle: 'A Bangladeshi physician and columnist whose work connects medical service, women’s health, and community leadership.',
+    biographySummary: 'She studied MBBS at TMSS Medical College under Rajshahi University, completed a twelve-month internship at TMSS and Rafatullah Community Hospital, and later served in hospitals in Bogura and Dhaka.',
+    ctaPrimaryLabel: 'Read biography', ctaSecondaryLabel: 'Explore the gallery',
   },
   profile: {
     ...originalContent.profile,
@@ -651,8 +651,9 @@ export const siteContentV2: SiteContentV2 = {
         description: 'Medical officer service at Bangladesh Specialized Hospital in Dhaka forms part of her professional record.',
       } : item),
     medicalCards: [
-      { title: 'Hospital service', body: 'Her professional record includes medical officer service at Bangladesh Specialized Hospital and emergency care at Famous Specialized Hospital in Dhaka.', image: '/media/bedside-review.jpg' },
-      { title: 'Women’s health', body: 'Earlier Gynae and Obs appointments at TMSS and Shaheed Ziaur Rahman hospitals connect her clinical work with women’s health.', image: '/media/about-doctor-portrait.jpg' },
+      { title: 'Bangladesh Specialized Hospital', body: 'Medical officer service at Bangladesh Specialized Hospital in Dhaka forms part of her professional record.', image: '/media/bedside-review.jpg' },
+      { title: 'Famous Specialized Hospital', body: 'She served as Emergency Medical Officer at Famous Specialized Hospital in Banasree, Dhaka, from November 2020 to March 2021.', image: '/media/camp-consultation.jpg' },
+      { title: 'Women’s health in Bogura', body: 'Earlier Gynae and Obs appointments at TMSS and Shaheed Ziaur Rahman hospitals connect her clinical work with women’s health.', image: '/media/medical-camp-desk.jpg' },
     ],
     publicWorkCards: [
       { title: 'Community health', body: 'Participation in student and neighbourhood health programmes extends her work beyond hospital settings.' },
@@ -662,5 +663,9 @@ export const siteContentV2: SiteContentV2 = {
   positions: originalContent.positions.filter((item) => item.id !== 'chhatra-dal-central-vice-president-2026').map(({ sourceNote: _note, ...item }) => item),
   updates: [...editorialActivities, ...originalContent.updates.filter((item) => item.id !== 'chhatra-dal-central-vice-president-2026')],
   mediaItems: originalContent.mediaItems.filter((item) => item.type !== 'article'),
-  galleryItems: [...editorialGallery, ...originalContent.galleryItems.map((item, index) => ({ ...item, event: item.category === 'medical' ? 'Medical service' : 'Community and public work', sortOrder: index + 30, caption: item.altText, featuredOnHomepage: item.id === 'medical-camp-team' }))],
+  galleryItems: [
+    ...editorialGallery,
+    ...originalContent.galleryItems.map((item, index) => ({ ...item, title: item.id === 'bedside-review' ? 'Hospital service' : item.title, event: item.category === 'medical' ? 'Medical service' : 'Community and public work', sortOrder: index + 30, caption: item.altText })),
+    { id: 'medical-relief-visit', title: 'Medical relief & community support', image: '/media/medical-relief-visit.jpg', altText: 'Dr Umma Hani at a medical relief and community support visit.', caption: 'A medical relief and community support visit.', category: 'community', event: 'Community and public work', featuredOnHomepage: false, sortOrder: 40, status: 'published' },
+  ],
 }

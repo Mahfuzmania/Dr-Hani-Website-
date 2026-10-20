@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
+import { Play } from 'lucide-react'
 
 type MediaFeatureCardProps = {
   description: string
@@ -36,7 +37,14 @@ export function MediaFeatureCard({
   if (type === 'video' && active) {
     return (
       <div className={`media-frame media-hover relative ${aspectClassName} overflow-hidden`}>
-        <video className="h-full w-full object-cover" controls preload="metadata" poster={thumbnail} src={url} />
+        <video
+          aria-label={title}
+          className="h-full w-full object-cover"
+          controls
+          preload="metadata"
+          poster={thumbnail}
+          src={url}
+        />
       </div>
     )
   }
@@ -53,9 +61,7 @@ export function MediaFeatureCard({
             sizes="(min-width: 1280px) 34vw, 100vw"
           />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,27,55,0.08),rgba(8,27,55,0.44))]" />
-          <div className={badgeClassName}>
-            Open article
-          </div>
+          <div className={badgeClassName}>Open article</div>
         </div>
         <p className={descriptionClassName}>{description}</p>
       </a>
@@ -63,7 +69,12 @@ export function MediaFeatureCard({
   }
 
   return (
-    <button type="button" className="group block w-full text-left" onClick={() => setActive(true)}>
+    <button
+      type="button"
+      className="group block w-full text-left"
+      aria-label={`Play video: ${title}`}
+      onClick={() => setActive(true)}
+    >
       <div className={`media-frame media-hover relative ${aspectClassName} overflow-hidden`}>
         <Image
           src={thumbnail}
@@ -74,13 +85,13 @@ export function MediaFeatureCard({
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,27,55,0.08),rgba(8,27,55,0.44))]" />
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className={`${size === 'compact' ? 'h-12 w-12 text-[0.58rem]' : 'h-16 w-16 text-[0.66rem]'} inline-flex items-center justify-center rounded-[0.9rem] border border-[rgba(214,176,75,0.26)] bg-[rgba(255,255,255,0.12)] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_20px_36px_rgba(8,27,55,0.24)] backdrop-blur-xl transition group-hover:translate-y-[-2px]`}>
-            Play
+          <span
+            className={`${size === 'compact' ? 'h-12 w-12 text-[0.58rem]' : 'h-16 w-16 text-[0.66rem]'} inline-flex items-center justify-center rounded-[0.9rem] border border-[rgba(214,176,75,0.26)] bg-[rgba(255,255,255,0.12)] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_20px_36px_rgba(8,27,55,0.24)] backdrop-blur-xl transition group-hover:translate-y-[-2px]`}
+          >
+            <Play size={size === 'compact' ? 18 : 23} aria-hidden="true" />
           </span>
         </div>
-        <div className={badgeClassName}>
-          Play on click
-        </div>
+        <div className={badgeClassName}>Watch video</div>
       </div>
       <p className={descriptionClassName}>{description}</p>
     </button>

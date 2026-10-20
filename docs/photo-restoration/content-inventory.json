@@ -1,0 +1,130 @@
+{
+  "baseline": "26ab404",
+  "gallery": [
+    {
+      "id": "bedside-review",
+      "featured": true,
+      "preserved": true,
+      "image": "/media/bedside-review.jpg"
+    },
+    {
+      "id": "about-doctor-portrait",
+      "featured": true,
+      "preserved": true,
+      "image": "/media/about-doctor-portrait.jpg"
+    },
+    {
+      "id": "medical-camp-team",
+      "featured": true,
+      "preserved": true,
+      "image": "/media/medical-camp-team.jpg"
+    },
+    {
+      "id": "public-leaflet-briefing",
+      "featured": true,
+      "preserved": true,
+      "image": "/media/public-leaflet-briefing.jpg"
+    },
+    {
+      "id": "media-interview-setup",
+      "featured": true,
+      "preserved": true,
+      "image": "/media/media-interview-setup.jpg"
+    },
+    {
+      "id": "women-public-rally",
+      "featured": true,
+      "preserved": true,
+      "image": "/media/women-public-rally.jpg"
+    },
+    {
+      "id": "womencare-community-access",
+      "featured": false,
+      "preserved": true,
+      "image": "/media/womencare-community-access.jpg"
+    },
+    {
+      "id": "field-presence-portrait",
+      "featured": false,
+      "preserved": true,
+      "image": "/media/field-presence-portrait.jpg"
+    },
+    {
+      "id": "community-street-walk",
+      "featured": false,
+      "preserved": true,
+      "image": "/media/community-street-walk.jpg"
+    }
+  ],
+  "videos": [
+    {
+      "id": "interview-live-broadcast",
+      "preserved": true,
+      "url": "/media/interview-live-broadcast.mp4"
+    },
+    {
+      "id": "medical-camp-service-video",
+      "preserved": true,
+      "url": "/media/medical-camp-service-clip.mp4"
+    },
+    {
+      "id": "women-gathering-video",
+      "preserved": true,
+      "url": "/media/women-gathering-clip.mp4"
+    },
+    {
+      "id": "nomination-office-video",
+      "preserved": true,
+      "url": "/media/nomination-office-clip.mp4"
+    },
+    {
+      "id": "late-night-field-video",
+      "preserved": true,
+      "url": "/media/late-night-field-clip-a.mp4"
+    }
+  ],
+  "career": [
+    {
+      "title": "Schooling in Bogura",
+      "period": "2009 - 2011"
+    },
+    {
+      "title": "MBBS at TMSS Medical College",
+      "period": "January 2012 - July 2017"
+    },
+    {
+      "title": "TMSS and Rafatullah hospital grounding",
+      "period": "Internship"
+    },
+    {
+      "title": "Indoor Medical Officer, Gynae and Obs",
+      "period": "January 2019 - June 2019"
+    },
+    {
+      "title": "Honorary Medical Officer, Gynae and Obs",
+      "period": "July 2019 - November 2019"
+    },
+    {
+      "title": "Emergency Medical Officer at Famous Specialized Hospital",
+      "period": "November 2020 - March 2021"
+    },
+    {
+      "title": "Bangladesh Specialized Hospital",
+      "period": "Hospital service"
+    },
+    {
+      "title": "Jagannath University health-service program",
+      "period": "25 September 2025"
+    },
+    {
+      "title": "BNP reserved-seat nomination-form coverage",
+      "period": "11 April 2026"
+    }
+  ],
+  "newPublishedPhotographs": [
+    "dhaka-dialogue-backdrop",
+    "dhaka-dialogue-conversation",
+    "bay-of-bengal-2026",
+    "doctors-gathering"
+  ]
+}

@@ -4,6 +4,7 @@ import { Cormorant_Garamond, Instrument_Sans, Noto_Serif_Bengali } from 'next/fo
 import { getSiteUrl, isReviewDeployment } from '@/src/lib/metadata'
 import './globals.css'
 import './editorial.css'
+import './photographic.css'
 
 const sans = Instrument_Sans({
   subsets: ['latin'],

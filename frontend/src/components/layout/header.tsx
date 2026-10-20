@@ -10,11 +10,12 @@ export function Header({ settings }: { settings: SiteContentV2['siteSettings'] }
   const pathname = usePathname()
   return (
     <header className="fixed inset-x-0 top-0 z-40 px-3 pt-3 md:px-6 md:pt-5">
-      <div className="glass-nav mx-auto flex w-full max-w-[88rem] min-w-0 items-center justify-between gap-5 px-4 py-4 md:px-6">
-        <Link href="/" className="min-w-0">
+      <div className="glass-nav portfolio-navigation mx-auto flex w-full max-w-[88rem] min-w-0 items-center justify-between gap-5 px-4 py-4 md:px-6">
+        <Link href="/" className="portfolio-brand min-w-0">
           <p className="truncate font-serif text-[1.5rem] leading-none text-[var(--navy)] md:text-[1.8rem]">
             {settings.fullName}
           </p>
+          <span>Medicine · Writing · Public life</span>
         </Link>
         <nav aria-label="Main navigation" className="hidden items-center gap-6 xl:flex">
           {navigation.map((item) => (
@@ -28,6 +29,9 @@ export function Header({ settings }: { settings: SiteContentV2['siteSettings'] }
             </Link>
           ))}
         </nav>
+        <Link className="button-primary header-contact hidden xl:inline-flex" href="/#contact">
+          Contact
+        </Link>
         <div className="xl:hidden">
           <MobileMenu settings={settings} />
         </div>

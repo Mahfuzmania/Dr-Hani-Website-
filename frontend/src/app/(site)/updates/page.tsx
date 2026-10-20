@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { PageIntro } from '@/src/components/site/page-intro'
 import { getSiteContent } from '@/src/lib/site-api'
 import { buildMetadata } from '@/src/lib/metadata'
@@ -15,7 +16,9 @@ export default async function UpdatesPage() {
   return (
     <div className="page-shell archive-page">
       <PageIntro title="Activities & updates">
-        <p>Healthcare programmes, community visits, and public discussions, in chronological order.</p>
+        <p>
+          Healthcare programmes, community visits, and public discussions, in chronological order.
+        </p>
       </PageIntro>
       {items.map((item) => (
         <article className="timeline-entry" key={item.slug}>
@@ -25,6 +28,17 @@ export default async function UpdatesPage() {
             {item.category}
           </p>
           <div>
+            {item.image && (
+              <Link className="update-archive-image" href={`/updates/${item.slug}`}>
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  sizes="(min-width:768px) 40vw, 92vw"
+                  className="object-cover"
+                />
+              </Link>
+            )}
             <h2 className="publication-heading">
               <Link href={`/updates/${item.slug}`}>{item.title}</Link>
             </h2>

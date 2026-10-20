@@ -57,11 +57,11 @@ export function MobileMenu({ settings }: { settings: SiteContentV2['siteSettings
                 {item.label}
               </Link>
             ))}
-            <Link href="/gallery" onClick={close}>
-              Gallery
-            </Link>
             <Link href="/updates" onClick={close}>
               Activities & updates
+            </Link>
+            <Link href="/#contact" onClick={close}>
+              Contact
             </Link>
           </nav>
           <a className="break-all" href={`mailto:${settings.primaryEmail}`}>
