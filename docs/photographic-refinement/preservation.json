@@ -1,0 +1,253 @@
+{
+  "rollbackCommit": "2c14e4b",
+  "originalBaseline": "26ab404",
+  "originalGallery": [
+    {
+      "id": "bedside-review",
+      "retained": true,
+      "location": "/gallery"
+    },
+    {
+      "id": "about-doctor-portrait",
+      "retained": true,
+      "location": "/gallery"
+    },
+    {
+      "id": "medical-camp-team",
+      "retained": true,
+      "location": "/gallery"
+    },
+    {
+      "id": "public-leaflet-briefing",
+      "retained": true,
+      "location": "/gallery"
+    },
+    {
+      "id": "media-interview-setup",
+      "retained": true,
+      "location": "/gallery"
+    },
+    {
+      "id": "women-public-rally",
+      "retained": true,
+      "location": "/gallery"
+    },
+    {
+      "id": "womencare-community-access",
+      "retained": true,
+      "location": "/gallery"
+    },
+    {
+      "id": "field-presence-portrait",
+      "retained": true,
+      "location": "/gallery"
+    },
+    {
+      "id": "community-street-walk",
+      "retained": true,
+      "location": "/gallery"
+    }
+  ],
+  "videos": [
+    {
+      "id": "interview-live-broadcast",
+      "retained": true,
+      "location": "/media-events#interviews"
+    },
+    {
+      "id": "medical-camp-service-video",
+      "retained": true,
+      "location": "/media-events#interviews"
+    },
+    {
+      "id": "women-gathering-video",
+      "retained": true,
+      "location": "/media-events#interviews"
+    },
+    {
+      "id": "nomination-office-video",
+      "retained": true,
+      "location": "/media-events#interviews"
+    },
+    {
+      "id": "late-night-field-video",
+      "retained": true,
+      "location": "/media-events#interviews"
+    }
+  ],
+  "essays": [
+    {
+      "id": "public-trust-national-renewal",
+      "sources": [
+        "https://bangla.daily-sun.com/opinion/59086"
+      ],
+      "location": "/writing"
+    },
+    {
+      "id": "women-capability-society",
+      "sources": [
+        "https://bangla.daily-sun.com/opinion/58443"
+      ],
+      "location": "/writing"
+    },
+    {
+      "id": "women-leadership-participation",
+      "sources": [
+        "https://bangla.daily-sun.com/opinion/58055"
+      ],
+      "location": "/writing"
+    },
+    {
+      "id": "child-protection-warning-signs",
+      "sources": [
+        "https://bangla.daily-sun.com/opinion/54382"
+      ],
+      "location": "/writing"
+    },
+    {
+      "id": "youth-policy-implementation",
+      "sources": [
+        "https://bangla.daily-sun.com/opinion/53759"
+      ],
+      "location": "/writing"
+    },
+    {
+      "id": "women-to-leadership",
+      "sources": [
+        "https://www.ekushey-tv.com/নারী-থেকে-নেতৃত্ব-বেগম-খালেদা-জিয়া/1360873111111177536",
+        "https://www.agamirsomoy.com/miscellaneous/e40tfbidfvy8"
+      ],
+      "location": "/writing"
+    }
+  ],
+  "reports": [
+    {
+      "id": "bytt-udyog-press",
+      "location": "/media-events#press"
+    },
+    {
+      "id": "reserved-seat-nomination-press",
+      "location": "/media-events#press"
+    },
+    {
+      "id": "bogura-public-activity-press",
+      "location": "/media-events#press"
+    },
+    {
+      "id": "rayerbazar-health-camp-press",
+      "location": "/media-events#press"
+    },
+    {
+      "id": "nursing-help-desk-press",
+      "location": "/media-events#press"
+    },
+    {
+      "id": "jagannath-health-camp-press",
+      "location": "/media-events#press"
+    }
+  ],
+  "career": [
+    {
+      "period": "2009 - 2011",
+      "title": "Schooling in Bogura",
+      "description": "She completed SSC in 2009 and HSC in 2011 at Cantonment Public School and College, Bogura, before moving into formal medical study.",
+      "location": "/about"
+    },
+    {
+      "period": "January 2012 - July 2017",
+      "title": "MBBS at TMSS Medical College",
+      "description": "MBBS study at TMSS Medical College in Bogura under Rajshahi University remains the academic foundation of her professional path.",
+      "location": "/about"
+    },
+    {
+      "period": "Internship",
+      "title": "TMSS and Rafatullah hospital grounding",
+      "description": "A twelve-month internship at TMSS Medical College and Rafatullah Community Hospital formed the core practical training period in ward work, patient handling, diagnosis support, and clinical routine.",
+      "location": "/about"
+    },
+    {
+      "period": "January 2019 - June 2019",
+      "title": "Indoor Medical Officer, Gynae and Obs",
+      "description": "She served as Indoor Medical Officer in Gynae and Obs at TMSS Medical College and Rafatullah Community Hospital in Bogura.",
+      "location": "/about"
+    },
+    {
+      "period": "July 2019 - November 2019",
+      "title": "Honorary Medical Officer, Gynae and Obs",
+      "description": "She then served in Gynae and Obs at Shaheed Ziaur Rahman Medical College and Hospital in Bogura.",
+      "location": "/about"
+    },
+    {
+      "period": "November 2020 - March 2021",
+      "title": "Emergency Medical Officer at Famous Specialized Hospital",
+      "description": "She served as Emergency Medical Officer at Famous Specialized Hospital in Banasree, Dhaka.",
+      "location": "/about"
+    },
+    {
+      "period": "Hospital service",
+      "title": "Bangladesh Specialized Hospital",
+      "description": "Medical officer service at Bangladesh Specialized Hospital in Dhaka forms part of her professional record.",
+      "location": "/about"
+    },
+    {
+      "period": "25 September 2025",
+      "title": "Jagannath University health-service program",
+      "description": "Amar Sangbad reported that Dr Umma Hani was among the doctors providing first-day gynecology-focused support in a three-day student health-service and medicine-distribution program.",
+      "location": "/about"
+    },
+    {
+      "period": "11 April 2026",
+      "title": "BNP reserved-seat nomination-form coverage",
+      "description": "Jagonews24 reported that Dr Umma Hani collected a BNP nomination form and identified her as Health Secretary of Chhatra Dal, Bogura District Branch.",
+      "location": "/about"
+    }
+  ],
+  "photoCounts": {
+    "original": 9,
+    "new": 16,
+    "archive": 26,
+    "newOnHomepage": 12
+  },
+  "sections": {
+    "medical-work": [
+      "doctors-backdrop",
+      "doctors-gathering",
+      "bedside-review",
+      "medical-camp-team"
+    ],
+    "dialogues": [
+      "dhaka-dialogue-backdrop",
+      "dhaka-dialogue-conversation",
+      "dialogue-portrait-c",
+      "dialogue-portrait-e",
+      "bay-of-bengal-2026",
+      "conference-portrait"
+    ],
+    "public-work": [
+      "courtesy-office",
+      "courtesy-portrait",
+      "public-flag",
+      "public-placard",
+      "public-leaflet-briefing",
+      "women-public-rally",
+      "community-street-walk"
+    ]
+  },
+  "routes": [
+    "/",
+    "/about",
+    "/writing",
+    "/gallery",
+    "/media-events",
+    "/updates",
+    "/contact",
+    "/privacy",
+    "/medical-service",
+    "/public-service",
+    "/leadership",
+    "/updates/bytt-youth-finance-2026",
+    "/updates/rayerbazar-health-camp-2025",
+    "/updates/jagannath-university-health-camp-2025",
+    "/updates/reserved-seat-nomination-form-2026"
+  ]
+}

@@ -4,8 +4,15 @@ import type { FormEvent } from 'react'
 import { useState } from 'react'
 import { contactInquirySchema as schema } from '../../../../shared/contact-inquiry'
 
-export function ContactForm({ inquiryTypes }: { framed?: boolean; inquiryTypes: string[] }) {
-  const [status, setStatus] = useState<'error' | 'idle' | 'submitting' | 'success'>('idle')
+export function ContactForm({
+  inquiryTypes,
+}: {
+  framed?: boolean
+  inquiryTypes: string[]
+}) {
+  const [status, setStatus] = useState<
+    'error' | 'idle' | 'submitting' | 'success'
+  >('idle')
   const [error, setError] = useState<string | null>(null)
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -20,7 +27,10 @@ export function ContactForm({ inquiryTypes }: { framed?: boolean; inquiryTypes: 
 
     if (!parsed.success) {
       setStatus('error')
-      setError(parsed.error.issues[0]?.message || 'Please review your message and try again.')
+      setError(
+        parsed.error.issues[0]?.message ||
+          'Please review your message and try again.',
+      )
       return
     }
 
@@ -34,7 +44,9 @@ export function ContactForm({ inquiryTypes }: { framed?: boolean; inquiryTypes: 
 
     if (!response || !response.ok) {
       setStatus('error')
-      setError('Online enquiries are temporarily unavailable. Please use the email link.')
+      setError(
+        'Online enquiries are temporarily unavailable. Please use the email link.',
+      )
       return
     }
 
@@ -43,7 +55,7 @@ export function ContactForm({ inquiryTypes }: { framed?: boolean; inquiryTypes: 
   }
 
   return (
-    <form onSubmit={handleSubmit} className="panel-solid editorial-card p-6 md:p-8">
+    <form onSubmit={handleSubmit} className="contact-form">
       <div className="grid gap-5 md:grid-cols-2">
         <label className="block">
           <span className="text-[0.74rem] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
@@ -87,7 +99,11 @@ export function ContactForm({ inquiryTypes }: { framed?: boolean; inquiryTypes: 
           <span className="text-[0.74rem] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
             Inquiry type
           </span>
-          <select name="inquiryType" defaultValue={inquiryTypes[0] ?? ''} className="input-shell mt-3">
+          <select
+            name="inquiryType"
+            defaultValue={inquiryTypes[0] ?? ''}
+            className="input-shell mt-3"
+          >
             {inquiryTypes.map((item) => (
               <option key={item} value={item}>
                 {item}

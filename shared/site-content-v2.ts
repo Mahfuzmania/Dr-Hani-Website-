@@ -25,6 +25,9 @@ export type SiteContentV2 = {
     event?: string
     relatedActivity?: string
     featuredOnHomepage: boolean
+    homepageSection?: 'medical-work' | 'dialogues' | 'public-work'
+    focalX?: number
+    focalY?: number
     id: string
     image: string
     sortOrder: number
@@ -44,6 +47,8 @@ export type SiteContentV2 = {
       title: string
     }>
     sectionVisibility: {
+      dialogues?: boolean
+      writing?: boolean
       contact: boolean
       journey: boolean
       medicalWork: boolean
@@ -289,7 +294,7 @@ const originalContent: Omit<SiteContentV2, 'publications'> = {
       },
       {
         title: 'Bogura women-focused hospital work',
-        body: "Earlier Gynae and Obs roles in Bogura included caesarean support in OT, normal vaginal delivery work, OPD management, intern guidance, and service in a Covid unit.",
+        body: 'Earlier Gynae and Obs roles in Bogura included caesarean support in OT, normal vaginal delivery work, OPD management, intern guidance, and service in a Covid unit.',
         image: '/media/medical-camp-desk.jpg',
       },
     ],
@@ -313,8 +318,10 @@ const originalContent: Omit<SiteContentV2, 'publications'> = {
       id: 'bedside-review',
       title: 'Bangladesh Specialized Hospital appointment',
       image: '/media/bedside-review.jpg',
-      altText: 'Dr Umma Hani standing near a patient bed during a clinical review.',
-      caption: 'A hospital-service image connected to the current Emergency Medical Officer appointment.',
+      altText:
+        'Dr Umma Hani standing near a patient bed during a clinical review.',
+      caption:
+        'A hospital-service image connected to the current Emergency Medical Officer appointment.',
       category: 'medical',
       featuredOnHomepage: true,
       sortOrder: 1,
@@ -335,7 +342,8 @@ const originalContent: Omit<SiteContentV2, 'publications'> = {
       id: 'medical-camp-team',
       title: 'Medical camp team',
       image: '/media/medical-camp-team.jpg',
-      altText: 'Dr Umma Hani with a medical-camp team in an organized service setting.',
+      altText:
+        'Dr Umma Hani with a medical-camp team in an organized service setting.',
       caption: 'A team image from an organized medical outreach setting.',
       category: 'medical',
       featuredOnHomepage: true,
@@ -346,7 +354,8 @@ const originalContent: Omit<SiteContentV2, 'publications'> = {
       id: 'public-leaflet-briefing',
       title: 'Printed outreach conversation',
       image: '/media/public-leaflet-briefing.jpg',
-      altText: 'Dr Umma Hani distributing printed materials during public outreach.',
+      altText:
+        'Dr Umma Hani distributing printed materials during public outreach.',
       caption: 'An image of organized field communication and direct contact.',
       category: 'community',
       featuredOnHomepage: true,
@@ -368,8 +377,10 @@ const originalContent: Omit<SiteContentV2, 'publications'> = {
       id: 'women-public-rally',
       title: "Women's public program",
       image: '/media/women-public-rally.jpg',
-      altText: 'Dr Umma Hani in a public program setting with women around her.',
-      caption: "A public-program image that broadens the gallery beyond the neighborhood visit sequence.",
+      altText:
+        'Dr Umma Hani in a public program setting with women around her.',
+      caption:
+        'A public-program image that broadens the gallery beyond the neighborhood visit sequence.',
       category: 'leadership',
       featuredOnHomepage: true,
       sortOrder: 6,
@@ -390,7 +401,8 @@ const originalContent: Omit<SiteContentV2, 'publications'> = {
       id: 'field-presence-portrait',
       title: 'Field presence portrait',
       image: '/media/field-presence-portrait.jpg',
-      altText: 'Dr Umma Hani standing beside a service vehicle in a field setting.',
+      altText:
+        'Dr Umma Hani standing beside a service vehicle in a field setting.',
       caption: 'A leadership portrait from a public-service setting.',
       category: 'leadership',
       featuredOnHomepage: false,
@@ -401,8 +413,10 @@ const originalContent: Omit<SiteContentV2, 'publications'> = {
       id: 'community-street-walk',
       title: 'Neighborhood walk-through',
       image: '/media/community-street-walk.jpg',
-      altText: 'Dr Umma Hani walking through a neighborhood during outreach activity.',
-      caption: 'A street-level community image distinct from the seated gathering sequence.',
+      altText:
+        'Dr Umma Hani walking through a neighborhood during outreach activity.',
+      caption:
+        'A street-level community image distinct from the seated gathering sequence.',
       category: 'community',
       featuredOnHomepage: false,
       sortOrder: 9,
@@ -452,8 +466,7 @@ const originalContent: Omit<SiteContentV2, 'publications'> = {
       type: 'video',
       thumbnail: '/media/nomination-form-desk.jpg',
       url: '/media/nomination-office-clip.mp4',
-      description:
-        'An office-side video from a public program setting.',
+      description: 'An office-side video from a public program setting.',
       category: 'events',
       featuredOnHomepage: false,
       status: 'published',
@@ -568,9 +581,9 @@ const originalContent: Omit<SiteContentV2, 'publications'> = {
       status: 'published',
       sourceLink: 'https://www.jagonews24.com/politics/news/1109481',
       body: [
-        'Jagonews24 reported on 11 April 2026 that Dr Umma Hani collected a Bangladesh Nationalist Party nomination form for a reserved women\'s parliamentary seat.',
+        "Jagonews24 reported on 11 April 2026 that Dr Umma Hani collected a Bangladesh Nationalist Party nomination form for a reserved women's parliamentary seat.",
         'The report described her as Health Secretary of Chhatra Dal, Bogura District Branch.',
-        "The event is part of her recent public-service and leadership activity.",
+        'The event is part of her recent public-service and leadership activity.',
       ],
     },
   ],
@@ -603,18 +616,15 @@ const originalContent: Omit<SiteContentV2, 'publications'> = {
     sections: [
       {
         title: 'Inquiry data',
-        body:
-          'Messages submitted through the contact form are stored so they can be reviewed, answered, and followed up by the site team.',
+        body: 'Messages submitted through the contact form are stored so they can be reviewed, answered, and followed up by the site team.',
       },
       {
         title: 'Public contact information',
-        body:
-          'The website publishes a public email address and selected social profile links. Private contact details are intentionally not published.',
+        body: 'The website publishes a public email address and selected social profile links. Private contact details are intentionally not published.',
       },
       {
         title: 'Profile material',
-        body:
-          'Website content is based on CV details, provided media, and public reporting related to her medical, community, and leadership work.',
+        body: 'Website content is based on CV details, provided media, and public reporting related to her medical, community, and leadership work.',
       },
     ],
   },
@@ -627,45 +637,112 @@ export const siteContentV2: SiteContentV2 = {
   siteSettings: {
     ...originalContent.siteSettings,
     identityLine: 'Physician · Columnist · Community leadership',
-    seoDescription: 'The professional profile, published writing, and community work of Dr Umma Hani, a Bangladeshi physician and columnist.',
+    seoDescription:
+      'The professional profile, published writing, and community work of Dr Umma Hani, a Bangladeshi physician and columnist.',
     socialLinks: [
       { label: 'Facebook', href: 'https://www.facebook.com/honey.haque.37' },
       { label: 'Instagram', href: 'https://www.instagram.com/priethy13/' },
-      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/dr-umme-hani-a60b561a4/' },
+      {
+        label: 'LinkedIn',
+        href: 'https://www.linkedin.com/in/dr-umme-hani-a60b561a4/',
+      },
     ],
   },
   homepage: {
     ...originalContent.homepage,
     heroEyebrow: 'Physician · Columnist · Community leadership',
-    heroSubtitle: 'A Bangladeshi physician and columnist whose work connects medical service, women’s health, and community leadership.',
-    biographySummary: 'She studied MBBS at TMSS Medical College under Rajshahi University, completed a twelve-month internship at TMSS and Rafatullah Community Hospital, and later served in hospitals in Bogura and Dhaka.',
-    ctaPrimaryLabel: 'Read biography', ctaSecondaryLabel: 'Explore the gallery',
+    heroSubtitle:
+      'A Bangladeshi physician and columnist whose work connects medical service, women’s health, and community leadership.',
+    biographySummary:
+      'She studied MBBS at TMSS Medical College under Rajshahi University, completed a twelve-month internship at TMSS and Rafatullah Community Hospital, and later served in hospitals in Bogura and Dhaka.',
+    ctaPrimaryLabel: 'Read biography',
+    ctaSecondaryLabel: 'Explore her work',
   },
   profile: {
     ...originalContent.profile,
     storyParagraphs: biography,
     journeyTimeline: originalContent.profile.journeyTimeline
       .filter((item) => !item.title.includes('Central Parliament'))
-      .map((item) => item.title.includes('Bangladesh Specialized Hospital') ? {
-        period: 'Hospital service', title: 'Bangladesh Specialized Hospital',
-        description: 'Medical officer service at Bangladesh Specialized Hospital in Dhaka forms part of her professional record.',
-      } : item),
+      .map((item) =>
+        item.title.includes('Bangladesh Specialized Hospital')
+          ? {
+              period: 'Hospital service',
+              title: 'Bangladesh Specialized Hospital',
+              description:
+                'Medical officer service at Bangladesh Specialized Hospital in Dhaka forms part of her professional record.',
+            }
+          : item,
+      ),
     medicalCards: [
-      { title: 'Bangladesh Specialized Hospital', body: 'Medical officer service at Bangladesh Specialized Hospital in Dhaka forms part of her professional record.', image: '/media/bedside-review.jpg' },
-      { title: 'Famous Specialized Hospital', body: 'She served as Emergency Medical Officer at Famous Specialized Hospital in Banasree, Dhaka, from November 2020 to March 2021.', image: '/media/camp-consultation.jpg' },
-      { title: 'Women’s health in Bogura', body: 'Earlier Gynae and Obs appointments at TMSS and Shaheed Ziaur Rahman hospitals connect her clinical work with women’s health.', image: '/media/medical-camp-desk.jpg' },
+      {
+        title: 'Bedside review',
+        body: 'A clinical review alongside other medical professionals.',
+        image: '/media/bedside-review.jpg',
+      },
+      {
+        title: 'Community consultation',
+        body: 'Providing medical advice in a community health programme.',
+        image: '/media/camp-consultation.jpg',
+      },
+      {
+        title: 'Medical camp service',
+        body: 'Working alongside a team during a medical camp.',
+        image: '/media/medical-camp-desk.jpg',
+      },
     ],
     publicWorkCards: [
-      { title: 'Community health', body: 'Participation in student and neighbourhood health programmes extends her work beyond hospital settings.' },
-      { title: 'Writing and discussion', body: 'Her published essays explore women’s participation, child protection, youth opportunity, and public responsibility.' },
+      {
+        title: 'Community health',
+        body: 'Participation in student and neighbourhood health programmes extends her work beyond hospital settings.',
+      },
+      {
+        title: 'Writing and discussion',
+        body: 'Her published essays explore women’s participation, child protection, youth opportunity, and public responsibility.',
+      },
     ],
   },
-  positions: originalContent.positions.filter((item) => item.id !== 'chhatra-dal-central-vice-president-2026').map(({ sourceNote: _note, ...item }) => item),
-  updates: [...editorialActivities, ...originalContent.updates.filter((item) => item.id !== 'chhatra-dal-central-vice-president-2026')],
-  mediaItems: originalContent.mediaItems.filter((item) => item.type !== 'article'),
+  positions: originalContent.positions
+    .filter((item) => item.id !== 'chhatra-dal-central-vice-president-2026')
+    .map(({ sourceNote: _note, ...item }) => item),
+  updates: [
+    ...editorialActivities,
+    ...originalContent.updates.filter(
+      (item) => item.id !== 'chhatra-dal-central-vice-president-2026',
+    ),
+  ],
+  mediaItems: originalContent.mediaItems.filter(
+    (item) => item.type !== 'article',
+  ),
   galleryItems: [
     ...editorialGallery,
-    ...originalContent.galleryItems.map((item, index) => ({ ...item, title: item.id === 'bedside-review' ? 'Hospital service' : item.title, event: item.category === 'medical' ? 'Medical service' : 'Community and public work', sortOrder: index + 30, caption: item.altText })),
-    { id: 'medical-relief-visit', title: 'Medical relief & community support', image: '/media/medical-relief-visit.jpg', altText: 'Dr Umma Hani at a medical relief and community support visit.', caption: 'A medical relief and community support visit.', category: 'community', event: 'Community and public work', featuredOnHomepage: false, sortOrder: 40, status: 'published' },
+    ...originalContent.galleryItems.map((item, index) => ({
+      ...item,
+      title: item.id === 'bedside-review' ? 'Bedside review' : item.title,
+      event:
+        item.category === 'medical'
+          ? 'Medical service'
+          : 'Community and public work',
+      sortOrder: index + 30,
+      featuredOnHomepage: [
+        'bedside-review',
+        'medical-camp-team',
+        'women-public-rally',
+        'public-leaflet-briefing',
+        'community-street-walk',
+      ].includes(item.id),
+      caption: item.altText,
+    })),
+    {
+      id: 'medical-relief-visit',
+      title: 'Medical relief & community support',
+      image: '/media/medical-relief-visit.jpg',
+      altText: 'Dr Umma Hani at a medical relief and community support visit.',
+      caption: 'A medical relief and community support visit.',
+      category: 'community',
+      event: 'Community and public work',
+      featuredOnHomepage: false,
+      sortOrder: 40,
+      status: 'published',
+    },
   ],
 }

@@ -1,0 +1,258 @@
+[
+  {
+    "id": "dhaka-dialogue-backdrop",
+    "original": "New images\\WhatsApp Image 2026-10-17 at 6.56.31 PM (1).jpeg",
+    "derivative": "/media/new/dhaka-dialogue-backdrop.webp",
+    "visibleSubject": "Dr Umma Hani beside the Dhaka Dialogue banner on ending digital and AI-facilitated violence against women.",
+    "group": "Dhaka Dialogue",
+    "caption": "Dr Umma Hani beside the Dhaka Dialogue banner on ending digital and AI-facilitated violence against women.",
+    "crop": {
+      "focalX": 50,
+      "focalY": 50,
+      "fullImageAvailable": true
+    },
+    "placement": "Homepage: dialogues; /gallery",
+    "priorReviewState": "published",
+    "reviewState": "published"
+  },
+  {
+    "id": "dhaka-dialogue-conversation",
+    "original": "New images\\WhatsApp Image 2026-10-17 at 6.56.31 PM.jpeg",
+    "derivative": "/media/new/dhaka-dialogue-conversation.webp",
+    "visibleSubject": "Dr Umma Hani in conversation with another attendee at the Dhaka Dialogue venue.",
+    "group": "Dhaka Dialogue",
+    "caption": "Dr Umma Hani in conversation with another attendee at the Dhaka Dialogue venue.",
+    "crop": {
+      "focalX": 50,
+      "focalY": 50,
+      "fullImageAvailable": true
+    },
+    "placement": "Homepage: dialogues; /gallery",
+    "priorReviewState": "published",
+    "reviewState": "published"
+  },
+  {
+    "id": "dialogue-portrait-c",
+    "original": "New images\\WhatsApp Image 2026-10-17 at 6.56.30 PM (1).jpeg",
+    "derivative": "/media/new/dialogue-portrait-c.webp",
+    "visibleSubject": "Dr Umma Hani standing alongside another attendee beside a Dhaka Dialogue banner.",
+    "group": "Dhaka Dialogue",
+    "caption": "Dr Umma Hani standing alongside another attendee beside a Dhaka Dialogue banner.",
+    "crop": {
+      "focalX": 50,
+      "focalY": 50,
+      "fullImageAvailable": true
+    },
+    "placement": "Homepage: dialogues; /gallery",
+    "priorReviewState": "draft",
+    "reviewState": "published"
+  },
+  {
+    "id": "dialogue-portrait-e",
+    "original": "New images\\WhatsApp Image 2026-10-17 at 6.56.30 PM.jpeg",
+    "derivative": "/media/new/dialogue-portrait-e.webp",
+    "visibleSubject": "Dr Umma Hani alongside another attendee in the dialogue venue.",
+    "group": "Dhaka Dialogue",
+    "caption": "Dr Umma Hani alongside another attendee in the dialogue venue.",
+    "crop": {
+      "focalX": 50,
+      "focalY": 50,
+      "fullImageAvailable": true
+    },
+    "placement": "Homepage: dialogues; /gallery",
+    "priorReviewState": "draft",
+    "reviewState": "published"
+  },
+  {
+    "id": "bay-of-bengal-2026",
+    "original": "New images\\WhatsApp Image 2026-10-17 at 6.56.32 PM.jpeg",
+    "derivative": "/media/new/bay-of-bengal-2026.webp",
+    "visibleSubject": "Dr Umma Hani beside the Bay of Bengal Conversation 2026 backdrop.",
+    "group": "Bay of Bengal Conversation 2026",
+    "caption": "Dr Umma Hani beside the Bay of Bengal Conversation 2026 backdrop.",
+    "crop": {
+      "focalX": 50,
+      "focalY": 50,
+      "fullImageAvailable": true
+    },
+    "placement": "Homepage: dialogues; /gallery",
+    "priorReviewState": "published",
+    "reviewState": "published"
+  },
+  {
+    "id": "conference-portrait",
+    "original": "New images\\WhatsApp Image 2026-10-17 at 6.56.28 PM.jpeg",
+    "derivative": "/media/new/conference-portrait.webp",
+    "visibleSubject": "Dr Umma Hani alongside another attendee wearing conference badges.",
+    "group": "Bay of Bengal Conversation 2026",
+    "caption": "Dr Umma Hani alongside another attendee wearing conference badges.",
+    "crop": {
+      "focalX": 50,
+      "focalY": 50,
+      "fullImageAvailable": true
+    },
+    "placement": "Homepage: dialogues; /gallery",
+    "priorReviewState": "draft",
+    "reviewState": "published"
+  },
+  {
+    "id": "doctors-backdrop",
+    "original": "New images\\WhatsApp Image 2026-10-17 at 6.56.34 PM (1).jpeg",
+    "derivative": "/media/new/doctors-backdrop.webp",
+    "visibleSubject": "Dr Umma Hani beside a Doctors Association of Bangladesh, Dhaka gathering backdrop.",
+    "group": "Doctors’ gathering",
+    "caption": "Dr Umma Hani beside a Doctors Association of Bangladesh, Dhaka gathering backdrop.",
+    "crop": {
+      "focalX": 50,
+      "focalY": 50,
+      "fullImageAvailable": true
+    },
+    "placement": "Homepage: medical-work; /gallery",
+    "priorReviewState": "draft",
+    "reviewState": "published"
+  },
+  {
+    "id": "doctors-gathering",
+    "original": "New images\\WhatsApp Image 2026-10-17 at 6.56.34 PM.jpeg",
+    "derivative": "/media/new/doctors-gathering.webp",
+    "visibleSubject": "Dr Umma Hani standing in front of the doctors’ gathering stage and backdrop.",
+    "group": "Doctors’ gathering",
+    "caption": "Dr Umma Hani standing in front of the doctors’ gathering stage and backdrop.",
+    "crop": {
+      "focalX": 50,
+      "focalY": 50,
+      "fullImageAvailable": true
+    },
+    "placement": "Homepage: medical-work; /gallery",
+    "priorReviewState": "published",
+    "reviewState": "published"
+  },
+  {
+    "id": "courtesy-office",
+    "original": "New images\\WhatsApp Image 2026-10-17 at 6.56.33 PM (2).jpeg",
+    "derivative": "/media/new/courtesy-office.webp",
+    "visibleSubject": "Dr Umma Hani standing beside a seated person in an office setting.",
+    "group": "Courtesy visits",
+    "caption": "Dr Umma Hani standing beside a seated person in an office setting.",
+    "crop": {
+      "focalX": 50,
+      "focalY": 50,
+      "fullImageAvailable": true
+    },
+    "placement": "Homepage: public-work; /gallery",
+    "priorReviewState": "draft",
+    "reviewState": "published"
+  },
+  {
+    "id": "courtesy-portrait",
+    "original": "New images\\WhatsApp Image 2026-10-17 at 6.56.33 PM.jpeg",
+    "derivative": "/media/new/courtesy-portrait.webp",
+    "visibleSubject": "Dr Umma Hani alongside another person holding a bouquet of blue flowers.",
+    "group": "Courtesy visits",
+    "caption": "Dr Umma Hani alongside another person holding a bouquet of blue flowers.",
+    "crop": {
+      "focalX": 50,
+      "focalY": 50,
+      "fullImageAvailable": true
+    },
+    "placement": "Homepage: public-work; /gallery",
+    "priorReviewState": "draft",
+    "reviewState": "published"
+  },
+  {
+    "id": "public-flag",
+    "original": "New images\\WhatsApp Image 2026-10-17 at 6.56.34 PM (2).jpeg",
+    "derivative": "/media/new/public-flag.webp",
+    "visibleSubject": "Dr Umma Hani holding a Bangladesh flag at an outdoor gathering.",
+    "group": "Public activities",
+    "caption": "Dr Umma Hani holding a Bangladesh flag at an outdoor gathering.",
+    "crop": {
+      "focalX": 50,
+      "focalY": 50,
+      "fullImageAvailable": true
+    },
+    "placement": "Homepage: public-work; /gallery",
+    "priorReviewState": "draft",
+    "reviewState": "published"
+  },
+  {
+    "id": "public-placard",
+    "original": "New images\\WhatsApp Image 2026-10-17 at 6.56.35 PM.jpeg",
+    "derivative": "/media/new/public-placard.webp",
+    "visibleSubject": "Dr Umma Hani holding a Bengali placard at an outdoor public gathering.",
+    "group": "Public activities",
+    "caption": "Dr Umma Hani holding a Bengali placard at an outdoor public gathering.",
+    "crop": {
+      "focalX": 50,
+      "focalY": 50,
+      "fullImageAvailable": true
+    },
+    "placement": "Homepage: public-work; /gallery",
+    "priorReviewState": "draft",
+    "reviewState": "published"
+  },
+  {
+    "id": "dialogue-portrait-b",
+    "original": "New images\\WhatsApp Image 2026-10-17 at 6.56.29 PM.jpeg",
+    "derivative": "/media/new/dialogue-portrait-b.webp",
+    "visibleSubject": "Dr Umma Hani smiling alongside another attendee at the dialogue venue.",
+    "group": "Dhaka Dialogue",
+    "caption": "Dr Umma Hani smiling alongside another attendee at the dialogue venue.",
+    "crop": {
+      "focalX": 50,
+      "focalY": 50,
+      "fullImageAvailable": true
+    },
+    "placement": "/gallery",
+    "priorReviewState": "draft",
+    "reviewState": "published"
+  },
+  {
+    "id": "dialogue-portrait-a",
+    "original": "New images\\WhatsApp Image 2026-10-17 at 6.56.29 PM (1).jpeg",
+    "derivative": "/media/new/dialogue-portrait-a.webp",
+    "visibleSubject": "Dr Umma Hani alongside another attendee near the dialogue banner.",
+    "group": "Dhaka Dialogue",
+    "caption": "Dr Umma Hani alongside another attendee near the dialogue banner.",
+    "crop": {
+      "focalX": 50,
+      "focalY": 50,
+      "fullImageAvailable": true
+    },
+    "placement": "/gallery",
+    "priorReviewState": "draft",
+    "reviewState": "published"
+  },
+  {
+    "id": "dialogue-portrait-d",
+    "original": "New images\\WhatsApp Image 2026-10-17 at 6.56.30 PM (2).jpeg",
+    "derivative": "/media/new/dialogue-portrait-d.webp",
+    "visibleSubject": "Dr Umma Hani alongside another attendee in the dialogue venue.",
+    "group": "Dhaka Dialogue",
+    "caption": "Dr Umma Hani alongside another attendee in the dialogue venue.",
+    "crop": {
+      "focalX": 50,
+      "focalY": 50,
+      "fullImageAvailable": true
+    },
+    "placement": "/gallery",
+    "priorReviewState": "draft",
+    "reviewState": "published"
+  },
+  {
+    "id": "courtesy-group",
+    "original": "New images\\WhatsApp Image 2026-10-17 at 6.56.33 PM (1).jpeg",
+    "derivative": "/media/new/courtesy-group.webp",
+    "visibleSubject": "Dr Umma Hani with a group of visitors holding a bouquet of blue flowers.",
+    "group": "Courtesy visits",
+    "caption": "Dr Umma Hani with a group of visitors holding a bouquet of blue flowers.",
+    "crop": {
+      "focalX": 50,
+      "focalY": 50,
+      "fullImageAvailable": true
+    },
+    "placement": "/gallery",
+    "priorReviewState": "draft",
+    "reviewState": "published"
+  }
+]

@@ -44,7 +44,20 @@ test('the photographic update retains every original gallery record and video', 
       `Missing media file: ${item}`,
     )
   }
-  assert.ok(content.galleryItems.filter((item) => item.featuredOnHomepage).length >= 9)
-  assert.equal(content.publications.filter((item) => item.kind === 'essay').length, 6)
+  assert.equal(
+    content.galleryItems.filter((item) => item.image.startsWith('/media/new/'))
+      .length,
+    16,
+  )
+  assert.equal(
+    content.galleryItems.filter(
+      (item) => item.image.startsWith('/media/new/') && item.featuredOnHomepage,
+    ).length,
+    12,
+  )
+  assert.equal(
+    content.publications.filter((item) => item.kind === 'essay').length,
+    6,
+  )
   assert.ok(content.galleryItems.every((item) => item.status === 'published'))
 })

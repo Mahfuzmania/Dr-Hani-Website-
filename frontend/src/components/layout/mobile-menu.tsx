@@ -5,8 +5,13 @@ import { useRef } from 'react'
 import { Menu, X } from 'lucide-react'
 import type { SiteContentV2 } from '../../../../shared/site-content-v2'
 import { navigation } from './navigation'
+import { containDialogFocus } from '@/src/lib/dialog-focus'
 
-export function MobileMenu({ settings }: { settings: SiteContentV2['siteSettings'] }) {
+export function MobileMenu({
+  settings,
+}: {
+  settings: SiteContentV2['siteSettings']
+}) {
   const dialog = useRef<HTMLDialogElement>(null)
   const trigger = useRef<HTMLButtonElement>(null)
   const previousOverflow = useRef('')
@@ -34,6 +39,7 @@ export function MobileMenu({ settings }: { settings: SiteContentV2['siteSettings
         ref={dialog}
         className="mobile-dialog"
         aria-labelledby="navigation-title"
+        onKeyDown={containDialogFocus}
         onClick={(event) => {
           if (event.target === event.currentTarget) close()
         }}
@@ -47,7 +53,12 @@ export function MobileMenu({ settings }: { settings: SiteContentV2['siteSettings
             <h2 id="navigation-title" className="font-serif text-3xl">
               {settings.fullName}
             </h2>
-            <button className="menu-toggle" onClick={close} aria-label="Close menu" autoFocus>
+            <button
+              className="menu-toggle"
+              onClick={close}
+              aria-label="Close menu"
+              autoFocus
+            >
               <X size={22} />
             </button>
           </div>

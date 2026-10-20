@@ -1,308 +1,309 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, ArrowUpRight, Images } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { ContactForm } from '@/src/components/forms/contact-form'
 import { SocialIcon } from '@/src/components/branding/social-icon'
-import { GalleryGrid } from '@/src/components/gallery/gallery-grid'
-import { MediaFeatureCard } from '@/src/components/site/media-feature-card'
+import { PhotoCollection } from '@/src/components/gallery/photo-collection'
+import { VideoPlaylist } from '@/src/components/site/video-playlist'
 import { PublicationCard } from '@/src/components/site/publication-card'
 import { buildMetadata } from '@/src/lib/metadata'
 import { getSiteContent } from '@/src/lib/site-api'
 import { sortPublications } from '../../../../shared/publications'
 import { sortActivities } from '../../../../shared/content-order'
+import { homepagePhotos } from '../../../../shared/photo-curation'
 
 export const metadata = buildMetadata(
   'Home',
-  'Explore the photographs, medical career, community work, published writing, and media appearances of Dr Umma Hani.',
+  'The medical career, published writing, community work, and public life of Dr Umma Hani.',
 )
 
-const publicPhotographs = [
-  {
-    image: '/media/women-public-rally.jpg',
-    title: 'Women in public life',
-    alt: 'Dr Umma Hani taking part in a public programme with women.',
-  },
-  {
-    image: '/media/public-leaflet-briefing.jpg',
-    title: 'Community conversations',
-    alt: 'Dr Umma Hani distributing printed materials during community outreach.',
-  },
-  {
-    image: '/media/community-street-walk.jpg',
-    title: 'Neighbourhood visits',
-    alt: 'Dr Umma Hani walking through a neighbourhood during outreach.',
-  },
-  {
-    image: '/media/medical-relief-visit.jpg',
-    title: 'Medical relief & support',
-    alt: 'Dr Umma Hani at a medical relief and community support visit.',
-  },
-]
+function SectionHeading({
+  number,
+  title,
+  description,
+  href,
+  link,
+}: {
+  number: string
+  title: string
+  description?: string
+  href?: string
+  link?: string
+}) {
+  return (
+    <div className="section-heading">
+      <div>
+        <p className="section-index">{number}</p>
+        <h2>{title}</h2>
+        {description && <p className="section-description">{description}</p>}
+      </div>
+      {href && (
+        <Link className="text-link" href={href}>
+          {link}
+          <ArrowUpRight size={18} />
+        </Link>
+      )}
+    </div>
+  )
+}
 
 export default async function HomePage() {
   const content = await getSiteContent()
   const { homepage, profile, siteSettings, contact } = content
+  const visible = homepage.sectionVisibility
   const essays = sortPublications(
-    content.publications.filter((item) => item.kind === 'essay' && item.featured),
+    content.publications.filter(
+      (item) => item.kind === 'essay' && item.featured,
+    ),
   ).slice(0, 3)
-  const activities = sortActivities(content.updates).slice(0, 3)
-  const gallery = content.galleryItems
-    .filter((item) => item.featuredOnHomepage)
-    .sort((a, b) => a.sortOrder - b.sortOrder)
-  const videos = content.mediaItems.filter((item) => item.type === 'video')
-  const featuredVideo = videos.find((item) => item.featuredOnHomepage) || videos[0]
-  const supportingVideos = videos.filter((item) => item.id !== featuredVideo?.id).slice(0, 4)
-  const career = profile.journeyTimeline.filter((item) =>
-    /Medical Officer|Bangladesh Specialized Hospital/.test(item.title),
+  const medical = homepagePhotos(content.galleryItems, 'medical-work').sort(
+    (a, b) =>
+      Number(Boolean(a.event?.includes('Doctors'))) -
+        Number(Boolean(b.event?.includes('Doctors'))) ||
+      a.sortOrder - b.sortOrder,
   )
-  const positions = content.positions.filter((item) => item.featured)
+  const dialogues = homepagePhotos(content.galleryItems, 'dialogues')
+  const publicWork = homepagePhotos(content.galleryItems, 'public-work')
+  const community = publicWork.filter(
+    (item) =>
+      !['Courtesy visits', 'Public activities'].includes(item.event ?? ''),
+  )
+  const encounters = publicWork.filter((item) =>
+    ['Courtesy visits', 'Public activities'].includes(item.event ?? ''),
+  )
+  const videos = content.mediaItems.filter((item) => item.type === 'video')
+  const activities = sortActivities(content.updates).slice(0, 3)
   const notice = content.importantNotices.find((item) => item.pinned)
-
+  const positions = content.positions.filter((item) => item.featured)
+  const milestones = profile.journeyTimeline
+    .filter((item) =>
+      /MBBS|internship|hospital grounding|Indoor Medical Officer|Bangladesh Specialized Hospital/i.test(
+        item.title,
+      ),
+    )
+    .slice(0, 4)
   return (
     <div className="photo-home">
-      {homepage.sectionVisibility.profile && (
-        <section id="profile" className="page-shell anchor-offset">
-          <div className="hero-surface photographic-hero">
-            <div className="photographic-hero-copy">
-              <p className="profile-identity">{siteSettings.identityLine}</p>
-              <h1>{homepage.heroTitle}</h1>
-              <p className="profile-introduction">{homepage.heroSubtitle}</p>
-              <div className="profile-actions">
-                <Link className="button-primary" href="/gallery">
-                  <Images size={18} />
-                  Explore gallery
-                </Link>
-                <Link className="button-secondary" href="/about">
-                  Read biography
-                  <ArrowUpRight size={18} />
-                </Link>
-              </div>
-              <div className="profile-summary">
-                <span>Professional background</span>
-                <p>{homepage.biographySummary}</p>
-              </div>
-              <div className="profile-credentials">
-                {profile.badges.map((badge) => (
-                  <span key={badge}>{badge}</span>
-                ))}
-              </div>
+      {visible.profile && (
+        <section id="profile" className="page-shell introduction anchor-offset">
+          <div className="intro-copy">
+            <p className="section-index">{homepage.heroEyebrow}</p>
+            <h1>{homepage.heroTitle}</h1>
+            <p className="intro-description">{homepage.heroSubtitle}</p>
+            <div className="intro-actions">
+              <Link className="button-primary" href="/about">
+                Read biography
+                <ArrowUpRight size={18} />
+              </Link>
+              <a className="text-link" href="#medical-work">
+                Explore her work
+                <ArrowUpRight size={18} />
+              </a>
             </div>
-            <figure className="photographic-hero-image">
-              <Image
-                src={homepage.heroImage}
-                alt="Dr Umma Hani seated at a public event"
-                fill
-                priority
-                sizes="(min-width:1024px) 43vw, 94vw"
-                className="object-cover"
-              />
-            </figure>
-            <div className="profile-credentials profile-credentials-mobile">
-              {profile.badges.map((badge) => (
-                <span key={badge}>{badge}</span>
-              ))}
-            </div>
+            <p className="intro-location">
+              Medicine, writing & public life
+              <br />
+              <span>Bangladesh</span>
+            </p>
           </div>
-          <div className="profile-explore">
-            <span>Her work, through the moments that shape it.</span>
-            <a href="#photographs">
-              Discover the photographs
-              <ArrowRight size={16} />
-            </a>
-          </div>
+          <figure className="intro-portrait">
+            <Image
+              src={homepage.heroImage}
+              alt="Dr Umma Hani seated at a public event"
+              fill
+              priority
+              sizes="(min-width:768px) 52vw, 100vw"
+              className="object-cover"
+            />
+          </figure>
         </section>
       )}
 
-      {homepage.sectionVisibility.media && (
-        <section id="photographs" className="page-shell photo-section anchor-offset">
-          <div className="photo-section-heading">
-            <div>
-              <h2>A life in photographs.</h2>
-              <p>Medical service, community encounters, and conversations in public life.</p>
+      {visible.journey && (
+        <section
+          id="journey"
+          className="page-shell photo-section journey-section anchor-offset"
+        >
+          <figure className="journey-portrait">
+            <Image
+              src="/media/about-doctor-portrait.jpg"
+              alt="Dr Umma Hani wearing medical scrubs and a stethoscope"
+              width={778}
+              height={1280}
+              sizes="(min-width:768px) 30vw, 92vw"
+            />
+            <figcaption>Dr Umma Hani · Medical service</figcaption>
+          </figure>
+          <div className="journey-copy">
+            <SectionHeading
+              number="01 / Her journey"
+              title="A foundation in medicine."
+            />
+            <p className="reading-copy">{homepage.biographySummary}</p>
+            <p className="reading-copy">
+              Her published writing and community work extend that professional
+              journey into questions of health, opportunity, and participation.
+            </p>
+            <div className="journey-milestones">
+              {milestones.map((item) => (
+                <div key={item.title}>
+                  <span>{item.period}</span>
+                  <h3>{item.title}</h3>
+                </div>
+              ))}
             </div>
-            <Link className="text-link" href="/gallery">
-              The complete gallery
+            <Link className="text-link" href="/about">
+              The complete biography
               <ArrowUpRight size={18} />
             </Link>
           </div>
-          <GalleryGrid items={gallery} portfolio />
-          <div className="gallery-endnote">
-            <span>Explore a photograph to view the full image and caption.</span>
-            <Link href="/gallery">
-              More photographs
-              <ArrowRight size={17} />
-            </Link>
+        </section>
+      )}
+
+      {visible.medicalWork && (
+        <section
+          id="medical-work"
+          className="photo-section medical-section anchor-offset"
+        >
+          <div className="page-shell">
+            <SectionHeading
+              number="02 / Medicine & service"
+              title="Care, in practice."
+              description="Hospital experience, women’s health, and community healthcare."
+              href="/media-events"
+              link="Health programmes in the news"
+            />
+            <div className="section-introduction">
+              <p>
+                Her medical career includes Gynae and Obs appointments in Bogura
+                and medical officer service in Dhaka. Health programmes bring
+                that work into the community.
+              </p>
+              <Link className="text-link" href="/about">
+                Education & appointments
+                <ArrowUpRight size={18} />
+              </Link>
+            </div>
+            <PhotoCollection
+              items={medical}
+              layout="medical"
+              label="Medicine and service"
+            />
+            {!medical.length && (
+              <p>No service photographs are currently published.</p>
+            )}
           </div>
         </section>
       )}
 
-      {homepage.sectionVisibility.journey && (
-        <section id="journey" className="page-shell photo-section anchor-offset">
-          <div className="career-story">
-            <figure className="career-portrait">
-              <Image
-                src="/media/about-doctor-portrait.jpg"
-                alt="Dr Umma Hani seated in medical dress in a hospital setting"
-                fill
-                sizes="(min-width:1024px) 32vw, 92vw"
-                className="object-cover object-top"
+      {visible.dialogues !== false && (
+        <section
+          id="photographs"
+          className="photo-section dialogues-section anchor-offset"
+        >
+          <div className="page-shell">
+            <SectionHeading
+              number="03 / Dialogues & encounters"
+              title="In conversation."
+              description="Photographs from dialogues and public discussions."
+              href="/gallery"
+              link="All photographs"
+            />
+            {['Dhaka Dialogue', 'Bay of Bengal Conversation 2026'].map(
+              (event) => {
+                const images = dialogues.filter((item) => item.event === event)
+                return (
+                  images.length > 0 && (
+                    <article
+                      className={`dialogue-feature ${event.startsWith('Bay') ? 'dialogue-feature-bay' : ''}`}
+                      key={event}
+                    >
+                      <div className="dialogue-context">
+                        <p className="section-index">
+                          {event.startsWith('Bay')
+                            ? 'Conference encounters'
+                            : 'Women & society'}
+                        </p>
+                        <h3>{event}</h3>
+                        <p>
+                          {event.startsWith('Bay')
+                            ? 'At Bay of Bengal Conversation 2026, organised by the Centre for Governance Studies.'
+                            : 'At the Dhaka Dialogue on ending digital and AI-facilitated violence against women.'}
+                        </p>
+                      </div>
+                      <PhotoCollection
+                        items={images}
+                        layout={event.startsWith('Bay') ? 'pair' : 'dialogue'}
+                        label={event}
+                      />
+                    </article>
+                  )
+                )
+              },
+            )}
+            {dialogues.filter(
+              (item) =>
+                !['Dhaka Dialogue', 'Bay of Bengal Conversation 2026'].includes(
+                  item.event ?? '',
+                ),
+            ).length > 0 && (
+              <PhotoCollection
+                items={dialogues.filter(
+                  (item) =>
+                    ![
+                      'Dhaka Dialogue',
+                      'Bay of Bengal Conversation 2026',
+                    ].includes(item.event ?? ''),
+                )}
+                layout="dialogue"
+                label="More dialogue photographs"
               />
-              <figcaption>Dr Umma Hani · Medical service</figcaption>
-            </figure>
-            <div className="career-story-copy">
-              <h2>
-                A foundation in medicine.
-                <br />A commitment to people.
-              </h2>
-              <p>{profile.storyParagraphs[1] || homepage.biographySummary}</p>
-              <div className="education-record">
-                <div>
-                  <Image
-                    src="/branding/organizations/tmss-medical-college.png"
-                    alt="TMSS Medical College logo"
-                    width={50}
-                    height={50}
-                  />
-                  <span>
-                    Medical education<strong>TMSS Medical College</strong>
-                  </span>
-                </div>
-                <div>
-                  <Image
-                    src="/branding/organizations/rajshahi-university.png"
-                    alt="Rajshahi University logo"
-                    width={50}
-                    height={50}
-                  />
-                  <span>
-                    University<strong>Rajshahi University</strong>
-                  </span>
-                </div>
-              </div>
-              <Link className="text-link" href="/about">
-                Education, internship & experience
-                <ArrowUpRight size={18} />
-              </Link>
-            </div>
+            )}
+            {!dialogues.length && (
+              <p>No dialogue photographs are currently published.</p>
+            )}
           </div>
-          {career.length > 0 && (
-            <div className="career-appointments">
-              {career.map((item) => (
-                <article key={item.title}>
-                  <p>{item.period}</p>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </article>
-              ))}
+        </section>
+      )}
+
+      {visible.publicWork && (
+        <section
+          id="public-work"
+          className="page-shell photo-section public-section anchor-offset"
+        >
+          <SectionHeading
+            number="04 / Community & public life"
+            title="Among people."
+            description="Community visits, public activity, and encounters along the way."
+            href="/updates"
+            link="Activities & updates"
+          />
+          {community.length > 0 && (
+            <PhotoCollection
+              items={community}
+              layout="public"
+              label="Community work"
+            />
+          )}
+          {encounters.length > 0 && (
+            <div className="public-encounters">
+              <div className="section-introduction">
+                <h3>Visits & encounters</h3>
+                <p>
+                  Community outreach and public gatherings form another part of
+                  her work beyond the hospital.
+                </p>
+              </div>
+              <PhotoCollection
+                items={encounters}
+                layout="public"
+                label="Visits and public activities"
+              />
             </div>
           )}
-        </section>
-      )}
-
-      {homepage.sectionVisibility.medicalWork && (
-        <section id="medical-work" className="medical-portfolio photo-section anchor-offset">
-          <div className="page-shell">
-            <div className="photo-section-heading">
-              <div>
-                <h2>Care, in practice.</h2>
-                <p>Hospital experience, women’s health, and community healthcare.</p>
-              </div>
-              <Link className="text-link" href="/about">
-                Professional journey
-                <ArrowUpRight size={18} />
-              </Link>
-            </div>
-            <div className="medical-portfolio-feature">
-              <figure>
-                <Image
-                  src="/media/clinic-corridor-portrait.jpg"
-                  alt="Dr Umma Hani in a hospital corridor"
-                  fill
-                  sizes="(min-width:1024px) 45vw, 92vw"
-                  className="object-cover"
-                />
-              </figure>
-              <div>
-                <h3>
-                  Hospital service.
-                  <br />
-                  Human connection.
-                </h3>
-                <p>
-                  Her clinical career includes medical officer service in Dhaka and earlier Gynae
-                  and Obs appointments in Bogura. Medical camps and community health programmes
-                  extend that work beyond the hospital.
-                </p>
-                <Link className="text-link" href="/media-events">
-                  Health programmes in the news
-                  <ArrowUpRight size={18} />
-                </Link>
-              </div>
-            </div>
-            <div className="clinical-cards">
-              {profile.medicalCards.map((card) => (
-                <article key={card.title}>
-                  <figure>
-                    <Image
-                      src={card.image}
-                      alt={card.title}
-                      fill
-                      sizes="(min-width:1024px) 30vw, 92vw"
-                      className="object-cover"
-                    />
-                  </figure>
-                  <div>
-                    <h3>{card.title}</h3>
-                    <p>{card.body}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {homepage.sectionVisibility.publicWork && (
-        <section id="public-work" className="page-shell photo-section anchor-offset">
-          <div className="photo-section-heading">
-            <div>
-              <h2>Among people. In community.</h2>
-              <p>Neighbourhood visits, health programmes, and public activity.</p>
-            </div>
-            <Link className="text-link" href="/updates">
-              Activities & updates
-              <ArrowUpRight size={18} />
-            </Link>
-          </div>
-          <div className="public-photo-story">
-            {publicPhotographs.map((photo) => (
-              <Link
-                key={photo.image}
-                href={`/gallery#photo-${photo.image.split('/').pop()?.replace('.jpg', '')}`}
-                className="public-story-image"
-              >
-                <Image
-                  src={photo.image}
-                  alt={photo.alt}
-                  fill
-                  sizes="(min-width:1024px) 47vw, 92vw"
-                  className="object-cover"
-                />
-                <span>
-                  {photo.title}
-                  <ArrowUpRight size={18} />
-                </span>
-              </Link>
-            ))}
-          </div>
-          <div className="public-story-notes">
-            {profile.publicWorkCards.map((card) => (
-              <article key={card.title}>
-                <h3>{card.title}</h3>
-                <p>{card.body}</p>
-              </article>
-            ))}
-          </div>
+          {!publicWork.length && (
+            <p>No public-work photographs are currently published.</p>
+          )}
           {positions.length > 0 && (
             <div className="public-appointments">
               {positions.map((item) => (
@@ -319,7 +320,7 @@ export default async function HomePage() {
                       rel="noopener noreferrer"
                     >
                       Read source
-                      <ArrowUpRight size={16} />
+                      <ArrowUpRight size={18} />
                     </a>
                   )}
                 </article>
@@ -329,147 +330,121 @@ export default async function HomePage() {
         </section>
       )}
 
-      <section id="writing" className="page-shell photo-section anchor-offset">
-        <div className="writing-feature-surface">
-          <div className="photo-section-heading">
-            <div>
-              <h2>Writing & perspectives.</h2>
-              <p>Her published voice on women, health, and public life.</p>
-            </div>
-            <Link className="text-link" href="/writing">
-              All essays
-              <ArrowUpRight size={18} />
-            </Link>
-          </div>
-          <div className="writing-preview">
+      {visible.writing !== false && (
+        <section
+          id="writing"
+          className="page-shell photo-section writing-section anchor-offset"
+        >
+          <SectionHeading
+            number="05 / Published writing"
+            title="Writing & perspectives."
+            description="On women, health, opportunity, and public responsibility."
+            href="/writing"
+            link="All essays"
+          />
+          <div className="writing-selection">
             {essays.map((item) => (
               <PublicationCard key={item.id} item={item} compact />
             ))}
           </div>
           {!essays.length && (
-            <p className="reading-copy">New writing will appear here when published.</p>
+            <p>New writing will appear here when published.</p>
+          )}
+        </section>
+      )}
+
+      {(visible.media || visible.updates) && (
+        <div className="page-shell media-activities">
+          {visible.media && (
+            <section id="media" className="photo-section anchor-offset">
+              <SectionHeading
+                number="06 / Interviews & appearances"
+                title="Conversations on camera."
+                href="/media-events"
+                link="Press & interviews"
+              />
+              <VideoPlaylist items={videos} />
+            </section>
+          )}
+          {visible.updates && (
+            <section
+              id="updates"
+              className="photo-section activity-section anchor-offset"
+            >
+              <SectionHeading
+                number="The latest"
+                title="Recent activity."
+                href="/updates"
+                link="All updates"
+              />
+              <div className="activity-rows">
+                {activities.map((item) => (
+                  <article key={item.slug}>
+                    <p className="publication-meta">
+                      {item.date}
+                      <span>{item.category}</span>
+                    </p>
+                    <div>
+                      <h3>
+                        <Link href={`/updates/${item.slug}`}>{item.title}</Link>
+                      </h3>
+                      <p>{item.summary}</p>
+                    </div>
+                    <Link
+                      href={`/updates/${item.slug}`}
+                      className="text-link"
+                      aria-label={`Read activity: ${item.title}`}
+                    >
+                      <span>Read activity</span>
+                      <ArrowUpRight size={22} />
+                    </Link>
+                  </article>
+                ))}
+              </div>
+              {!activities.length && (
+                <p>No activities are currently published.</p>
+              )}
+            </section>
           )}
         </div>
-      </section>
-
-      {homepage.sectionVisibility.media && (
-        <section id="media" className="page-shell photo-section anchor-offset">
-          <div className="photo-section-heading">
-            <div>
-              <h2>Interviews & appearances.</h2>
-              <p>Conversations on camera and moments from the field.</p>
-            </div>
-            <Link className="text-link" href="/media-events">
-              Press & media
-              <ArrowUpRight size={18} />
-            </Link>
-          </div>
-          <div className="portfolio-videos">
-            {featuredVideo && (
-              <article className="portfolio-featured-video">
-                <h3>{featuredVideo.title}</h3>
-                <MediaFeatureCard
-                  title={featuredVideo.title}
-                  description={featuredVideo.description}
-                  thumbnail={featuredVideo.thumbnail}
-                  type={featuredVideo.type}
-                  url={featuredVideo.url}
-                  tone="light"
-                />
-              </article>
-            )}
-            <div className="portfolio-supporting-videos">
-              {supportingVideos.map((item) => (
-                <article key={item.id}>
-                  <MediaFeatureCard
-                    title={item.title}
-                    description={item.description}
-                    thumbnail={item.thumbnail}
-                    type={item.type}
-                    url={item.url}
-                    size="compact"
-                    tone="light"
-                  />
-                  <h3>{item.title}</h3>
-                </article>
-              ))}
-            </div>
-          </div>
-          {!videos.length && <p className="reading-copy">No videos are currently published.</p>}
-        </section>
       )}
 
-      {homepage.sectionVisibility.updates && (
-        <section id="updates" className="page-shell photo-section anchor-offset">
-          <div className="photo-section-heading">
-            <div>
-              <h2>Recent activities.</h2>
-              <p>Healthcare, community programmes, and public discussions.</p>
-            </div>
-            <Link className="text-link" href="/updates">
-              All updates
-              <ArrowUpRight size={18} />
-            </Link>
-          </div>
-          <div className="portfolio-activities">
-            {activities.map((item) => (
-              <article key={item.slug}>
-                {item.image && (
-                  <Link className="activity-photo" href={`/updates/${item.slug}`}>
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      sizes="(min-width:1024px) 30vw, 92vw"
-                      className="object-cover"
-                    />
-                  </Link>
-                )}
-                <div>
-                  <p className="publication-meta">
-                    {item.date} · {item.category}
-                  </p>
-                  <h3>
-                    <Link href={`/updates/${item.slug}`}>{item.title}</Link>
-                  </h3>
-                  <p>{item.summary}</p>
-                  <Link className="text-link" href={`/updates/${item.slug}`}>
-                    Read activity
-                    <ArrowRight size={16} />
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-          {!activities.length && (
-            <p className="reading-copy">No activities are currently published.</p>
-          )}
-          {notice && (
-            <aside className="portfolio-notice">
-              <strong>{notice.title}</strong>
-              <p>{notice.message}</p>
-            </aside>
-          )}
-        </section>
-      )}
-
-      {homepage.sectionVisibility.contact && (
-        <section id="contact" className="contact-section anchor-offset">
+      {visible.contact && (
+        <section
+          id="contact"
+          className="photo-section contact-section anchor-offset"
+        >
           <div className="page-shell contact-layout">
             <div>
+              <p className="section-index">Professional correspondence</p>
               <h2>Let’s connect.</h2>
               <p>{contact.intro}</p>
-              <a className="contact-email" href={`mailto:${siteSettings.primaryEmail}`}>
+              <a
+                className="contact-email"
+                href={`mailto:${siteSettings.primaryEmail}`}
+              >
                 {siteSettings.primaryEmail}
               </a>
               <div className="social-text-links">
                 {siteSettings.socialLinks.map((item) => (
-                  <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer">
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <SocialIcon label={item.label} />
                     {item.label}
+                    <ArrowUpRight size={16} />
                   </a>
                 ))}
               </div>
+              {notice && (
+                <aside className="contact-notice">
+                  <strong>{notice.title}</strong>
+                  <p>{notice.message}</p>
+                </aside>
+              )}
             </div>
             <ContactForm inquiryTypes={contact.inquiryTypes} />
           </div>

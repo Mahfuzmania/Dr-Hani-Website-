@@ -1,0 +1,66 @@
+[
+  {
+    "route": "/",
+    "status": 200
+  },
+  {
+    "route": "/about",
+    "status": 200
+  },
+  {
+    "route": "/writing",
+    "status": 200
+  },
+  {
+    "route": "/gallery",
+    "status": 200
+  },
+  {
+    "route": "/media-events",
+    "status": 200
+  },
+  {
+    "route": "/updates",
+    "status": 200
+  },
+  {
+    "route": "/privacy",
+    "status": 200
+  },
+  {
+    "route": "/updates/bytt-youth-finance-2026",
+    "status": 200
+  },
+  {
+    "route": "/updates/rayerbazar-health-camp-2025",
+    "status": 200
+  },
+  {
+    "route": "/updates/jagannath-university-health-camp-2025",
+    "status": 200
+  },
+  {
+    "route": "/updates/reserved-seat-nomination-form-2026",
+    "status": 200
+  },
+  {
+    "route": "/medical-service",
+    "status": 307,
+    "target": "/#medical-work"
+  },
+  {
+    "route": "/public-service",
+    "status": 307,
+    "target": "/#public-work"
+  },
+  {
+    "route": "/leadership",
+    "status": 307,
+    "target": "/#public-work"
+  },
+  {
+    "route": "/contact",
+    "status": 307,
+    "target": "/#contact"
+  }
+]

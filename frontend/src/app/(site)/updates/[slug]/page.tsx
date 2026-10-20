@@ -14,16 +14,23 @@ type Props = {
 
 export async function generateStaticParams() {
   const { updates } = await getSiteContent()
-  return updates.filter((item) => item.status === 'published').map((update) => ({ slug: update.slug }))
+  return updates
+    .filter((item) => item.status === 'published')
+    .map((update) => ({ slug: update.slug }))
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params
   const { updates } = await getSiteContent()
-  const update = updates.find((item) => item.slug === slug && item.status === 'published')
+  const update = updates.find(
+    (item) => item.slug === slug && item.status === 'published',
+  )
 
   if (!update) {
-    return buildMetadata('Update not found', 'Requested update could not be found.')
+    return buildMetadata(
+      'Update not found',
+      'Requested update could not be found.',
+    )
   }
 
   return buildMetadata(update.title, update.summary, `/updates/${slug}`)
@@ -32,16 +39,20 @@ export async function generateMetadata({ params }: Props) {
 export default async function UpdateDetailPage({ params }: Props) {
   const { slug } = await params
   const { updates, publications, galleryItems } = await getSiteContent()
-  const update = updates.find((item) => item.slug === slug && item.status === 'published')
+  const update = updates.find(
+    (item) => item.slug === slug && item.status === 'published',
+  )
 
   if (!update) {
     notFound()
   }
   const coverage = publications.filter((item) => item.relatedActivity === slug)
-  const photographs = galleryItems.filter((item) => item.relatedActivity === slug)
+  const photographs = galleryItems.filter(
+    (item) => item.relatedActivity === slug,
+  )
 
   return (
-    <div className="page-shell archive-page">
+    <div className="page-shell archive-page activity-detail">
       <Link className="text-link mb-8" href="/updates">
         Back to activities
       </Link>
@@ -51,13 +62,22 @@ export default async function UpdateDetailPage({ params }: Props) {
       <PageIntro title={update.title}>
         <p>{update.summary}</p>
       </PageIntro>
-      <div className={update.image ? 'grid gap-10 lg:grid-cols-2 lg:items-start' : ''}>
+      <div
+        className={
+          update.image ? 'grid gap-10 lg:grid-cols-2 lg:items-start' : ''
+        }
+      >
         <article className="reading-copy biography-copy">
           {update.body.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
           {update.sourceLink && (
-            <a className="text-link mt-6" href={update.sourceLink} target="_blank" rel="noopener noreferrer">
+            <a
+              className="text-link mt-6"
+              href={update.sourceLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Read the original report <span aria-hidden="true">↗</span>
             </a>
           )}

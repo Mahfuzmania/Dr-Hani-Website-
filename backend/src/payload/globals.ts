@@ -60,6 +60,8 @@ export const homepageGlobal: GlobalConfig = {
       fields: [
         { name: 'profile', type: 'checkbox', defaultValue: true },
         { name: 'journey', type: 'checkbox', defaultValue: true },
+        { name: 'dialogues', type: 'checkbox', defaultValue: true },
+        { name: 'writing', type: 'checkbox', defaultValue: true },
         { name: 'medicalWork', type: 'checkbox', defaultValue: true },
         { name: 'publicWork', type: 'checkbox', defaultValue: true },
         { name: 'media', type: 'checkbox', defaultValue: true },
@@ -88,4 +90,8 @@ export const privacyPageGlobal: GlobalConfig = {
   ],
 }
 
-export const globals: GlobalConfig[] = [siteSettingsGlobal, homepageGlobal, privacyPageGlobal]
+export const globals: GlobalConfig[] = [
+  siteSettingsGlobal,
+  homepageGlobal,
+  privacyPageGlobal,
+]

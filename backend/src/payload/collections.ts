@@ -138,6 +138,17 @@ export const galleryItemsCollection: CollectionConfig = {
     },
     { name: 'caption', type: 'textarea' },
     { name: 'featured', type: 'checkbox', defaultValue: false },
+    {
+      name: 'homepageSection',
+      type: 'select',
+      options: [
+        { label: 'Medicine and service', value: 'medical-work' },
+        { label: 'Dialogues and encounters', value: 'dialogues' },
+        { label: 'Community and public life', value: 'public-work' },
+      ],
+    },
+    { name: 'focalX', type: 'number', min: 0, max: 100, defaultValue: 50 },
+    { name: 'focalY', type: 'number', min: 0, max: 100, defaultValue: 50 },
     { name: 'sortOrder', type: 'number', defaultValue: 0 },
     statusField(),
   ],
@@ -155,7 +166,13 @@ export const mediaItemsCollection: CollectionConfig = {
   admin: {
     group: 'Content',
     useAsTitle: 'title',
-    defaultColumns: ['title', 'type', 'category', 'featuredOnHomepage', 'status'],
+    defaultColumns: [
+      'title',
+      'type',
+      'category',
+      'featuredOnHomepage',
+      'status',
+    ],
   },
   fields: [
     { name: 'title', type: 'text', required: true },
@@ -192,7 +209,14 @@ export const updatesCollection: CollectionConfig = {
   admin: {
     group: 'Content',
     useAsTitle: 'title',
-    defaultColumns: ['title', 'category', 'publishDate', 'featured', 'pinned', 'status'],
+    defaultColumns: [
+      'title',
+      'category',
+      'publishDate',
+      'featured',
+      'pinned',
+      'status',
+    ],
   },
   access: {
     read: publishedContent,
@@ -221,7 +245,14 @@ export const importantNoticesCollection: CollectionConfig = {
   admin: {
     group: 'Content',
     useAsTitle: 'title',
-    defaultColumns: ['title', 'category', 'pinned', 'startDate', 'expiryDate', 'status'],
+    defaultColumns: [
+      'title',
+      'category',
+      'pinned',
+      'startDate',
+      'expiryDate',
+      'status',
+    ],
   },
   access: {
     read: publishedContent,
@@ -246,7 +277,14 @@ export const positionsCollection: CollectionConfig = {
   admin: {
     group: 'Content',
     useAsTitle: 'title',
-    defaultColumns: ['title', 'organization', 'period', 'featured', 'sortOrder', 'status'],
+    defaultColumns: [
+      'title',
+      'organization',
+      'period',
+      'featured',
+      'sortOrder',
+      'status',
+    ],
   },
   access: {
     read: publishedContent,
@@ -273,7 +311,11 @@ export const positionsCollection: CollectionConfig = {
         { label: 'Internal source', value: 'internal' },
       ],
     },
-    { name: 'sourceNote', type: 'textarea', access: { read: ({ req }) => Boolean(req.user) } },
+    {
+      name: 'sourceNote',
+      type: 'textarea',
+      access: { read: ({ req }) => Boolean(req.user) },
+    },
     { name: 'sourceLink', type: 'text' },
     { name: 'featured', type: 'checkbox', defaultValue: false },
     { name: 'sortOrder', type: 'number', defaultValue: 0 },
