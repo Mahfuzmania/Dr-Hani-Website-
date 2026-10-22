@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
-import { Play } from 'lucide-react'
+import { PlayIcon as Play } from '@phosphor-icons/react/ssr'
 import type { SiteContentV2 } from '../../../../shared/site-content-v2'
 
 export function VideoPlaylist({
@@ -43,7 +43,7 @@ export function VideoPlaylist({
               className="object-cover"
             />
             <span className="video-play">
-              <Play size={30} />
+              <Play size={30} aria-hidden="true" />
             </span>
           </button>
         )}

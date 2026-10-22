@@ -4,24 +4,39 @@ import { useMemo, useState } from 'react'
 import type { Publication } from '../../../../shared/publications'
 import { sortPublications } from '../../../../shared/publications'
 import { PublicationCard } from './publication-card'
+import {
+  MagnifyingGlassIcon,
+  FunnelSimpleIcon,
+  NewspaperIcon,
+} from '@phosphor-icons/react/ssr'
 
-export function PublicationArchive({ items, kind }: { items: Publication[]; kind: Publication['kind'] }) {
+export function PublicationArchive({
+  items,
+  kind,
+}: {
+  items: Publication[]
+  kind: Publication['kind']
+}) {
   const [query, setQuery] = useState('')
   const [topic, setTopic] = useState('')
   const [publisher, setPublisher] = useState('')
   const entries = useMemo(
-    () => items.filter((item) => item.kind === kind && item.status === 'published'),
+    () =>
+      items.filter((item) => item.kind === kind && item.status === 'published'),
     [items, kind],
   )
   const topics = [...new Set(entries.flatMap((item) => item.topics))].sort()
   const publishers = [
-    ...new Set(entries.flatMap((item) => item.sources.map((source) => source.publisher))),
+    ...new Set(
+      entries.flatMap((item) => item.sources.map((source) => source.publisher)),
+    ),
   ].sort()
   const filtered = sortPublications(
     entries.filter(
       (item) =>
         (!topic || item.topics.includes(topic)) &&
-        (!publisher || item.sources.some((source) => source.publisher === publisher)) &&
+        (!publisher ||
+          item.sources.some((source) => source.publisher === publisher)) &&
         `${item.title} ${item.summary} ${item.topics.join(' ')} ${item.sources.map((source) => source.publisher).join(' ')}`
           .toLocaleLowerCase()
           .includes(query.trim().toLocaleLowerCase()),
@@ -29,8 +44,13 @@ export function PublicationArchive({ items, kind }: { items: Publication[]; kind
   )
   return (
     <>
-      <form className="archive-filters" role="search" onSubmit={(event) => event.preventDefault()}>
+      <form
+        className="archive-filters"
+        role="search"
+        onSubmit={(event) => event.preventDefault()}
+      >
         <label>
+          <MagnifyingGlassIcon size={16} aria-hidden="true" />
           Search {kind === 'essay' ? 'writing' : 'coverage'}
           <input
             className="input-shell"
@@ -41,8 +61,13 @@ export function PublicationArchive({ items, kind }: { items: Publication[]; kind
           />
         </label>
         <label>
+          <FunnelSimpleIcon size={16} aria-hidden="true" />
           Topic
-          <select className="input-shell" value={topic} onChange={(event) => setTopic(event.target.value)}>
+          <select
+            className="input-shell"
+            value={topic}
+            onChange={(event) => setTopic(event.target.value)}
+          >
             <option value="">All topics</option>
             {topics.map((label) => (
               <option key={label}>{label}</option>
@@ -50,6 +75,7 @@ export function PublicationArchive({ items, kind }: { items: Publication[]; kind
           </select>
         </label>
         <label>
+          <NewspaperIcon size={16} aria-hidden="true" />
           Publisher
           <select
             className="input-shell"

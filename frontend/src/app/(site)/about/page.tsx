@@ -13,8 +13,11 @@ export default async function AboutPage() {
   const { profile } = await getSiteContent()
   return (
     <div className="page-shell archive-page">
-      <PageIntro title="A life in medicine & public service">
-        <p>The professional journey of Dr Umma Hani.</p>
+      <PageIntro title="About Dr Umma Hani">
+        <p>
+          Medical education, professional experience, writing, and community
+          work.
+        </p>
       </PageIntro>
       <div className="biography-layout">
         <div className="biography-image">

@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import type { SiteContentV2 } from '../../../../shared/site-content-v2'
 import { MobileMenu } from './mobile-menu'
 import { navigation } from './navigation'
+import { ArrowUpRightIcon } from '@phosphor-icons/react/ssr'
 
 export function Header({
   settings,
@@ -14,7 +15,7 @@ export function Header({
   const pathname = usePathname()
   return (
     <header className="site-header">
-      <div className="page-shell portfolio-navigation">
+      <div className="portfolio-navigation">
         <Link href="/" className="portfolio-brand min-w-0">
           <p className="truncate font-serif text-[1.5rem] leading-none text-[var(--navy)] md:text-[1.8rem]">
             {settings.fullName}
@@ -41,6 +42,7 @@ export function Header({
           href="/#contact"
         >
           Contact
+          <ArrowUpRightIcon size={16} aria-hidden="true" />
         </Link>
         <div className="xl:hidden">
           <MobileMenu settings={settings} />

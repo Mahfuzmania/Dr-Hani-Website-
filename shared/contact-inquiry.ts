@@ -6,7 +6,26 @@ export const contactInquirySchema = z.object({
   phone: z.string().max(40).optional().or(z.literal('')),
   inquiryType: z.string().min(2, 'Please select an inquiry type.').max(80),
   subject: z.string().trim().min(3, 'Please provide a short subject.').max(120),
-  message: z.string().trim().min(20, 'Please write a more detailed message.').max(2000),
+  message: z
+    .string()
+    .trim()
+    .min(20, 'Please write a more detailed message.')
+    .max(2000),
 })
 
 export type ContactInquiryInput = z.infer<typeof contactInquirySchema>
+
+export function inquiryEmailDraft(
+  recipient: string,
+  inquiry: ContactInquiryInput,
+) {
+  const body = [
+    inquiry.message,
+    '',
+    `Name: ${inquiry.name}`,
+    `Email: ${inquiry.email}`,
+    ...(inquiry.phone ? [`Phone: ${inquiry.phone}`] : []),
+    `Inquiry: ${inquiry.inquiryType}`,
+  ].join('\n')
+  return `mailto:${recipient}?subject=${encodeURIComponent(inquiry.subject)}&body=${encodeURIComponent(body)}`
+}

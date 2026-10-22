@@ -1,48 +1,53 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { useEffect, useRef, useState, useId } from 'react'
-import { ArrowLeft, ArrowRight, Expand, X } from 'lucide-react'
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useRef, useState, useId } from "react";
+import {
+  ArrowLeftIcon as ArrowLeft,
+  ArrowRightIcon as ArrowRight,
+  ArrowsOutSimpleIcon as Expand,
+  XIcon as X,
+} from "@phosphor-icons/react/ssr";
 import {
   photoPosition,
   type GalleryItem,
-} from '../../../../shared/photo-curation'
-import { photoDimensions } from '../../../../shared/photo-dimensions'
-import { containDialogFocus } from '@/src/lib/dialog-focus'
+} from "../../../../shared/photo-curation";
+import { photoDimensions } from "../../../../shared/photo-dimensions";
+import { containDialogFocus } from "@/src/lib/dialog-focus";
 
 /** One viewer for homepage features and the filtered archive. */
 export function PhotoCollection({
   items,
-  layout = 'archive',
-  label = 'Photographs',
+  layout = "archive",
+  label = "Photographs",
 }: {
-  items: GalleryItem[]
-  layout?: 'archive' | 'medical' | 'dialogue' | 'public' | 'pair'
-  label?: string
+  items: GalleryItem[];
+  layout?: "archive" | "medical" | "doctors" | "dialogue" | "public" | "pair";
+  label?: string;
 }) {
-  const published = items.filter((item) => item.status === 'published')
-  const [openId, setOpenId] = useState<string | null>(null)
-  const dialog = useRef<HTMLDialogElement>(null)
-  const opener = useRef<HTMLButtonElement | null>(null)
-  const strip = useRef<HTMLDivElement>(null)
-  const headingId = useId()
-  const selected = published.find((item) => item.id === openId)
-  const index = published.findIndex((item) => item.id === openId)
+  const published = items.filter((item) => item.status === "published");
+  const [openId, setOpenId] = useState<string | null>(null);
+  const dialog = useRef<HTMLDialogElement>(null);
+  const opener = useRef<HTMLButtonElement | null>(null);
+  const strip = useRef<HTMLDivElement>(null);
+  const headingId = useId();
+  const selected = published.find((item) => item.id === openId);
+  const index = published.findIndex((item) => item.id === openId);
   useEffect(() => {
-    if (!selected) return
-    const previous = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    if (!dialog.current?.open) dialog.current?.showModal()
+    if (!selected) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    if (!dialog.current?.open) dialog.current?.showModal();
     return () => {
-      document.body.style.overflow = previous
-    }
-  }, [selected])
+      document.body.style.overflow = previous;
+    };
+  }, [selected]);
   function move(amount: number) {
     if (published.length)
       setOpenId(
         published[(index + amount + published.length) % published.length].id,
-      )
+      );
   }
   return (
     <div className={`photo-collection photo-collection-${layout}`}>
@@ -57,10 +62,10 @@ export function PhotoCollection({
             <button
               type="button"
               className="photo-open"
-              aria-label={`View photograph: ${item.title}`}
+              aria-label={`View photograph: ${item.altText}`}
               onClick={(event) => {
-                opener.current = event.currentTarget
-                setOpenId(item.id)
+                opener.current = event.currentTarget;
+                setOpenId(item.id);
               }}
             >
               <Image
@@ -69,9 +74,9 @@ export function PhotoCollection({
                 width={photoDimensions[item.image]?.width ?? 1200}
                 height={photoDimensions[item.image]?.height ?? 1600}
                 sizes={
-                  layout === 'archive'
-                    ? '(min-width:1440px) 24vw, (min-width:1024px) 32vw, (min-width:640px) 48vw, 92vw'
-                    : '(min-width:1440px) 48vw, (min-width:768px) 48vw, 92vw'
+                  layout === "archive"
+                    ? "(min-width:1440px) 24vw, (min-width:1024px) 32vw, (min-width:640px) 48vw, 92vw"
+                    : "(min-width:1440px) 48vw, (min-width:768px) 48vw, 92vw"
                 }
                 style={{ objectPosition: photoPosition(item) }}
               />
@@ -79,14 +84,16 @@ export function PhotoCollection({
                 <Expand size={18} />
               </span>
             </button>
-            <figcaption>
-              <span className="photo-caption-title">{item.title}</span>
-              <span>{item.caption}</span>
-            </figcaption>
+            {layout === "archive" && (
+              <figcaption>
+                <span className="photo-caption-title">{item.title}</span>
+                <span>{item.caption}</span>
+              </figcaption>
+            )}
           </figure>
         ))}
       </div>
-      {layout !== 'archive' && published.length > 1 && (
+      {layout !== "archive" && published.length > 1 && (
         <div
           className="photo-strip-controls"
           aria-label={`${label} scrolling controls`}
@@ -97,7 +104,7 @@ export function PhotoCollection({
             onClick={() =>
               strip.current?.scrollBy({
                 left: -strip.current.clientWidth * 0.8,
-                behavior: 'smooth',
+                behavior: "smooth",
               })
             }
           >
@@ -108,7 +115,7 @@ export function PhotoCollection({
             onClick={() =>
               strip.current?.scrollBy({
                 left: strip.current.clientWidth * 0.8,
-                behavior: 'smooth',
+                behavior: "smooth",
               })
             }
           >
@@ -121,18 +128,18 @@ export function PhotoCollection({
         className="gallery-dialog"
         aria-labelledby={headingId}
         onKeyDown={(event) => {
-          if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-            event.preventDefault()
-            move(event.key === 'ArrowLeft' ? -1 : 1)
+          if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+            event.preventDefault();
+            move(event.key === "ArrowLeft" ? -1 : 1);
           }
-          containDialogFocus(event)
+          containDialogFocus(event);
         }}
         onClick={(event) => {
-          if (event.target === event.currentTarget) dialog.current?.close()
+          if (event.target === event.currentTarget) dialog.current?.close();
         }}
         onClose={() => {
-          setOpenId(null)
-          opener.current?.focus()
+          setOpenId(null);
+          opener.current?.focus();
         }}
       >
         {selected && (
@@ -184,5 +191,5 @@ export function PhotoCollection({
         )}
       </dialog>
     </div>
-  )
+  );
 }

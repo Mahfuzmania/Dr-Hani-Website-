@@ -1,0 +1,128 @@
+[
+  {
+    "headingClipped": false,
+    "overflow": false,
+    "variant": "signature",
+    "view": "home",
+    "width": 360
+  },
+  {
+    "headingClipped": false,
+    "overflow": false,
+    "variant": "signature",
+    "view": "writing",
+    "width": 360
+  },
+  {
+    "headingClipped": false,
+    "overflow": false,
+    "variant": "portrait",
+    "view": "home",
+    "width": 360
+  },
+  {
+    "headingClipped": false,
+    "overflow": false,
+    "variant": "portrait",
+    "view": "writing",
+    "width": 360
+  },
+  {
+    "headingClipped": false,
+    "overflow": false,
+    "variant": "journal",
+    "view": "home",
+    "width": 360
+  },
+  {
+    "headingClipped": false,
+    "overflow": false,
+    "variant": "journal",
+    "view": "writing",
+    "width": 360
+  },
+  {
+    "headingClipped": false,
+    "overflow": false,
+    "variant": "signature",
+    "view": "home",
+    "width": 430
+  },
+  {
+    "headingClipped": false,
+    "overflow": false,
+    "variant": "signature",
+    "view": "writing",
+    "width": 430
+  },
+  {
+    "headingClipped": false,
+    "overflow": false,
+    "variant": "portrait",
+    "view": "home",
+    "width": 430
+  },
+  {
+    "headingClipped": false,
+    "overflow": false,
+    "variant": "portrait",
+    "view": "writing",
+    "width": 430
+  },
+  {
+    "headingClipped": false,
+    "overflow": false,
+    "variant": "journal",
+    "view": "home",
+    "width": 430
+  },
+  {
+    "headingClipped": false,
+    "overflow": false,
+    "variant": "journal",
+    "view": "writing",
+    "width": 430
+  },
+  {
+    "headingClipped": false,
+    "overflow": false,
+    "variant": "signature",
+    "view": "home",
+    "width": 768
+  },
+  {
+    "headingClipped": false,
+    "overflow": false,
+    "variant": "signature",
+    "view": "writing",
+    "width": 768
+  },
+  {
+    "headingClipped": false,
+    "overflow": false,
+    "variant": "portrait",
+    "view": "home",
+    "width": 768
+  },
+  {
+    "headingClipped": false,
+    "overflow": false,
+    "variant": "portrait",
+    "view": "writing",
+    "width": 768
+  },
+  {
+    "headingClipped": false,
+    "overflow": false,
+    "variant": "journal",
+    "view": "home",
+    "width": 768
+  },
+  {
+    "headingClipped": false,
+    "overflow": false,
+    "variant": "journal",
+    "view": "writing",
+    "width": 768
+  }
+]

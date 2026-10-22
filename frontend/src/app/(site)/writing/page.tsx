@@ -13,10 +13,10 @@ export default async function WritingPage() {
   const content = await getSiteContent()
   return (
     <div className="page-shell archive-page">
-      <PageIntro title="Writing & perspectives">
+      <PageIntro title="Published writing">
         <p>
-          On women, health, and the society we share. Explore Dr Hani’s published columns in their original
-          publications.
+          Columns by Dr Umma Hani, with original Bengali titles, English
+          summaries, and links to the publishers.
         </p>
       </PageIntro>
       <PublicationArchive items={content.publications} kind="essay" />

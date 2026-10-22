@@ -10,11 +10,16 @@ export const metadata = buildMetadata(
 )
 export default async function GalleryPage() {
   const content = await getSiteContent()
-  const items = [...content.galleryItems].sort((a, b) => a.sortOrder - b.sortOrder)
+  const items = [...content.galleryItems].sort(
+    (a, b) => a.sortOrder - b.sortOrder,
+  )
   return (
     <div className="page-shell archive-page">
-      <PageIntro title="Moments & encounters">
-        <p>Selected photographs from clinical settings, community programmes, and public conversations.</p>
+      <PageIntro title="Photographs">
+        <p>
+          Selected photographs from clinical settings, community programmes, and
+          public conversations.
+        </p>
       </PageIntro>
       <GalleryGrid items={items} />
     </div>

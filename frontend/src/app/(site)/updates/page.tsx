@@ -1,3 +1,4 @@
+import { ArrowUpRightIcon } from '@phosphor-icons/react/ssr'
 import Link from 'next/link'
 import Image from 'next/image'
 import { PageIntro } from '@/src/components/site/page-intro'
@@ -17,7 +18,8 @@ export default async function UpdatesPage() {
     <div className="page-shell archive-page">
       <PageIntro title="Activities & updates">
         <p>
-          Healthcare programmes, community visits, and public discussions, in chronological order.
+          Healthcare programmes, community visits, and public discussions, in
+          chronological order.
         </p>
       </PageIntro>
       {items.map((item) => (
@@ -29,7 +31,10 @@ export default async function UpdatesPage() {
           </p>
           <div>
             {item.image && (
-              <Link className="update-archive-image" href={`/updates/${item.slug}`}>
+              <Link
+                className="update-archive-image"
+                href={`/updates/${item.slug}`}
+              >
                 <Image
                   src={item.image}
                   alt={item.title}
@@ -44,7 +49,7 @@ export default async function UpdatesPage() {
             </h2>
             <p>{item.summary}</p>
             <Link className="text-link mt-5" href={`/updates/${item.slug}`}>
-              Read activity <span aria-hidden="true">↗</span>
+              Read activity <ArrowUpRightIcon size={16} aria-hidden="true" />
             </Link>
           </div>
         </article>

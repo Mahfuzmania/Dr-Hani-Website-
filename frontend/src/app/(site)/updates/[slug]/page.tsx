@@ -1,3 +1,4 @@
+import { ArrowUpRightIcon } from '@phosphor-icons/react/ssr'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -78,7 +79,8 @@ export default async function UpdateDetailPage({ params }: Props) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Read the original report <span aria-hidden="true">↗</span>
+              Read the original report{' '}
+              <ArrowUpRightIcon size={16} aria-hidden="true" />
             </a>
           )}
         </article>

@@ -616,7 +616,7 @@ const originalContent: Omit<SiteContentV2, 'publications'> = {
     sections: [
       {
         title: 'Inquiry data',
-        body: 'Messages submitted through the contact form are stored so they can be reviewed, answered, and followed up by the site team.',
+        body: 'In email mode, the contact form prepares a draft in your email app. The website does not store that draft; you review and send it through your email provider. When an online enquiry service is connected, submitted messages are stored for the site team to review, answer, and follow up.',
       },
       {
         title: 'Public contact information',
@@ -710,14 +710,50 @@ export const siteContentV2: SiteContentV2 = {
       (item) => item.id !== 'chhatra-dal-central-vice-president-2026',
     ),
   ],
-  mediaItems: originalContent.mediaItems.filter(
-    (item) => item.type !== 'article',
-  ),
+  mediaItems: originalContent.mediaItems
+    .filter((item) => item.type !== 'article')
+    .map((item) => ({
+      ...item,
+      ...(
+        {
+          'interview-live-broadcast': {
+            title: 'Interview',
+            description: 'An interview with Dr Umma Hani.',
+          },
+          'medical-camp-service-video': {
+            title: 'Medical camp',
+            description: 'A recording from a medical camp.',
+          },
+          'women-gathering-video': {
+            title: 'Community visit',
+            description: 'Dr Umma Hani at a community gathering.',
+          },
+          'nomination-office-video': {
+            title: 'Public programme',
+            description: 'A recording from a public programme.',
+          },
+          'late-night-field-video': {
+            title: 'Field visit',
+            description: 'A recording from a field visit.',
+          },
+        } as Record<string, { title: string; description: string }>
+      )[item.id],
+    })),
   galleryItems: [
     ...editorialGallery,
     ...originalContent.galleryItems.map((item, index) => ({
       ...item,
-      title: item.id === 'bedside-review' ? 'Bedside review' : item.title,
+      title:
+        (
+          {
+            'bedside-review': 'Bedside review',
+            'public-leaflet-briefing': 'Public outreach',
+            'women-public-rally': 'Community programme',
+            'womencare-community-access': 'Community visit',
+            'field-presence-portrait': 'Field visit',
+            'community-street-walk': 'Neighbourhood visit',
+          } as Record<string, string>
+        )[item.id] ?? item.title,
       event:
         item.category === 'medical'
           ? 'Medical service'

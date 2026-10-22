@@ -12,7 +12,7 @@ const photos: PhotoSeed[] = [
   ],
   [
     'dhaka-dialogue-conversation',
-    'In conversation',
+    'Dhaka Dialogue',
     'Dr Umma Hani in conversation with another attendee at the Dhaka Dialogue venue.',
     'Dhaka Dialogue',
     'dialogues',
@@ -20,7 +20,7 @@ const photos: PhotoSeed[] = [
   ],
   [
     'dialogue-portrait-c',
-    'An encounter at the dialogue',
+    'Dhaka Dialogue',
     'Dr Umma Hani standing alongside another attendee beside a Dhaka Dialogue banner.',
     'Dhaka Dialogue',
     'dialogues',
@@ -28,7 +28,7 @@ const photos: PhotoSeed[] = [
   ],
   [
     'dialogue-portrait-e',
-    'At the dialogue venue',
+    'Dhaka Dialogue',
     'Dr Umma Hani alongside another attendee in the dialogue venue.',
     'Dhaka Dialogue',
     'dialogues',
@@ -44,7 +44,7 @@ const photos: PhotoSeed[] = [
   ],
   [
     'conference-portrait',
-    'A conference encounter',
+    'Conference photograph',
     'Dr Umma Hani alongside another attendee wearing conference badges.',
     'Bay of Bengal Conversation 2026',
     'dialogues',
@@ -60,7 +60,7 @@ const photos: PhotoSeed[] = [
   ],
   [
     'doctors-gathering',
-    'At the gathering venue',
+    'Doctors’ gathering',
     'Dr Umma Hani standing in front of the doctors’ gathering stage and backdrop.',
     'Doctors’ gathering',
     'medical-work',
@@ -68,7 +68,7 @@ const photos: PhotoSeed[] = [
   ],
   [
     'courtesy-office',
-    'An office visit',
+    'Office visit',
     'Dr Umma Hani standing beside a seated person in an office setting.',
     'Courtesy visits',
     'public-work',
@@ -76,7 +76,7 @@ const photos: PhotoSeed[] = [
   ],
   [
     'courtesy-portrait',
-    'A courtesy visit',
+    'Courtesy visit',
     'Dr Umma Hani alongside another person holding a bouquet of blue flowers.',
     'Courtesy visits',
     'public-work',
@@ -92,7 +92,7 @@ const photos: PhotoSeed[] = [
   ],
   [
     'public-placard',
-    'At a public gathering',
+    'Public gathering',
     'Dr Umma Hani holding a Bengali placard at an outdoor public gathering.',
     'Public activities',
     'public-work',
@@ -100,7 +100,7 @@ const photos: PhotoSeed[] = [
   ],
   [
     'dialogue-portrait-b',
-    'A conversation between attendees',
+    'Dhaka Dialogue',
     'Dr Umma Hani smiling alongside another attendee at the dialogue venue.',
     'Dhaka Dialogue',
     'dialogues',
@@ -108,7 +108,7 @@ const photos: PhotoSeed[] = [
   ],
   [
     'dialogue-portrait-a',
-    'At the dialogue',
+    'Dhaka Dialogue',
     'Dr Umma Hani alongside another attendee near the dialogue banner.',
     'Dhaka Dialogue',
     'dialogues',
@@ -116,7 +116,7 @@ const photos: PhotoSeed[] = [
   ],
   [
     'dialogue-portrait-d',
-    'An encounter at the venue',
+    'Dhaka Dialogue',
     'Dr Umma Hani alongside another attendee in the dialogue venue.',
     'Dhaka Dialogue',
     'dialogues',
@@ -124,7 +124,7 @@ const photos: PhotoSeed[] = [
   ],
   [
     'courtesy-group',
-    'A group visit',
+    'Group visit',
     'Dr Umma Hani with a group of visitors holding a bouquet of blue flowers.',
     'Courtesy visits',
     'public-work',

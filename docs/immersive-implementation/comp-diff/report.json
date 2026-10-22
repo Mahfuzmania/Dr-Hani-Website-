@@ -1,0 +1,437 @@
+{
+  "tool": "comp-diff",
+  "version": 1,
+  "createdAt": "2026-10-21T14:50:00.096Z",
+  "label": "Concept board comparison; layout and geometry superseded by direct user feedback",
+  "comp": "docs/composition-review-20261021/02-immersive-navy.png",
+  "build": "docs/immersive-implementation/home-1366.png",
+  "spec": null,
+  "compSize": "1536x1024",
+  "buildSize": "1366x900",
+  "align": "top",
+  "overall": 0.5343,
+  "verdict": "contradicted",
+  "scores": {
+    "overall": 0.5343,
+    "structure": 0.2197,
+    "color": 0.8618,
+    "colorIntersection": 0.7656,
+    "paletteMatch": 0.9136,
+    "detail": 0.4079,
+    "detailRaw": 0.4443,
+    "detailAdded": 0.0729,
+    "bands": 0.9333
+  },
+  "palette": {
+    "comp": [
+      {
+        "hex": "#f6f5f4",
+        "coverage": 0.5761
+      },
+      {
+        "hex": "#081838",
+        "coverage": 0.1677
+      },
+      {
+        "hex": "#0b2131",
+        "coverage": 0.1526
+      },
+      {
+        "hex": "#0e0d12",
+        "coverage": 0.0494
+      },
+      {
+        "hex": "#e4cfb7",
+        "coverage": 0.0284
+      },
+      {
+        "hex": "#a1313c",
+        "coverage": 0.0257
+      }
+    ],
+    "build": [
+      {
+        "hex": "#f7f7f6",
+        "coverage": 0.4995
+      },
+      {
+        "hex": "#091938",
+        "coverage": 0.3286
+      },
+      {
+        "hex": "#162a3a",
+        "coverage": 0.0727
+      },
+      {
+        "hex": "#e8dcca",
+        "coverage": 0.0494
+      },
+      {
+        "hex": "#141111",
+        "coverage": 0.0296
+      },
+      {
+        "hex": "#4d5963",
+        "coverage": 0.0201
+      }
+    ]
+  },
+  "regions": [
+    {
+      "id": "band-1",
+      "x": 0,
+      "y": 0,
+      "w": 1,
+      "h": 0.07058823529411765,
+      "kind": "band",
+      "score": {
+        "overall": 0.6166,
+        "structure": 0.8956,
+        "color": 0.9515,
+        "colorIntersection": 0.894,
+        "paletteMatch": 0.9825,
+        "detail": 0.261,
+        "detailRaw": 0.386,
+        "detailAdded": 0.25,
+        "bands": 0
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 66,
+          "y": 13,
+          "w": 1049,
+          "h": 59
+        },
+        "build": {
+          "x": 83,
+          "y": 15,
+          "w": 1370,
+          "h": 50
+        }
+      }
+    },
+    {
+      "id": "band-2",
+      "x": 0,
+      "y": 0.07058823529411765,
+      "w": 1,
+      "h": 0.16470588235294117,
+      "kind": "band",
+      "score": {
+        "overall": 0.581,
+        "structure": 0.6091,
+        "color": 0.737,
+        "colorIntersection": 0.5308,
+        "paletteMatch": 0.8481,
+        "detail": 0.3743,
+        "detailRaw": 0.4107,
+        "detailAdded": 0.0729,
+        "bands": 0.6
+      },
+      "verdict": "contradicted",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 1536,
+          "h": 169
+        },
+        "build": {
+          "x": 0,
+          "y": 0,
+          "w": 1536,
+          "h": 169
+        }
+      }
+    },
+    {
+      "id": "band-3",
+      "x": 0,
+      "y": 0.23529411764705882,
+      "w": 1,
+      "h": 0.11764705882352944,
+      "kind": "band",
+      "score": {
+        "overall": 0.3628,
+        "structure": 0.4384,
+        "color": 0.5543,
+        "colorIntersection": 0.5287,
+        "paletteMatch": 0.568,
+        "detail": 0.2831,
+        "detailRaw": 0.3925,
+        "detailAdded": 0.2188,
+        "bands": 0
+      },
+      "verdict": "contradicted",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 1536,
+          "h": 120
+        },
+        "build": {
+          "x": 0,
+          "y": 0,
+          "w": 1536,
+          "h": 120
+        }
+      }
+    },
+    {
+      "id": "band-4",
+      "x": 0,
+      "y": 0.35294117647058826,
+      "w": 1,
+      "h": 0.1529411764705882,
+      "kind": "band",
+      "score": {
+        "overall": 0.4199,
+        "structure": 0.4242,
+        "color": 0.7091,
+        "colorIntersection": 0.5757,
+        "paletteMatch": 0.7809,
+        "detail": 0.3768,
+        "detailRaw": 0.4601,
+        "detailAdded": 0.1667,
+        "bands": 0
+      },
+      "verdict": "contradicted",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 1536,
+          "h": 157
+        },
+        "build": {
+          "x": 0,
+          "y": 0,
+          "w": 1536,
+          "h": 157
+        }
+      }
+    },
+    {
+      "id": "band-5",
+      "x": 0,
+      "y": 0.5058823529411764,
+      "w": 1,
+      "h": 0.08235294117647063,
+      "kind": "band",
+      "score": {
+        "overall": 0.3539,
+        "structure": 0.361,
+        "color": 0.6864,
+        "colorIntersection": 0.2621,
+        "paletteMatch": 0.9149,
+        "detail": 0.2239,
+        "detailRaw": 0.4218,
+        "detailAdded": 0.3958,
+        "bands": 0
+      },
+      "verdict": "contradicted",
+      "inkBox": {
+        "comp": {
+          "x": 63,
+          "y": 0,
+          "w": 1418,
+          "h": 84
+        },
+        "build": {
+          "x": 0,
+          "y": 0,
+          "w": 1536,
+          "h": 84
+        }
+      }
+    },
+    {
+      "id": "band-6",
+      "x": 0,
+      "y": 0.5882352941176471,
+      "w": 1,
+      "h": 0.08235294117647052,
+      "kind": "band",
+      "score": {
+        "overall": 0.2888,
+        "structure": 0.3734,
+        "color": 0.5317,
+        "colorIntersection": 0.245,
+        "paletteMatch": 0.6861,
+        "detail": 0.1007,
+        "detailRaw": 0.2205,
+        "detailAdded": 0.2396,
+        "bands": 0
+      },
+      "verdict": "contradicted",
+      "inkBox": {
+        "comp": {
+          "x": 112,
+          "y": 0,
+          "w": 1369,
+          "h": 85
+        },
+        "build": {
+          "x": 0,
+          "y": 0,
+          "w": 1536,
+          "h": 85
+        }
+      }
+    },
+    {
+      "id": "band-7",
+      "x": 0,
+      "y": 0.6705882352941176,
+      "w": 1,
+      "h": 0.12941176470588245,
+      "kind": "band",
+      "score": {
+        "overall": 0.3817,
+        "structure": 0.4918,
+        "color": 0.7588,
+        "colorIntersection": 0.519,
+        "paletteMatch": 0.888,
+        "detail": 0.0796,
+        "detailRaw": 0.1681,
+        "detailAdded": 0.1771,
+        "bands": 0
+      },
+      "verdict": "missing",
+      "inkBox": {
+        "comp": {
+          "x": 60,
+          "y": 0,
+          "w": 1388,
+          "h": 132
+        },
+        "build": {
+          "x": 54,
+          "y": 0,
+          "w": 1428,
+          "h": 79
+        }
+      }
+    },
+    {
+      "id": "band-8",
+      "x": 0,
+      "y": 0.8,
+      "w": 1,
+      "h": 0.07058823529411762,
+      "kind": "band",
+      "score": {
+        "overall": 0.2791,
+        "structure": 0.3839,
+        "color": 0.273,
+        "colorIntersection": 0.1981,
+        "paletteMatch": 0.3133,
+        "detail": 0.066,
+        "detailRaw": 0.0764,
+        "detailAdded": 0.0208,
+        "bands": 0.4
+      },
+      "verdict": "missing",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 1536,
+          "h": 72
+        },
+        "build": {
+          "x": 640,
+          "y": 19,
+          "w": 179,
+          "h": 53
+        }
+      }
+    },
+    {
+      "id": "band-9",
+      "x": 0,
+      "y": 0.8705882352941177,
+      "w": 1,
+      "h": 0.07058823529411762,
+      "kind": "band",
+      "score": {
+        "overall": 0.4021,
+        "structure": 0.3591,
+        "color": 0.5977,
+        "colorIntersection": 0.2517,
+        "paletteMatch": 0.784,
+        "detail": 0.1481,
+        "detailRaw": 0.2314,
+        "detailAdded": 0.1667,
+        "bands": 0.6
+      },
+      "verdict": "contradicted",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 1536,
+          "h": 73
+        },
+        "build": {
+          "x": 57,
+          "y": 0,
+          "w": 1301,
+          "h": 73
+        }
+      }
+    },
+    {
+      "id": "band-10",
+      "x": 0,
+      "y": 0.9411764705882353,
+      "w": 1,
+      "h": 0.05882352941176472,
+      "kind": "band",
+      "score": {
+        "overall": 0.2817,
+        "structure": 0.4193,
+        "color": 0.4837,
+        "colorIntersection": 0.2974,
+        "paletteMatch": 0.584,
+        "detail": 0.0561,
+        "detailRaw": 0.0717,
+        "detailAdded": 0.0313,
+        "bands": 0
+      },
+      "verdict": "missing",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 1536,
+          "h": 60
+        },
+        "build": {
+          "x": 143,
+          "y": 0,
+          "w": 1080,
+          "h": 18
+        }
+      }
+    }
+  ],
+  "files": {
+    "sideBySide": "C:/My Work Files/AZM Labs/Projects/Dr-Hani-Website-/docs/immersive-implementation/comp-diff/side-by-side.png",
+    "heatmap": "C:/My Work Files/AZM Labs/Projects/Dr-Hani-Website-/docs/immersive-implementation/comp-diff/heatmap.png",
+    "regionFiles": [
+      "C:/My Work Files/AZM Labs/Projects/Dr-Hani-Website-/docs/immersive-implementation/comp-diff/regions/band-1.png",
+      "C:/My Work Files/AZM Labs/Projects/Dr-Hani-Website-/docs/immersive-implementation/comp-diff/regions/band-2.png",
+      "C:/My Work Files/AZM Labs/Projects/Dr-Hani-Website-/docs/immersive-implementation/comp-diff/regions/band-3.png",
+      "C:/My Work Files/AZM Labs/Projects/Dr-Hani-Website-/docs/immersive-implementation/comp-diff/regions/band-4.png",
+      "C:/My Work Files/AZM Labs/Projects/Dr-Hani-Website-/docs/immersive-implementation/comp-diff/regions/band-5.png",
+      "C:/My Work Files/AZM Labs/Projects/Dr-Hani-Website-/docs/immersive-implementation/comp-diff/regions/band-6.png",
+      "C:/My Work Files/AZM Labs/Projects/Dr-Hani-Website-/docs/immersive-implementation/comp-diff/regions/band-7.png",
+      "C:/My Work Files/AZM Labs/Projects/Dr-Hani-Website-/docs/immersive-implementation/comp-diff/regions/band-8.png",
+      "C:/My Work Files/AZM Labs/Projects/Dr-Hani-Website-/docs/immersive-implementation/comp-diff/regions/band-9.png",
+      "C:/My Work Files/AZM Labs/Projects/Dr-Hani-Website-/docs/immersive-implementation/comp-diff/regions/band-10.png"
+    ]
+  }
+}

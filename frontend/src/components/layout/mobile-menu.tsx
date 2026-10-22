@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useRef } from 'react'
-import { Menu, X } from 'lucide-react'
+import { ListIcon as Menu, XIcon as X } from '@phosphor-icons/react/ssr'
 import type { SiteContentV2 } from '../../../../shared/site-content-v2'
 import { navigation } from './navigation'
 import { containDialogFocus } from '@/src/lib/dialog-focus'

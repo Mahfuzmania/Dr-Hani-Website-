@@ -62,7 +62,11 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
         </div>
         <label className="gallery-event-filter">
           Event
-          <select value={event} onChange={(e) => setEvent(e.target.value)}>
+          <select
+            aria-label="Event"
+            value={event}
+            onChange={(e) => setEvent(e.target.value)}
+          >
             <option value="">All events</option>
             {events.map((value) => (
               <option key={value}>{value}</option>

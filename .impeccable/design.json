@@ -1,0 +1,366 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-22T14:44:17.473Z",
+  "title": "Design System: Dr Umma Hani",
+  "extensions": {
+    "colorMeta": {
+      "deep-navy": {
+        "role": "primary",
+        "displayName": "Deep Navy",
+        "canonical": "#0b2038",
+        "tonalRamp": [
+          "oklch(15% 0.056 249)",
+          "oklch(26% 0.056 249)",
+          "oklch(37% 0.056 249)",
+          "oklch(48% 0.056 249)",
+          "oklch(59% 0.056 249)",
+          "oklch(70% 0.056 249)",
+          "oklch(82% 0.056 249)",
+          "oklch(95% 0.056 249)"
+        ]
+      },
+      "navy-soft": {
+        "role": "primary",
+        "displayName": "Navy Soft",
+        "canonical": "#19364f",
+        "tonalRamp": [
+          "oklch(15% 0.054 248)",
+          "oklch(26% 0.054 248)",
+          "oklch(37% 0.054 248)",
+          "oklch(48% 0.054 248)",
+          "oklch(59% 0.054 248)",
+          "oklch(70% 0.054 248)",
+          "oklch(82% 0.054 248)",
+          "oklch(95% 0.054 248)"
+        ]
+      },
+      "restrained-gold": {
+        "role": "secondary",
+        "displayName": "Restrained Gold",
+        "canonical": "#a68139",
+        "tonalRamp": [
+          "oklch(15% 0.1 83)",
+          "oklch(26% 0.1 83)",
+          "oklch(37% 0.1 83)",
+          "oklch(48% 0.1 83)",
+          "oklch(59% 0.1 83)",
+          "oklch(70% 0.1 83)",
+          "oklch(82% 0.1 83)",
+          "oklch(95% 0.1 83)"
+        ]
+      },
+      "pale-gold-action": {
+        "role": "secondary",
+        "displayName": "Pale Gold Action",
+        "canonical": "#e5cb92",
+        "tonalRamp": [
+          "oklch(15% 0.07 85)",
+          "oklch(26% 0.07 85)",
+          "oklch(37% 0.07 85)",
+          "oklch(48% 0.07 85)",
+          "oklch(59% 0.07 85)",
+          "oklch(70% 0.07 85)",
+          "oklch(82% 0.07 85)",
+          "oklch(95% 0.07 85)"
+        ]
+      },
+      "warm-white": {
+        "role": "neutral",
+        "displayName": "Warm White",
+        "canonical": "#fcfbf8",
+        "tonalRamp": [
+          "oklch(15% 0.009 85)",
+          "oklch(26% 0.009 85)",
+          "oklch(37% 0.009 85)",
+          "oklch(48% 0.009 85)",
+          "oklch(59% 0.009 85)",
+          "oklch(70% 0.009 85)",
+          "oklch(82% 0.009 85)",
+          "oklch(95% 0.009 85)"
+        ]
+      },
+      "cream": {
+        "role": "neutral",
+        "displayName": "Cream",
+        "canonical": "#f2f0e9",
+        "tonalRamp": [
+          "oklch(15% 0.012 85)",
+          "oklch(26% 0.012 85)",
+          "oklch(37% 0.012 85)",
+          "oklch(48% 0.012 85)",
+          "oklch(59% 0.012 85)",
+          "oklch(70% 0.012 85)",
+          "oklch(82% 0.012 85)",
+          "oklch(95% 0.012 85)"
+        ]
+      },
+      "muted-ink": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "#435160",
+        "tonalRamp": [
+          "oklch(15% 0.023 249)",
+          "oklch(26% 0.023 249)",
+          "oklch(37% 0.023 249)",
+          "oklch(48% 0.023 249)",
+          "oklch(59% 0.023 249)",
+          "oklch(70% 0.023 249)",
+          "oklch(82% 0.023 249)",
+          "oklch(95% 0.023 249)"
+        ]
+      },
+      "pale-blue-text": {
+        "role": "neutral",
+        "displayName": "Pale Blue Text",
+        "canonical": "#d1dee8",
+        "tonalRamp": [
+          "oklch(15% 0.025 241)",
+          "oklch(26% 0.025 241)",
+          "oklch(37% 0.025 241)",
+          "oklch(48% 0.025 241)",
+          "oklch(59% 0.025 241)",
+          "oklch(70% 0.025 241)",
+          "oklch(82% 0.025 241)",
+          "oklch(95% 0.025 241)"
+        ]
+      },
+      "warm-border": {
+        "role": "neutral",
+        "displayName": "Warm Border",
+        "canonical": "#dce0df",
+        "tonalRamp": [
+          "oklch(15% 0.008 184)",
+          "oklch(26% 0.008 184)",
+          "oklch(37% 0.008 184)",
+          "oklch(48% 0.008 184)",
+          "oklch(59% 0.008 184)",
+          "oklch(70% 0.008 184)",
+          "oklch(82% 0.008 184)",
+          "oklch(95% 0.008 184)"
+        ]
+      },
+      "field-surface": {
+        "role": "neutral",
+        "displayName": "Field Surface",
+        "canonical": "#fafbf9",
+        "tonalRamp": [
+          "oklch(15% 0.008 145)",
+          "oklch(26% 0.008 145)",
+          "oklch(37% 0.008 145)",
+          "oklch(48% 0.008 145)",
+          "oklch(59% 0.008 145)",
+          "oklch(70% 0.008 145)",
+          "oklch(82% 0.008 145)",
+          "oklch(95% 0.008 145)"
+        ]
+      },
+      "field-border": {
+        "role": "neutral",
+        "displayName": "Field Border",
+        "canonical": "#c6ced2",
+        "tonalRamp": [
+          "oklch(15% 0.014 232)",
+          "oklch(26% 0.014 232)",
+          "oklch(37% 0.014 232)",
+          "oklch(48% 0.014 232)",
+          "oklch(59% 0.014 232)",
+          "oklch(70% 0.014 232)",
+          "oklch(82% 0.014 232)",
+          "oklch(95% 0.014 232)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Desktop hero name on the navy introduction."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Homepage section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Section subheads."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "General copy and longer passages."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Navigation, metadata, captions and controls."
+      },
+      "bengali-title": {
+        "displayName": "Bengali Title",
+        "purpose": "Original-script authored essay titles."
+      },
+      "identity": {
+        "displayName": "Identity",
+        "purpose": "Personal name in brand and footer."
+      }
+    },
+    "shadows": [
+      {
+        "name": "floating-navigation",
+        "value": "0 10px 32px #0b203812, 0 1px 3px #0b20380c, inset 0 1px 0 #ffffff",
+        "purpose": "Separate the floating header from photographs and page content."
+      },
+      {
+        "name": "primary-control",
+        "value": "0 5px 12px #0b203816, inset 0 1px 0 #ffffff26",
+        "purpose": "Small tactile lift on primary actions."
+      },
+      {
+        "name": "field-inset",
+        "value": "inset 2px 2px 5px #0b203807, inset -2px -2px 5px #ffffff",
+        "purpose": "Subtle inset depth on inputs and selects."
+      },
+      {
+        "name": "contact-form",
+        "value": "0 18px 38px #00000020, inset 0 1px 0 #ffffff",
+        "purpose": "Separate the warm-white form from its navy feature."
+      }
+    ],
+    "motion": [
+      {
+        "name": "control-state",
+        "value": "180ms",
+        "purpose": "Button, link, filter and media-control state transitions."
+      },
+      {
+        "name": "photo-hover",
+        "value": "400ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Restrained image enlargement on hover; disabled for reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "tablet-gutter",
+        "value": "768px"
+      },
+      {
+        "name": "desktop-gutter",
+        "value": "1024px"
+      },
+      {
+        "name": "desktop-contact-action",
+        "value": "1280px"
+      },
+      {
+        "name": "portrait-first-hero",
+        "value": "900px"
+      },
+      {
+        "name": "mobile-layout",
+        "value": "767px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Navy call to action on light surfaces.",
+      "html": "<button class=\"ds-button-primary\" type=\"button\">Read biography</button>",
+      "css": ".ds-button-primary{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border:1px solid var(--navy);border-radius:10px;background:var(--navy);color:#fff;font-family:var(--font-sans),sans-serif;font-size:14px;font-weight:600;line-height:1.5;box-shadow:0 5px 12px #0b203816,inset 0 1px 0 #ffffff26;transition:background 180ms,transform 180ms,box-shadow 180ms;cursor:pointer}.ds-button-primary:hover{background:var(--navy-soft);transform:translateY(-1px)}.ds-button-primary:focus-visible{outline:3px solid var(--gold);outline-offset:5px}.ds-button-primary:active{transform:translateY(1px)}"
+    },
+    {
+      "name": "Hero Action",
+      "kind": "button",
+      "refersTo": "button-hero",
+      "description": "Pale-gold primary action against the navy hero.",
+      "html": "<button class=\"ds-hero-action\" type=\"button\">Read biography</button>",
+      "css": ".ds-hero-action{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border:1px solid transparent;border-radius:10px;background:#e5cb92;color:var(--navy);font-family:var(--font-sans),sans-serif;font-size:14px;font-weight:600;line-height:1.5;box-shadow:0 8px 20px #00000020,inset 0 1px 0 #fff1cd;transition:background 180ms,transform 180ms;cursor:pointer}.ds-hero-action:hover{background:#e7cd96;transform:translateY(-1px)}.ds-hero-action:focus-visible{outline:3px solid var(--gold);outline-offset:5px}.ds-hero-action:active{transform:translateY(1px)}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Quiet outlined action for supporting navigation.",
+      "html": "<button class=\"ds-button-secondary\" type=\"button\">Explore her work</button>",
+      "css": ".ds-button-secondary{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border:1px solid #8f9ca6;border-radius:10px;background:transparent;color:var(--navy);font-family:var(--font-sans),sans-serif;font-size:14px;font-weight:600;line-height:1.5;transition:background 180ms,color 180ms,transform 180ms;cursor:pointer}.ds-button-secondary:hover{background:#eeede6}.ds-button-secondary:focus-visible{outline:3px solid var(--gold);outline-offset:5px}.ds-button-secondary:active{transform:translateY(1px)}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Inset contact or archive field with a clear keyboard focus.",
+      "html": "<label class=\"ds-field-label\">Email<input class=\"ds-field\" type=\"email\" placeholder=\"Your email address\"></label>",
+      "css": ".ds-field-label{display:grid;gap:10px;color:var(--muted);font-family:var(--font-sans),sans-serif;font-size:14px;font-weight:500}.ds-field{display:block;width:100%;min-height:48px;padding:12px 14px;border:1px solid #c6ced2;border-radius:12px;background:#fafbf9;color:var(--navy);font-family:var(--font-sans),sans-serif;font-size:16px;box-shadow:inset 2px 2px 5px #0b203807,inset -2px -2px 5px #ffffff;transition:border-color 180ms}.ds-field:hover{border-color:#8696a2}.ds-field:focus-visible{outline:3px solid var(--gold);outline-offset:5px}.ds-field::placeholder{color:#65717a;opacity:1}"
+    },
+    {
+      "name": "Gallery Filter",
+      "kind": "chip",
+      "refersTo": "filter-selected",
+      "description": "Selectable gallery tab; the active state is solid navy.",
+      "html": "<div class=\"ds-gallery-tabs\"><button type=\"button\" class=\"ds-gallery-tab\" aria-pressed=\"true\">All photos</button><button type=\"button\" class=\"ds-gallery-tab\" aria-pressed=\"false\">Public life</button></div>",
+      "css": ".ds-gallery-tabs{display:flex;flex-wrap:wrap;gap:6px;font-family:var(--font-sans),sans-serif}.ds-gallery-tab{min-height:44px;padding:8px 14px;border:0;border-radius:8px;background:transparent;color:var(--navy);font-size:14px;transition:background 180ms,color 180ms;cursor:pointer}.ds-gallery-tab:hover{background:#e4e1d8}.ds-gallery-tab[aria-pressed=true]{background:var(--navy);color:#fff;font-weight:500}.ds-gallery-tab:focus-visible{outline:3px solid var(--gold);outline-offset:5px}"
+    },
+    {
+      "name": "Floating Navigation",
+      "kind": "nav",
+      "refersTo": "floating-navigation",
+      "description": "Translucent cream navigation with serif identity and restrained gold state.",
+      "html": "<nav class=\"ds-navigation\" aria-label=\"Main navigation\"><span class=\"ds-navigation-brand\">Dr Umma Hani</span><div class=\"ds-navigation-links\"><a href=\"#biography\" aria-current=\"page\">Biography</a><a href=\"#writing\">Writing</a><a href=\"#contact\">Contact</a></div></nav>",
+      "css": ".ds-navigation{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:82px;padding:14px 24px;border:1px solid #ffffffd9;border-radius:14px;background:#fcfbf8fa;color:var(--navy);box-shadow:0 10px 32px #0b203812,0 1px 3px #0b20380c,inset 0 1px 0 #ffffff;backdrop-filter:blur(24px) saturate(140%)}.ds-navigation-brand{font-family:var(--font-serif),serif;font-size:29px;line-height:1}.ds-navigation-links{display:flex;align-items:center;gap:24px;font-family:var(--font-sans),sans-serif}.ds-navigation-links a{color:#314356;font-size:14px;text-decoration:none;padding:12px 0}.ds-navigation-links a:hover,.ds-navigation-links a[aria-current]{color:var(--navy);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:8px}.ds-navigation-links a:focus-visible{outline:3px solid var(--gold);outline-offset:5px}"
+    },
+    {
+      "name": "Featured Writing",
+      "kind": "card",
+      "refersTo": "featured-writing",
+      "description": "The one cream publication feature before quieter divided article rows.",
+      "html": "<article class=\"ds-featured-writing\"><div class=\"ds-writing-meta\">Published writing</div><h3 lang=\"bn\">প্রকাশিত লেখা</h3><p>Writing on health, opportunity and public responsibility.</p><div class=\"ds-writing-links\"><a href=\"#writing\">Read the essay</a></div><div class=\"ds-writing-topics\">Essay topics</div></article>",
+      "css": ".ds-featured-writing{display:grid;grid-template-columns:1.1fr .9fr;grid-template-areas:'meta meta' 'title summary' 'links topics';column-gap:36px;align-items:start;padding:28px 32px;border-radius:16px;background:#f1eee6;color:var(--navy);font-family:var(--font-sans),sans-serif}.ds-writing-meta{grid-area:meta;color:var(--muted);font-size:14px}.ds-featured-writing h3{grid-area:title;margin:14px 0 10px;font-family:var(--font-bengali),serif;font-size:clamp(26px,2.4vw,36px);font-weight:500;line-height:1.7}.ds-featured-writing p{grid-area:summary;margin:22px 0 0;color:var(--muted);font-size:16px;line-height:1.85}.ds-writing-links{grid-area:links;margin-top:4px}.ds-writing-topics{grid-area:topics;margin-top:4px;color:var(--muted);font-size:14px}.ds-featured-writing a{display:inline-flex;align-items:center;min-height:36px;color:var(--navy);font-size:14px;font-weight:600;text-decoration:none}.ds-featured-writing a:hover{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:6px}.ds-featured-writing a:focus-visible{outline:3px solid var(--gold);outline-offset:5px}@media(max-width:767px){.ds-featured-writing{display:block;padding:24px}.ds-featured-writing p{margin-top:0}.ds-writing-links,.ds-writing-topics{margin-top:12px}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Immersive Navy",
+    "overview": "An experience-led portrait of a physician and writer. Original photography carries the public record; deep navy provides an immersive but readable setting, and warm-white pages give the evidence room to breathe. The site feels assured and personal through wide image-led composition, precise type and a few tactile controls.\n\nThe floating cream navigation and framed footer establish continuity across the portfolio. Gold marks selected actions, icons and focus without becoming a decorative wash. Navy returns for the hero, dialogues and contact feature; most reading and archive content stays on warm white or quiet cream. This system preserves the chosen identity while allowing the content of each photograph and publication to set the pace.",
+    "keyCharacteristics": [
+      "Original photographs lead the composition, with source-aware crops and concise verified context.",
+      "A wide centred frame keeps comfortable gutters while letting photograph groups use the available width.",
+      "Contemporary Instrument Sans hierarchy carries the interface; serif faces are reserved for identity and Bengali writing.",
+      "Glass and soft depth are concentrated in floating navigation, media controls, fields and tactile buttons."
+    ],
+    "rules": [
+      {
+        "name": "The Photograph Leads Rule",
+        "body": "Use visual framing to support original photographs, not to bury them in repeated glass cards or decorative effects.",
+        "section": "overview"
+      },
+      {
+        "name": "The Gold in Restraint Rule",
+        "body": "Let navy and photography carry the weight; use gold for focus and a small number of actionable details.",
+        "section": "colors"
+      },
+      {
+        "name": "The Three Voices Rule",
+        "body": "Keep Instrument Sans as the reading and interface voice, Cormorant for identity, and Noto Serif Bengali for Bengali essay titles.",
+        "section": "typography"
+      },
+      {
+        "name": "The Safe Frame Rule",
+        "body": "Use the wide shell and its responsive gutters for every navy or photographic feature; never press essential content against the viewport edge.",
+        "section": "layout"
+      },
+      {
+        "name": "The Selective Glass Rule",
+        "body": "Blur floating navigation and media controls; keep the content and photographs visually clear.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** use original photographs as the lead material and choose their framing from the source aspect ratio.",
+      "**Do** keep navy and photograph features inside the 1840px shell with 20px, 32px and 48px responsive gutters.",
+      "**Do** preserve 14px essential metadata and readable 16–17px body copy.",
+      "**Do** use the Phosphor icon family consistently: regular for navigation and media controls, duotone for milestones."
+    ],
+    "donts": [
+      "**Don't** force every image into the same crop, clip a person to satisfy a grid, or add filler captions.",
+      "**Don't** turn the site into repeated glass panels, icon-card grids, pill buttons or gratuitous gradients.",
+      "**Don't** replace the photographic record with stock images, invented metrics or unsupported identity claims."
+    ]
+  }
+}

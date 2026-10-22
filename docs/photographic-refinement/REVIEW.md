@@ -1,5 +1,7 @@
 # Photograph-led portfolio review
 
+The later Immersive Navy implementation and current review preview are recorded in [`../immersive-implementation/REVIEW.md`](../immersive-implementation/REVIEW.md). The deployment link below is a historical snapshot.
+
 The approved refinement keeps Dr Umma Hani's existing hero, font pairing, routes, verified profile, published writing and original media. The homepage now uses open photographic stories, with her journey as the second section, fluid page widths, warm-white surfaces and navy dialogue/contact sections.
 
 Review preview: https://dr-hani-editorial-review-3zso0ez7b-azm-labs.vercel.app (Vercel authentication; indexing disabled). Deployment: `dpl_997HPuAnR5HEXXwR8cHWFjgTCcCF`. Production URL remains https://dr-hani-website.vercel.app.

@@ -1,0 +1,128 @@
+[
+  {
+    "id": "public-trust-national-renewal",
+    "kind": "essay",
+    "title": "কথার ঊর্ধ্বে কাজ: গণআস্থা ও জাতীয় পুনর্গঠনের নতুন দিগন্ত",
+    "summary": "An argument for earning public trust through accountable institutions, accessible services, and practical improvements in everyday life.",
+    "topics": [
+      "Public life",
+      "Governance"
+    ],
+    "featured": true,
+    "status": "published",
+    "sources": [
+      {
+        "publisher": "Daily Sun",
+        "url": "https://bangla.daily-sun.com/opinion/59086",
+        "byline": "ডা. উম্মে হানি পৃথ্বী",
+        "publishedAt": "2026-10-17"
+      }
+    ]
+  },
+  {
+    "id": "women-capability-society",
+    "kind": "essay",
+    "title": "নারীর সক্ষমতা বনাম সমাজের ধারণা",
+    "summary": "How expectations at home, in the workplace, and in public life shape women’s confidence, opportunities, and freedom to make decisions.",
+    "topics": [
+      "Women",
+      "Society"
+    ],
+    "featured": true,
+    "status": "published",
+    "sources": [
+      {
+        "publisher": "Daily Sun",
+        "url": "https://bangla.daily-sun.com/opinion/58443",
+        "byline": "ডা. উম্মে হানি পৃথ্বী",
+        "publishedAt": "2026-10-09"
+      }
+    ]
+  },
+  {
+    "id": "women-leadership-participation",
+    "kind": "essay",
+    "title": "নারী নেতৃত্ব: রাজনীতিকে ভয় নয়, পরিবর্তনের অংশ হিসেবে দেখা",
+    "summary": "A reflection on the conditions women need to participate in politics with safety, dignity, preparation, and a meaningful voice in decisions.",
+    "topics": [
+      "Women",
+      "Leadership"
+    ],
+    "featured": true,
+    "status": "published",
+    "sources": [
+      {
+        "publisher": "Daily Sun",
+        "url": "https://bangla.daily-sun.com/opinion/58055",
+        "byline": "ডা. উম্মে হানি পৃথ্বী",
+        "dateLabel": "October 2026"
+      }
+    ]
+  },
+  {
+    "id": "child-protection-warning-signs",
+    "kind": "essay",
+    "title": "নীরবতা নয়, সুরক্ষা: শিশুর যৌন নির্যাতনের সতর্কসংকেত ও সহায়তার পথ",
+    "summary": "A discussion of recognising changes in a child’s behaviour, listening without blame, and making it safer for children to seek support.",
+    "topics": [
+      "Health",
+      "Children"
+    ],
+    "featured": false,
+    "status": "published",
+    "sources": [
+      {
+        "publisher": "Daily Sun",
+        "url": "https://bangla.daily-sun.com/opinion/54382",
+        "byline": "ডা. উম্মে হানি পৃথ্বী",
+        "publishedAt": "2026-08-25"
+      }
+    ]
+  },
+  {
+    "id": "youth-policy-implementation",
+    "kind": "essay",
+    "title": "ঘোষণা থেকে বাস্তবায়ন: তরুণের বাংলাদেশ কত দূরে?",
+    "summary": "An examination of youth opportunity, skills, and entrepreneurship, and the importance of turning policy announcements into implementation.",
+    "topics": [
+      "Youth",
+      "Public life"
+    ],
+    "featured": false,
+    "status": "published",
+    "sources": [
+      {
+        "publisher": "Daily Sun",
+        "url": "https://bangla.daily-sun.com/opinion/53759",
+        "byline": "ডা. উম্মে হানি পৃথ্বী",
+        "publishedAt": "2026-08-17"
+      }
+    ]
+  },
+  {
+    "id": "women-to-leadership",
+    "kind": "essay",
+    "title": "নারী থেকে নেতৃত্ব: বেগম খালেদা জিয়া",
+    "summary": "A personal political essay reflecting on Khaleda Zia’s legacy through women’s education, participation, and leadership.",
+    "topics": [
+      "Women",
+      "Leadership"
+    ],
+    "featured": false,
+    "status": "published",
+    "sources": [
+      {
+        "publisher": "Ekushey TV",
+        "url": "https://www.ekushey-tv.com/নারী-থেকে-নেতৃত্ব-বেগম-খালেদা-জিয়া/1360873111111177536",
+        "byline": "ডা. উম্মে হানি পৃথ্বী",
+        "publishedAt": "2026-08-15"
+      },
+      {
+        "publisher": "Agamir Somoy",
+        "url": "https://www.agamirsomoy.com/miscellaneous/e40tfbidfvy8",
+        "byline": "ডা. উম্মে হানি পৃথ্বী",
+        "publishedAt": "2026-08-15"
+      }
+    ]
+  }
+]

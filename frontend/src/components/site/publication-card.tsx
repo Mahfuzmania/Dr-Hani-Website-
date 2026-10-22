@@ -1,17 +1,31 @@
 import Link from 'next/link'
 import type { Publication } from '../../../../shared/publications'
 import { dateLabel } from '../../../../shared/publications'
+import { ArrowUpRightIcon, NewspaperIcon } from '@phosphor-icons/react/ssr'
 
-export function PublicationCard({ item, compact = false }: { item: Publication; compact?: boolean }) {
+export function PublicationCard({
+  item,
+  compact = false,
+}: {
+  item: Publication
+  compact?: boolean
+}) {
   const Heading = compact || item.kind === 'report' ? 'h3' : 'h2'
   return (
-    <article className={`publication-card ${compact ? 'publication-card-compact' : ''}`}>
+    <article
+      className={`publication-card ${compact ? 'publication-card-compact' : ''}`}
+    >
       <div className="publication-meta">
-        <span>{item.sources.map((source) => source.publisher).join(' / ')}</span>
+        <span>
+          <NewspaperIcon size={16} weight="duotone" aria-hidden="true" />
+          {item.sources.map((source) => source.publisher).join(' / ')}
+        </span>
         <span>{dateLabel(item.sources[0])}</span>
       </div>
       <Heading
-        className={item.kind === 'essay' ? 'bengali-title' : 'publication-heading'}
+        className={
+          item.kind === 'essay' ? 'bengali-title' : 'publication-heading'
+        }
         lang={item.kind === 'essay' ? 'bn' : 'en'}
       >
         {item.title}
@@ -27,7 +41,8 @@ export function PublicationCard({ item, compact = false }: { item: Publication; 
             key={source.url}
             aria-label={`Read ${item.title} in ${source.publisher}`}
           >
-            Read in {source.publisher} <span aria-hidden="true">↗</span>
+            Read in {source.publisher}{' '}
+            <ArrowUpRightIcon size={16} aria-hidden="true" />
           </a>
         ))}
       </div>
@@ -38,7 +53,9 @@ export function PublicationCard({ item, compact = false }: { item: Publication; 
             <p key={source.url}>
               <strong>{source.publisher}</strong> · {dateLabel(source)}
               <br />
-              <span lang={item.kind === 'essay' ? 'bn' : 'en'}>By {source.byline}</span>
+              <span lang={item.kind === 'essay' ? 'bn' : 'en'}>
+                By {source.byline}
+              </span>
             </p>
           ))}
         </details>

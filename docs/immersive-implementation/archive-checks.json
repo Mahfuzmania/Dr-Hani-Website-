@@ -1,0 +1,32 @@
+[
+  {
+    "overflow": false,
+    "path": "/about",
+    "width": 390
+  },
+  {
+    "overflow": false,
+    "path": "/writing",
+    "width": 390
+  },
+  {
+    "overflow": false,
+    "path": "/media-events",
+    "width": 390
+  },
+  {
+    "overflow": false,
+    "path": "/gallery",
+    "width": 390
+  },
+  {
+    "overflow": false,
+    "path": "/updates",
+    "width": 390
+  },
+  {
+    "overflow": false,
+    "path": "/privacy",
+    "width": 390
+  }
+]

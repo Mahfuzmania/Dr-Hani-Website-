@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import type { SiteContentV2 } from '../../../../shared/site-content-v2'
+import { SocialIcon } from '../branding/social-icon'
+import { ArrowUpRightIcon } from '@phosphor-icons/react/ssr'
 
 export function Footer({
   settings,
@@ -17,6 +19,25 @@ export function Footer({
             </Link>
             <p>{settings.identityLine}</p>
           </div>
+          <div className="footer-social-links" aria-label="Social profiles">
+            {settings.socialLinks.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <SocialIcon label={item.label} />
+                {item.label}
+                <Arrow />
+              </a>
+            ))}
+          </div>
+        </div>
+        <div className="footer-navigation-row">
+          <a className="footer-email" href={`mailto:${settings.primaryEmail}`}>
+            {settings.primaryEmail}
+          </a>
           <nav aria-label="Footer navigation" className="site-footer-links">
             <Link href="/about">Biography</Link>
             <Link href="/writing">Writing</Link>
@@ -34,14 +55,16 @@ export function Footer({
             rel="noreferrer"
             aria-label="Developed by AZM Labs"
           >
-            Developed by{' '}
+            <span>Developed by</span>
             <Image
               src="/branding/azm-labs-logo.png"
               alt=""
               width={22}
               height={22}
             />{' '}
-            AZM Labs
+            <span>
+              <span className="footer-azm">AZM</span> Labs
+            </span>
             <Arrow />
           </a>
         </div>
@@ -50,5 +73,5 @@ export function Footer({
   )
 }
 function Arrow() {
-  return <span aria-hidden="true">↗</span>
+  return <ArrowUpRightIcon size={16} aria-hidden="true" />
 }
