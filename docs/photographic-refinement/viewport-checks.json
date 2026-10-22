@@ -1,0 +1,110 @@
+[
+  {
+    "clientWidth": 345,
+    "gutter": "16px",
+    "newPhotoCount": 12,
+    "scrollWidth": 345,
+    "sectionOrder": [
+      "profile",
+      "journey",
+      "medical-work",
+      "photographs",
+      "public-work",
+      "writing",
+      "media",
+      "updates",
+      "contact"
+    ],
+    "width": 360
+  },
+  {
+    "clientWidth": 375,
+    "gutter": "16px",
+    "newPhotoCount": 12,
+    "scrollWidth": 375,
+    "sectionOrder": [
+      "profile",
+      "journey",
+      "medical-work",
+      "photographs",
+      "public-work",
+      "writing",
+      "media",
+      "updates",
+      "contact"
+    ],
+    "width": 390
+  },
+  {
+    "clientWidth": 415,
+    "gutter": "16px",
+    "newPhotoCount": 12,
+    "scrollWidth": 415,
+    "sectionOrder": [
+      "profile",
+      "journey",
+      "medical-work",
+      "photographs",
+      "public-work",
+      "writing",
+      "media",
+      "updates",
+      "contact"
+    ],
+    "width": 430
+  },
+  {
+    "clientWidth": 753,
+    "gutter": "24px",
+    "newPhotoCount": 12,
+    "scrollWidth": 753,
+    "sectionOrder": [
+      "profile",
+      "journey",
+      "medical-work",
+      "photographs",
+      "public-work",
+      "writing",
+      "media",
+      "updates",
+      "contact"
+    ],
+    "width": 768
+  },
+  {
+    "clientWidth": 1351,
+    "gutter": "40px",
+    "newPhotoCount": 12,
+    "scrollWidth": 1351,
+    "sectionOrder": [
+      "profile",
+      "journey",
+      "medical-work",
+      "photographs",
+      "public-work",
+      "writing",
+      "media",
+      "updates",
+      "contact"
+    ],
+    "width": 1366
+  },
+  {
+    "clientWidth": 1905,
+    "gutter": "40px",
+    "newPhotoCount": 12,
+    "scrollWidth": 1905,
+    "sectionOrder": [
+      "profile",
+      "journey",
+      "medical-work",
+      "photographs",
+      "public-work",
+      "writing",
+      "media",
+      "updates",
+      "contact"
+    ],
+    "width": 1920
+  }
+]

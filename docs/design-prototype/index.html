@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="theme-color" content="#0b223b">
+  <title>Design directions · Dr Umma Hani</title>
+  <link rel="preload" href="/fonts/serif.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/concept.css">
+  <script src="/concept.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="app"></div>
+  <aside class="review-tools" aria-label="Design concept controls">
+    <div class="review-label"><span>DESIGN STUDY</span><strong id="direction-name"></strong></div>
+    <div class="direction-controls" role="group" aria-label="Choose a design direction">
+      <button data-direction="signature">01 <span>Signature</span></button>
+      <button data-direction="portrait">02 <span>Portrait</span></button>
+      <button data-direction="journal">03 <span>Journal</span></button>
+    </div>
+    <div class="review-views" role="group" aria-label="Choose a page">
+      <button data-view="home">Home</button><button data-view="writing">Writing</button>
+    </div>
+  </aside>
+  <dialog id="photo-viewer" aria-label="Photograph viewer">
+    <button class="close-viewer icon-button" aria-label="Close photograph"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    <figure><img alt="" id="full-photo"><figcaption id="photo-caption"></figcaption></figure>
+  </dialog>
+</body>
+</html>

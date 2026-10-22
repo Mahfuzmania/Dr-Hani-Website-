@@ -1,5 +1,7 @@
 import type { SiteContentV2 } from '../../../shared/site-content-v2'
 import { siteContentV2 } from '../../../shared/site-content-v2'
+import { publicPublications } from '../../../shared/publication-contract'
+import type { Where } from 'payload'
 
 type CmsClient = {
   find: (args: {
@@ -7,6 +9,7 @@ type CmsClient = {
     depth?: number
     limit?: number
     pagination?: boolean
+    where?: Where
     sort?: string
   }) => Promise<{ docs?: unknown[] }>
   findGlobal: (args: { slug: string; depth?: number }) => Promise<unknown>
@@ -32,9 +35,14 @@ function asBoolean(value: unknown, fallback = false) {
   return typeof value === 'boolean' ? value : fallback
 }
 
-function resolveMediaUrl(media: unknown, backendUrl: string, fallback?: string) {
+function resolveMediaUrl(
+  media: unknown,
+  backendUrl: string,
+  fallback?: string,
+) {
   if (typeof media === 'string' && media.startsWith('http')) return media
-  if (typeof media === 'string' && media.startsWith('/')) return `${backendUrl}${media}`
+  if (typeof media === 'string' && media.startsWith('/'))
+    return `${backendUrl}${media}`
 
   if (isObject(media)) {
     const url = asString((media as MediaDoc).url)
@@ -45,7 +53,9 @@ function resolveMediaUrl(media: unknown, backendUrl: string, fallback?: string) 
   return fallback ?? ''
 }
 
-function normalizeCategory(value: unknown): SiteContentV2['galleryItems'][number]['category'] {
+function normalizeCategory(
+  value: unknown,
+): SiteContentV2['galleryItems'][number]['category'] {
   const category = asString(value)
 
   switch (category) {
@@ -62,7 +72,10 @@ function normalizeCategory(value: unknown): SiteContentV2['galleryItems'][number
   }
 }
 
-function textSections(rows: unknown, fallback: SiteContentV2['privacyPage']['sections']) {
+function textSections(
+  rows: unknown,
+  fallback: SiteContentV2['privacyPage']['sections'],
+) {
   if (!Array.isArray(rows)) return fallback
 
   const values = rows
@@ -78,7 +91,10 @@ function textSections(rows: unknown, fallback: SiteContentV2['privacyPage']['sec
   return values.length ? values : fallback
 }
 
-function identityCards(rows: unknown, fallback: SiteContentV2['homepage']['identityCards']) {
+function identityCards(
+  rows: unknown,
+  fallback: SiteContentV2['homepage']['identityCards'],
+) {
   if (!Array.isArray(rows)) return fallback
 
   const values = rows
@@ -94,7 +110,10 @@ function identityCards(rows: unknown, fallback: SiteContentV2['homepage']['ident
   return values.length ? values : fallback
 }
 
-function socialLinks(rows: unknown, fallback: SiteContentV2['siteSettings']['socialLinks']) {
+function socialLinks(
+  rows: unknown,
+  fallback: SiteContentV2['siteSettings']['socialLinks'],
+) {
   if (!Array.isArray(rows)) return fallback
 
   const values = rows
@@ -104,23 +123,31 @@ function socialLinks(rows: unknown, fallback: SiteContentV2['siteSettings']['soc
       const href = asString(row.url)
       if (!label || !href) return null
       if (!['Facebook', 'Instagram', 'LinkedIn'].includes(label)) return null
-      return { label: label as SiteContentV2['siteSettings']['socialLinks'][number]['label'], href }
+      return {
+        label:
+          label as SiteContentV2['siteSettings']['socialLinks'][number]['label'],
+        href,
+      }
     })
-    .filter((value): value is SiteContentV2['siteSettings']['socialLinks'][number] => Boolean(value))
+    .filter(
+      (value): value is SiteContentV2['siteSettings']['socialLinks'][number] =>
+        Boolean(value),
+    )
 
   return values.length ? values : fallback
 }
 
-function mapGalleryItems(docs: unknown[] | undefined, backendUrl: string, fallback: SiteContentV2['galleryItems']) {
-  if (!docs?.length) return fallback
+function mapGalleryItems(docs: unknown[] | undefined, backendUrl: string) {
+  if (!docs?.length) return []
 
   const mapped = docs
-    .map((doc) => {
+    .map((doc): SiteContentV2['galleryItems'][number] | null => {
       if (!isObject(doc)) return null
       const id = doc.id != null ? String(doc.id) : null
       const title = asString(doc.title)
       const caption = asString(doc.caption) ?? title
-      const status = asString(doc.status) === 'published' ? 'published' : 'draft'
+      const status =
+        asString(doc.status) === 'published' ? 'published' : 'draft'
       const image = resolveMediaUrl(doc.image, backendUrl)
       const media = isObject(doc.image) ? (doc.image as MediaDoc) : null
       const altText = asString(media?.altText) ?? title
@@ -132,18 +159,41 @@ function mapGalleryItems(docs: unknown[] | undefined, backendUrl: string, fallba
         altText,
         caption,
         category: normalizeCategory(doc.category),
+        event:
+          asString(doc.event) ??
+          asString(media?.category) ??
+          'Selected photographs',
+        relatedActivity: asString(doc.relatedActivity) ?? undefined,
         featuredOnHomepage: asBoolean(doc.featured),
+        homepageSection: ['medical-work', 'dialogues', 'public-work'].includes(
+          String(doc.homepageSection),
+        )
+          ? (doc.homepageSection as
+              | 'medical-work'
+              | 'dialogues'
+              | 'public-work')
+          : undefined,
+        focalX:
+          typeof doc.focalX === 'number' && Number.isFinite(doc.focalX)
+            ? Math.min(100, Math.max(0, doc.focalX))
+            : 50,
+        focalY:
+          typeof doc.focalY === 'number' && Number.isFinite(doc.focalY)
+            ? Math.min(100, Math.max(0, doc.focalY))
+            : 50,
         sortOrder: typeof doc.sortOrder === 'number' ? doc.sortOrder : 0,
         status,
       }
     })
-    .filter((value): value is SiteContentV2['galleryItems'][number] => Boolean(value))
+    .filter((value): value is SiteContentV2['galleryItems'][number] =>
+      Boolean(value),
+    )
 
-  return mapped.length ? mapped : fallback
+  return mapped
 }
 
-function mapMediaItems(docs: unknown[] | undefined, backendUrl: string, fallback: SiteContentV2['mediaItems']) {
-  if (!docs?.length) return fallback
+function mapMediaItems(docs: unknown[] | undefined, backendUrl: string) {
+  if (!docs?.length) return []
 
   const mapped: SiteContentV2['mediaItems'] = []
 
@@ -171,11 +221,11 @@ function mapMediaItems(docs: unknown[] | undefined, backendUrl: string, fallback
     })
   }
 
-  return mapped.length ? mapped : fallback
+  return mapped
 }
 
-function mapUpdates(docs: unknown[] | undefined, backendUrl: string, fallback: SiteContentV2['updates']) {
-  if (!docs?.length) return fallback
+function mapUpdates(docs: unknown[] | undefined, backendUrl: string) {
+  if (!docs?.length) return []
 
   const mapped: SiteContentV2['updates'] = []
 
@@ -188,7 +238,17 @@ function mapUpdates(docs: unknown[] | undefined, backendUrl: string, fallback: S
     const category = asString(doc.category)
     const date = asString(doc.publishDate)
     const bodyText = asString(doc.bodyText)
-    if (!id || !title || !slug || !summary || !category || !date || !bodyText) continue
+    if (
+      !id ||
+      !title ||
+      !slug ||
+      !summary ||
+      !category ||
+      !date ||
+      !Number.isFinite(Date.parse(date)) ||
+      !bodyText
+    )
+      continue
 
     mapped.push({
       id,
@@ -207,15 +267,18 @@ function mapUpdates(docs: unknown[] | undefined, backendUrl: string, fallback: S
       featured: asBoolean(doc.featured),
       pinned: asBoolean(doc.pinned),
       status: asString(doc.status) === 'published' ? 'published' : 'draft',
-      body: bodyText.split(/\r?\n\r?\n/).map((item) => item.trim()).filter(Boolean),
+      body: bodyText
+        .split(/\r?\n\r?\n/)
+        .map((item) => item.trim())
+        .filter(Boolean),
     })
   }
 
-  return mapped.length ? mapped : fallback
+  return mapped
 }
 
-function mapNotices(docs: unknown[] | undefined, fallback: SiteContentV2['importantNotices']) {
-  if (!docs?.length) return fallback
+function mapNotices(docs: unknown[] | undefined) {
+  if (!docs?.length) return []
 
   const mapped: SiteContentV2['importantNotices'] = []
 
@@ -239,10 +302,12 @@ function mapNotices(docs: unknown[] | undefined, fallback: SiteContentV2['import
     })
   }
 
-  return mapped.length ? mapped : fallback
+  return mapped
 }
 
-function normalizeSourceType(value: unknown): SiteContentV2['positions'][number]['sourceType'] {
+function normalizeSourceType(
+  value: unknown,
+): SiteContentV2['positions'][number]['sourceType'] {
   const sourceType = asString(value)
 
   switch (sourceType) {
@@ -255,8 +320,8 @@ function normalizeSourceType(value: unknown): SiteContentV2['positions'][number]
   }
 }
 
-function mapPositions(docs: unknown[] | undefined, backendUrl: string, fallback: SiteContentV2['positions']) {
-  if (!docs?.length) return fallback
+function mapPositions(docs: unknown[] | undefined, backendUrl: string) {
+  if (!docs?.length) return []
 
   const mapped: SiteContentV2['positions'] = []
 
@@ -286,71 +351,228 @@ function mapPositions(docs: unknown[] | undefined, backendUrl: string, fallback:
     })
   }
 
-  return mapped.length ? mapped : fallback
+  return mapped
 }
 
-export async function getPublicSiteContent(cms: CmsClient, backendUrl: string): Promise<SiteContentV2> {
+export async function getPublicSiteContent(
+  cms: CmsClient,
+  backendUrl: string,
+): Promise<SiteContentV2> {
   const fallback = siteContentV2
+  const published: Where = { status: { equals: 'published' } }
 
-  const [siteSettingsGlobal, homepageGlobal, privacyPageGlobal, galleryItemsResult, mediaItemsResult, updatesResult, noticesResult, positionsResult] =
-    await Promise.all([
-      cms.findGlobal({ slug: 'site-settings', depth: 1 }),
-      cms.findGlobal({ slug: 'homepage', depth: 1 }),
-      cms.findGlobal({ slug: 'privacy-page', depth: 1 }),
-      cms.find({ collection: 'gallery-items', depth: 1, limit: 100, pagination: false, sort: 'sortOrder' }),
-      cms.find({ collection: 'media-items', depth: 1, limit: 100, pagination: false, sort: '-updatedAt' }),
-      cms.find({ collection: 'updates', depth: 1, limit: 100, pagination: false, sort: '-publishDate' }),
-      cms.find({ collection: 'important-notices', depth: 1, limit: 50, pagination: false, sort: '-updatedAt' }),
-      cms.find({ collection: 'positions', depth: 1, limit: 50, pagination: false, sort: 'sortOrder' }),
-    ])
-  const siteSettingsRecord = (siteSettingsGlobal as Record<string, unknown> | null) ?? {}
-  const homepageRecord = (homepageGlobal as Record<string, unknown> | null) ?? {}
-  const privacyRecord = (privacyPageGlobal as Record<string, unknown> | null) ?? {}
-  const homepageVisibility = (homepageRecord.sectionVisibility as Record<string, unknown> | undefined) ?? {}
+  const [
+    siteSettingsGlobal,
+    homepageGlobal,
+    privacyPageGlobal,
+    galleryItemsResult,
+    mediaItemsResult,
+    updatesResult,
+    noticesResult,
+    positionsResult,
+    publicationsResult,
+  ] = await Promise.all([
+    cms.findGlobal({ slug: 'site-settings', depth: 1 }),
+    cms.findGlobal({ slug: 'homepage', depth: 1 }),
+    cms.findGlobal({ slug: 'privacy-page', depth: 1 }),
+    cms.find({
+      collection: 'gallery-items',
+      where: { status: { equals: 'published' } },
+      depth: 1,
+      limit: 100,
+      pagination: false,
+      sort: 'sortOrder',
+    }),
+    cms.find({
+      collection: 'media-items',
+      where: published,
+      depth: 1,
+      limit: 100,
+      pagination: false,
+      sort: '-updatedAt',
+    }),
+    cms.find({
+      collection: 'updates',
+      where: published,
+      depth: 1,
+      limit: 100,
+      pagination: false,
+      sort: '-publishDate',
+    }),
+    cms.find({
+      collection: 'important-notices',
+      where: published,
+      depth: 1,
+      limit: 50,
+      pagination: false,
+      sort: '-updatedAt',
+    }),
+    cms.find({
+      collection: 'positions',
+      where: published,
+      depth: 1,
+      limit: 50,
+      pagination: false,
+      sort: 'sortOrder',
+    }),
+    cms.find({
+      collection: 'publications',
+      depth: 1,
+      limit: 1000,
+      pagination: false,
+      where: {
+        and: [
+          { status: { equals: 'published' } },
+          { _status: { equals: 'published' } },
+        ],
+      },
+    }),
+  ])
+  const siteSettingsRecord =
+    (siteSettingsGlobal as Record<string, unknown> | null) ?? {}
+  const homepageRecord =
+    (homepageGlobal as Record<string, unknown> | null) ?? {}
+  const privacyRecord =
+    (privacyPageGlobal as Record<string, unknown> | null) ?? {}
+  const homepageVisibility =
+    (homepageRecord.sectionVisibility as Record<string, unknown> | undefined) ??
+    {}
 
   return {
     ...fallback,
+    contentStatus: 'cms',
+    publications: publicPublications(
+      (publicationsResult.docs ?? []).map((doc) => {
+        if (!isObject(doc)) return null
+        return {
+          id: asString(doc.externalId) || String(doc.id),
+          kind: doc.kind,
+          title: doc.title,
+          summary: doc.summary,
+          topics: Array.isArray(doc.topics)
+            ? doc.topics.map((topic) => (isObject(topic) ? topic.label : topic))
+            : [],
+          sources: Array.isArray(doc.sources)
+            ? doc.sources.map((source) => {
+                if (!isObject(source)) return null
+                return {
+                  ...source,
+                  publishedAt:
+                    asString(source.publishedAt)?.slice(0, 10) || undefined,
+                  dateLabel: asString(source.dateLabel) || undefined,
+                }
+              })
+            : [],
+          image:
+            resolveMediaUrl(doc.image, backendUrl) ||
+            asString(doc.imagePath) ||
+            undefined,
+          relatedActivity: asString(doc.relatedActivity) || undefined,
+          featured: asBoolean(doc.featured),
+          status: doc.status,
+        }
+      }),
+    ),
     siteSettings: {
       ...fallback.siteSettings,
-      fullName: asString(siteSettingsRecord.fullName) ?? fallback.siteSettings.fullName,
-      identityLine: asString(siteSettingsRecord.identityLine) ?? fallback.siteSettings.identityLine,
-      primaryEmail: asString(siteSettingsRecord.primaryEmail) ?? fallback.siteSettings.primaryEmail,
-      footerText: asString(siteSettingsRecord.footerText) ?? fallback.siteSettings.footerText,
-      seoTitle: asString(siteSettingsRecord.seoTitle) ?? fallback.siteSettings.seoTitle,
-      seoDescription: asString(siteSettingsRecord.seoDescription) ?? fallback.siteSettings.seoDescription,
-      logo: resolveMediaUrl(siteSettingsRecord.logo, backendUrl, fallback.siteSettings.logo),
-      socialLinks: socialLinks(siteSettingsRecord.socialLinks, fallback.siteSettings.socialLinks),
+      fullName:
+        asString(siteSettingsRecord.fullName) ?? fallback.siteSettings.fullName,
+      identityLine:
+        asString(siteSettingsRecord.identityLine) ??
+        fallback.siteSettings.identityLine,
+      primaryEmail:
+        asString(siteSettingsRecord.primaryEmail) ??
+        fallback.siteSettings.primaryEmail,
+      footerText:
+        asString(siteSettingsRecord.footerText) ??
+        fallback.siteSettings.footerText,
+      seoTitle:
+        asString(siteSettingsRecord.seoTitle) ?? fallback.siteSettings.seoTitle,
+      seoDescription:
+        asString(siteSettingsRecord.seoDescription) ??
+        fallback.siteSettings.seoDescription,
+      logo: resolveMediaUrl(
+        siteSettingsRecord.logo,
+        backendUrl,
+        fallback.siteSettings.logo,
+      ),
+      socialLinks: socialLinks(
+        siteSettingsRecord.socialLinks,
+        fallback.siteSettings.socialLinks,
+      ),
     },
     homepage: {
       ...fallback.homepage,
-      heroEyebrow: asString(homepageRecord.heroEyebrow) ?? fallback.homepage.heroEyebrow,
-      heroTitle: asString(homepageRecord.heroTitle) ?? fallback.homepage.heroTitle,
-      heroSubtitle: asString(homepageRecord.heroSubtitle) ?? fallback.homepage.heroSubtitle,
-      heroImage: resolveMediaUrl(homepageRecord.heroImage, backendUrl, fallback.homepage.heroImage),
-      ctaPrimaryLabel: asString(homepageRecord.ctaPrimaryLabel) ?? fallback.homepage.ctaPrimaryLabel,
-      ctaSecondaryLabel: asString(homepageRecord.ctaSecondaryLabel) ?? fallback.homepage.ctaSecondaryLabel,
-      biographySummary: asString(homepageRecord.biographySummary) ?? fallback.homepage.biographySummary,
-      identityCards: identityCards(homepageRecord.identityCards, fallback.homepage.identityCards),
+      heroEyebrow:
+        asString(homepageRecord.heroEyebrow) ?? fallback.homepage.heroEyebrow,
+      heroTitle:
+        asString(homepageRecord.heroTitle) ?? fallback.homepage.heroTitle,
+      heroSubtitle:
+        asString(homepageRecord.heroSubtitle) ?? fallback.homepage.heroSubtitle,
+      heroImage: resolveMediaUrl(
+        homepageRecord.heroImage,
+        backendUrl,
+        fallback.homepage.heroImage,
+      ),
+      ctaPrimaryLabel:
+        asString(homepageRecord.ctaPrimaryLabel) ??
+        fallback.homepage.ctaPrimaryLabel,
+      ctaSecondaryLabel:
+        asString(homepageRecord.ctaSecondaryLabel) ??
+        fallback.homepage.ctaSecondaryLabel,
+      biographySummary:
+        asString(homepageRecord.biographySummary) ??
+        fallback.homepage.biographySummary,
+      identityCards: identityCards(
+        homepageRecord.identityCards,
+        fallback.homepage.identityCards,
+      ),
       sectionVisibility: {
-        profile: asBoolean(homepageVisibility.profile, fallback.homepage.sectionVisibility.profile),
-        journey: asBoolean(homepageVisibility.journey, fallback.homepage.sectionVisibility.journey),
-        medicalWork: asBoolean(homepageVisibility.medicalWork, fallback.homepage.sectionVisibility.medicalWork),
-        publicWork: asBoolean(homepageVisibility.publicWork, fallback.homepage.sectionVisibility.publicWork),
-        media: asBoolean(homepageVisibility.media, fallback.homepage.sectionVisibility.media),
-        updates: asBoolean(homepageVisibility.updates, fallback.homepage.sectionVisibility.updates),
-        contact: asBoolean(homepageVisibility.contact, fallback.homepage.sectionVisibility.contact),
+        dialogues: asBoolean(homepageVisibility.dialogues, true),
+        writing: asBoolean(homepageVisibility.writing, true),
+        profile: asBoolean(
+          homepageVisibility.profile,
+          fallback.homepage.sectionVisibility.profile,
+        ),
+        journey: asBoolean(
+          homepageVisibility.journey,
+          fallback.homepage.sectionVisibility.journey,
+        ),
+        medicalWork: asBoolean(
+          homepageVisibility.medicalWork,
+          fallback.homepage.sectionVisibility.medicalWork,
+        ),
+        publicWork: asBoolean(
+          homepageVisibility.publicWork,
+          fallback.homepage.sectionVisibility.publicWork,
+        ),
+        media: asBoolean(
+          homepageVisibility.media,
+          fallback.homepage.sectionVisibility.media,
+        ),
+        updates: asBoolean(
+          homepageVisibility.updates,
+          fallback.homepage.sectionVisibility.updates,
+        ),
+        contact: asBoolean(
+          homepageVisibility.contact,
+          fallback.homepage.sectionVisibility.contact,
+        ),
       },
     },
     privacyPage: {
       ...fallback.privacyPage,
       title: asString(privacyRecord.title) ?? fallback.privacyPage.title,
       intro: asString(privacyRecord.intro) ?? fallback.privacyPage.intro,
-      sections: textSections(privacyRecord.sections, fallback.privacyPage.sections),
+      sections: textSections(
+        privacyRecord.sections,
+        fallback.privacyPage.sections,
+      ),
     },
-    galleryItems: mapGalleryItems(galleryItemsResult.docs, backendUrl, fallback.galleryItems),
-    mediaItems: mapMediaItems(mediaItemsResult.docs, backendUrl, fallback.mediaItems),
-    updates: mapUpdates(updatesResult.docs, backendUrl, fallback.updates),
-    importantNotices: mapNotices(noticesResult.docs, fallback.importantNotices),
-    positions: mapPositions(positionsResult.docs, backendUrl, fallback.positions),
+    galleryItems: mapGalleryItems(galleryItemsResult.docs, backendUrl),
+    mediaItems: mapMediaItems(mediaItemsResult.docs, backendUrl),
+    updates: mapUpdates(updatesResult.docs, backendUrl),
+    importantNotices: mapNotices(noticesResult.docs),
+    positions: mapPositions(positionsResult.docs, backendUrl),
   }
 }

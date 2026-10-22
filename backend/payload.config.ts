@@ -26,6 +26,8 @@ const s3StorageEnabled = Boolean(
 const db =
   requestedDriver === 'postgres'
     ? postgresAdapter({
+        push: false,
+        migrationDir: path.resolve(dirname, './src/migrations'),
         pool: {
           connectionString: postgresUrl,
         },
@@ -83,6 +85,7 @@ export default buildConfig({
   collections,
   globals,
   typescript: {
+    autoGenerate: false,
     outputFile: path.resolve(dirname, './src/payload-types.ts'),
   },
   onInit: async () => {

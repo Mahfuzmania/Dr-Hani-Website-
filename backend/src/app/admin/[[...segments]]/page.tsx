@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { getAdminSession } from '../../../lib/admin-auth'
 import { AdminLoginForm } from '../login-form'
 import { LogoutButton } from '../logout-button'
+import { PublicationManager, type PublicationRecord } from '../publication-manager'
 import {
   createGalleryItemAction,
   createMediaItemAction,
@@ -33,6 +34,7 @@ type Props = {
 }
 
 const navItems = [
+  { slug: 'publications', label: 'Writing & Press' },
   { slug: 'dashboard', label: 'Dashboard' },
   { slug: 'homepage', label: 'Homepage Control' },
   { slug: 'gallery', label: 'Photos / Gallery' },
@@ -162,6 +164,11 @@ export default async function AdminPage({ params, searchParams }: Props) {
   }
 
   const { payload, req, user } = session
+  if (section === 'publications') {
+    const result = await payload.find({ collection: 'publications', depth: 1, limit: 1000, pagination: false, sort: '-updatedAt', req, overrideAccess: false })
+    const role = (user as { role?: string }).role
+    return <main className="mx-auto max-w-5xl px-5 py-10"><Link className="underline" href="/admin/dashboard">Back to dashboard</Link><h1 className="font-serif text-4xl mt-6">Writing & press</h1><p className="mt-3">Manage essays and reporting, with original sources and private editorial notes.</p><PublicationManager entries={result.docs as PublicationRecord[]} canPublish={role === 'super-admin' || role === 'content-admin'} /></main>
+  }
   const [homepage, siteSettings, galleryItems, mediaItems, positions, updates, notices, messages, mediaLibrary] = await Promise.all([
     payload.findGlobal({ slug: 'homepage', depth: 1, req, overrideAccess: false }),
     payload.findGlobal({ slug: 'site-settings', depth: 1, req, overrideAccess: false }),
@@ -371,6 +378,8 @@ export default async function AdminPage({ params, searchParams }: Props) {
                   <label className="block"><Label>Title</Label><Input name="title" /></label>
                   <label className="block"><Label>Alt text</Label><Input name="altText" /></label>
                   <label className="block lg:col-span-2"><Label>Caption</Label><Textarea name="caption" rows={3} /></label>
+                  <label className="block"><Label>Event group</Label><Input name="event" placeholder="e.g. Dhaka Dialogue" /></label>
+                  <label className="block"><Label>Related activity slug</Label><Input name="relatedActivity" /></label>
                   <label className="block"><Label>Category</Label><Select name="category" defaultValue="events"><option value="medical">Medical</option><option value="community">Community</option><option value="events">Events</option><option value="leadership">Leadership</option></Select></label>
                   <label className="block"><Label>Existing image</Label><Select name="imageID" defaultValue=""><option value="">Upload new or choose later</option>{mediaChoices.map((item) => <option key={String(item.id)} value={String(item.id)}>{text(item.filename) || `Media ${String(item.id)}`}</option>)}</Select></label>
                   <label className="block"><Label>Upload image</Label><Input type="file" name="imageUpload" accept="image/*" /></label>
@@ -397,6 +406,8 @@ export default async function AdminPage({ params, searchParams }: Props) {
                         <label className="block"><Label>Title</Label><Input name="title" defaultValue={text(item.title)} /></label>
                         <label className="block"><Label>Alt text</Label><Input name="altText" defaultValue={text((item.image as Record<string, unknown> | undefined)?.altText)} /></label>
                         <label className="block"><Label>Caption</Label><Textarea name="caption" rows={3} defaultValue={text(item.caption)} /></label>
+                        <label className="block"><Label>Event group</Label><Input name="event" defaultValue={text(item.event)} /></label>
+                        <label className="block"><Label>Related activity slug</Label><Input name="relatedActivity" defaultValue={text(item.relatedActivity)} /></label>
                         <div className="grid gap-4 md:grid-cols-2">
                           <label className="block"><Label>Category</Label><Select name="category" defaultValue={text(item.category) || 'events'}><option value="medical">Medical</option><option value="community">Community</option><option value="events">Events</option><option value="leadership">Leadership</option></Select></label>
                           <label className="block"><Label>Existing image</Label><Select name="imageID" defaultValue={relationID(item.image)}><option value="">Keep current</option>{mediaChoices.map((choice) => <option key={String(choice.id)} value={String(choice.id)}>{text(choice.filename) || `Media ${String(choice.id)}`}</option>)}</Select></label>

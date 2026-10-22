@@ -104,7 +104,7 @@ Optional variable:
 ## Data flow
 
 - The public website requests structured data from `backend/api/public/site`
-- If the backend is unavailable during build/runtime, the frontend falls back to `shared/site-content-v2.ts`
+- If no backend is configured, the frontend uses the reviewed content snapshot. A configured backend outage shows an unavailable archive and does not restore unpublished records.
 - The contact form posts to `backend/api/public/contact`
 - Payload collections/globals are ready for admin-managed content, while the shared verified content layer keeps the frontend stable before CMS population is complete
 

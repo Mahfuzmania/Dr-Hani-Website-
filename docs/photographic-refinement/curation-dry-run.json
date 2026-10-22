@@ -1,0 +1,262 @@
+{
+  "mode": "dry-run",
+  "comparedWith": "no CMS export; creation proposals only",
+  "records": [
+    {
+      "externalId": "dhaka-dialogue-backdrop",
+      "action": "create-if-missing",
+      "patch": {
+        "title": "Dhaka Dialogue",
+        "caption": "Dr Umma Hani beside the Dhaka Dialogue banner on ending digital and AI-facilitated violence against women.",
+        "category": "events",
+        "event": "Dhaka Dialogue",
+        "featured": true,
+        "sortOrder": 1,
+        "homepageSection": "dialogues",
+        "focalX": 50,
+        "focalY": 50
+      },
+      "publication": "create-as-draft"
+    },
+    {
+      "externalId": "dhaka-dialogue-conversation",
+      "action": "create-if-missing",
+      "patch": {
+        "title": "In conversation",
+        "caption": "Dr Umma Hani in conversation with another attendee at the Dhaka Dialogue venue.",
+        "category": "events",
+        "event": "Dhaka Dialogue",
+        "featured": true,
+        "sortOrder": 2,
+        "homepageSection": "dialogues",
+        "focalX": 50,
+        "focalY": 50
+      },
+      "publication": "create-as-draft"
+    },
+    {
+      "externalId": "dialogue-portrait-c",
+      "action": "create-if-missing",
+      "patch": {
+        "title": "An encounter at the dialogue",
+        "caption": "Dr Umma Hani standing alongside another attendee beside a Dhaka Dialogue banner.",
+        "category": "events",
+        "event": "Dhaka Dialogue",
+        "featured": true,
+        "sortOrder": 3,
+        "homepageSection": "dialogues",
+        "focalX": 50,
+        "focalY": 50
+      },
+      "publication": "create-as-draft"
+    },
+    {
+      "externalId": "dialogue-portrait-e",
+      "action": "create-if-missing",
+      "patch": {
+        "title": "At the dialogue venue",
+        "caption": "Dr Umma Hani alongside another attendee in the dialogue venue.",
+        "category": "events",
+        "event": "Dhaka Dialogue",
+        "featured": true,
+        "sortOrder": 4,
+        "homepageSection": "dialogues",
+        "focalX": 50,
+        "focalY": 50
+      },
+      "publication": "create-as-draft"
+    },
+    {
+      "externalId": "bay-of-bengal-2026",
+      "action": "create-if-missing",
+      "patch": {
+        "title": "Bay of Bengal Conversation 2026",
+        "caption": "Dr Umma Hani beside the Bay of Bengal Conversation 2026 backdrop.",
+        "category": "events",
+        "event": "Bay of Bengal Conversation 2026",
+        "featured": true,
+        "sortOrder": 5,
+        "homepageSection": "dialogues",
+        "focalX": 50,
+        "focalY": 50
+      },
+      "publication": "create-as-draft"
+    },
+    {
+      "externalId": "conference-portrait",
+      "action": "create-if-missing",
+      "patch": {
+        "title": "A conference encounter",
+        "caption": "Dr Umma Hani alongside another attendee wearing conference badges.",
+        "category": "events",
+        "event": "Bay of Bengal Conversation 2026",
+        "featured": true,
+        "sortOrder": 6,
+        "homepageSection": "dialogues",
+        "focalX": 50,
+        "focalY": 50
+      },
+      "publication": "create-as-draft"
+    },
+    {
+      "externalId": "doctors-backdrop",
+      "action": "create-if-missing",
+      "patch": {
+        "title": "Doctors’ gathering",
+        "caption": "Dr Umma Hani beside a Doctors Association of Bangladesh, Dhaka gathering backdrop.",
+        "category": "medical",
+        "event": "Doctors’ gathering",
+        "featured": true,
+        "sortOrder": 7,
+        "homepageSection": "medical-work",
+        "focalX": 50,
+        "focalY": 50
+      },
+      "publication": "create-as-draft"
+    },
+    {
+      "externalId": "doctors-gathering",
+      "action": "create-if-missing",
+      "patch": {
+        "title": "At the gathering venue",
+        "caption": "Dr Umma Hani standing in front of the doctors’ gathering stage and backdrop.",
+        "category": "medical",
+        "event": "Doctors’ gathering",
+        "featured": true,
+        "sortOrder": 8,
+        "homepageSection": "medical-work",
+        "focalX": 50,
+        "focalY": 50
+      },
+      "publication": "create-as-draft"
+    },
+    {
+      "externalId": "courtesy-office",
+      "action": "create-if-missing",
+      "patch": {
+        "title": "An office visit",
+        "caption": "Dr Umma Hani standing beside a seated person in an office setting.",
+        "category": "leadership",
+        "event": "Courtesy visits",
+        "featured": true,
+        "sortOrder": 9,
+        "homepageSection": "public-work",
+        "focalX": 50,
+        "focalY": 50
+      },
+      "publication": "create-as-draft"
+    },
+    {
+      "externalId": "courtesy-portrait",
+      "action": "create-if-missing",
+      "patch": {
+        "title": "A courtesy visit",
+        "caption": "Dr Umma Hani alongside another person holding a bouquet of blue flowers.",
+        "category": "leadership",
+        "event": "Courtesy visits",
+        "featured": true,
+        "sortOrder": 10,
+        "homepageSection": "public-work",
+        "focalX": 50,
+        "focalY": 50
+      },
+      "publication": "create-as-draft"
+    },
+    {
+      "externalId": "public-flag",
+      "action": "create-if-missing",
+      "patch": {
+        "title": "With the Bangladesh flag",
+        "caption": "Dr Umma Hani holding a Bangladesh flag at an outdoor gathering.",
+        "category": "leadership",
+        "event": "Public activities",
+        "featured": true,
+        "sortOrder": 11,
+        "homepageSection": "public-work",
+        "focalX": 50,
+        "focalY": 50
+      },
+      "publication": "create-as-draft"
+    },
+    {
+      "externalId": "public-placard",
+      "action": "create-if-missing",
+      "patch": {
+        "title": "At a public gathering",
+        "caption": "Dr Umma Hani holding a Bengali placard at an outdoor public gathering.",
+        "category": "leadership",
+        "event": "Public activities",
+        "featured": true,
+        "sortOrder": 12,
+        "homepageSection": "public-work",
+        "focalX": 50,
+        "focalY": 50
+      },
+      "publication": "create-as-draft"
+    },
+    {
+      "externalId": "dialogue-portrait-b",
+      "action": "create-if-missing",
+      "patch": {
+        "title": "A conversation between attendees",
+        "caption": "Dr Umma Hani smiling alongside another attendee at the dialogue venue.",
+        "category": "events",
+        "event": "Dhaka Dialogue",
+        "featured": false,
+        "sortOrder": 13,
+        "homepageSection": "dialogues",
+        "focalX": 50,
+        "focalY": 50
+      },
+      "publication": "create-as-draft"
+    },
+    {
+      "externalId": "dialogue-portrait-a",
+      "action": "create-if-missing",
+      "patch": {
+        "title": "At the dialogue",
+        "caption": "Dr Umma Hani alongside another attendee near the dialogue banner.",
+        "category": "events",
+        "event": "Dhaka Dialogue",
+        "featured": false,
+        "sortOrder": 14,
+        "homepageSection": "dialogues",
+        "focalX": 50,
+        "focalY": 50
+      },
+      "publication": "create-as-draft"
+    },
+    {
+      "externalId": "dialogue-portrait-d",
+      "action": "create-if-missing",
+      "patch": {
+        "title": "An encounter at the venue",
+        "caption": "Dr Umma Hani alongside another attendee in the dialogue venue.",
+        "category": "events",
+        "event": "Dhaka Dialogue",
+        "featured": false,
+        "sortOrder": 15,
+        "homepageSection": "dialogues",
+        "focalX": 50,
+        "focalY": 50
+      },
+      "publication": "create-as-draft"
+    },
+    {
+      "externalId": "courtesy-group",
+      "action": "create-if-missing",
+      "patch": {
+        "title": "A group visit",
+        "caption": "Dr Umma Hani with a group of visitors holding a bouquet of blue flowers.",
+        "category": "leadership",
+        "event": "Courtesy visits",
+        "featured": false,
+        "sortOrder": 16,
+        "homepageSection": "public-work",
+        "focalX": 50,
+        "focalY": 50
+      },
+      "publication": "create-as-draft"
+    }
+  ]
+}

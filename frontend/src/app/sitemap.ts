@@ -1,20 +1,18 @@
 import type { MetadataRoute } from 'next'
 
 import { getSiteUrl } from '@/src/lib/metadata'
-import { siteContentV2 } from '../../../shared/site-content-v2'
+import { getSiteContent } from '@/src/lib/site-api'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const content = await getSiteContent()
   const base = getSiteUrl()
   const staticRoutes = [
     '/',
     '/about',
-    '/medical-service',
-    '/public-service',
-    '/leadership',
+    '/writing',
     '/media-events',
     '/gallery',
     '/updates',
-    '/contact',
     '/privacy',
   ].map((path) => ({
     url: `${base}${path}`,
@@ -22,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: path === '/' ? 1 : path === '/privacy' ? 0.3 : 0.6,
   }))
 
-  const updateRoutes = siteContentV2.updates
+  const updateRoutes = content.updates
     .filter((update) => update.status === 'published')
     .map((update) => ({
       url: `${base}/updates/${update.slug}`,

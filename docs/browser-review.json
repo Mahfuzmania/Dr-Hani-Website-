@@ -1,0 +1,191 @@
+{
+  "preview": "https://dr-hani-editorial-review-bc55hywld-azm-labs.vercel.app",
+  "mainPages": [
+    {
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false,
+      "path": "/",
+      "robots": "noindex, nofollow",
+      "width": 390
+    },
+    {
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false,
+      "path": "/about",
+      "robots": "noindex, nofollow",
+      "width": 390
+    },
+    {
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false,
+      "path": "/writing",
+      "robots": "noindex, nofollow",
+      "width": 390
+    },
+    {
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false,
+      "path": "/media-events",
+      "robots": "noindex, nofollow",
+      "width": 390
+    },
+    {
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false,
+      "path": "/gallery",
+      "robots": "noindex, nofollow",
+      "width": 390
+    },
+    {
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false,
+      "path": "/updates",
+      "robots": "noindex, nofollow",
+      "width": 390
+    },
+    {
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false,
+      "path": "/updates/bytt-youth-finance-2026",
+      "robots": "noindex, nofollow",
+      "width": 390
+    },
+    {
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false,
+      "path": "/",
+      "robots": "noindex, nofollow",
+      "width": 1440
+    },
+    {
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false,
+      "path": "/about",
+      "robots": "noindex, nofollow",
+      "width": 1440
+    },
+    {
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false,
+      "path": "/writing",
+      "robots": "noindex, nofollow",
+      "width": 1440
+    },
+    {
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false,
+      "path": "/media-events",
+      "robots": "noindex, nofollow",
+      "width": 1440
+    },
+    {
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false,
+      "path": "/gallery",
+      "robots": "noindex, nofollow",
+      "width": 1440
+    },
+    {
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false,
+      "path": "/updates",
+      "robots": "noindex, nofollow",
+      "width": 1440
+    },
+    {
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false,
+      "path": "/updates/bytt-youth-finance-2026",
+      "robots": "noindex, nofollow",
+      "width": 1440
+    }
+  ],
+  "activityDetails": [
+    {
+      "h1": 1,
+      "overflow": false,
+      "path": "/updates/bytt-youth-finance-2026",
+      "width": 360
+    },
+    {
+      "h1": 1,
+      "overflow": false,
+      "path": "/updates/rayerbazar-health-camp-2025",
+      "width": 360
+    },
+    {
+      "h1": 1,
+      "overflow": false,
+      "path": "/updates/jagannath-university-health-camp-2025",
+      "width": 360
+    },
+    {
+      "h1": 1,
+      "overflow": false,
+      "path": "/updates/reserved-seat-nomination-form-2026",
+      "width": 360
+    },
+    {
+      "h1": 1,
+      "overflow": false,
+      "path": "/updates/bytt-youth-finance-2026",
+      "width": 430
+    },
+    {
+      "h1": 1,
+      "overflow": false,
+      "path": "/updates/rayerbazar-health-camp-2025",
+      "width": 430
+    },
+    {
+      "h1": 1,
+      "overflow": false,
+      "path": "/updates/jagannath-university-health-camp-2025",
+      "width": 430
+    },
+    {
+      "h1": 1,
+      "overflow": false,
+      "path": "/updates/reserved-seat-nomination-form-2026",
+      "width": 430
+    },
+    {
+      "h1": 1,
+      "overflow": false,
+      "path": "/updates/bytt-youth-finance-2026",
+      "width": 768
+    },
+    {
+      "h1": 1,
+      "overflow": false,
+      "path": "/updates/rayerbazar-health-camp-2025",
+      "width": 768
+    },
+    {
+      "h1": 1,
+      "overflow": false,
+      "path": "/updates/jagannath-university-health-camp-2025",
+      "width": 768
+    },
+    {
+      "h1": 1,
+      "overflow": false,
+      "path": "/updates/reserved-seat-nomination-form-2026",
+      "width": 768
+    }
+  ]
+}

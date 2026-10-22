@@ -2,9 +2,9 @@ import Link from 'next/link'
 
 export default function NotFound() {
   return (
-    <main className="page-shell flex min-h-[70vh] max-w-3xl flex-col justify-center py-24">
+    <main className="page-shell error-page flex min-h-[70vh] flex-col justify-center">
       <p className="eyebrow">404</p>
-      <h1 className="mt-4 font-serif text-[3.6rem] leading-[0.95] tracking-[-0.04em] text-[var(--primary)] md:text-[5rem]">
+      <h1 className="mt-4 font-sans text-[3rem] font-semibold leading-[1.1] tracking-[-0.04em] text-[var(--primary)] md:text-[4rem]">
         Page not found
       </h1>
       <p className="mt-6 max-w-xl text-base leading-8 text-[var(--muted)]">

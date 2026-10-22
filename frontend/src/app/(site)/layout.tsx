@@ -7,8 +7,18 @@ export default async function SiteLayout({ children }: Readonly<{ children: Reac
 
   return (
     <div className="site-frame">
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
       <Header settings={content.siteSettings} />
-      <main>{children}</main>
+      <main id="main-content" tabIndex={-1}>
+        {content.contentStatus === 'unavailable' && (
+          <p role="status" className="availability-notice page-shell">
+            The archive is temporarily unavailable. Please try again shortly.
+          </p>
+        )}
+        {children}
+      </main>
       <Footer settings={content.siteSettings} />
     </div>
   )

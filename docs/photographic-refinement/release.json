@@ -1,0 +1,19 @@
+{
+  "preview": "https://dr-hani-editorial-review-3zso0ez7b-azm-labs.vercel.app",
+  "deploymentId": "dpl_997HPuAnR5HEXXwR8cHWFjgTCcCF",
+  "project": "azm-labs/dr-hani-editorial-review",
+  "readyState": "READY",
+  "productionChanged": false,
+  "productionCmsChanged": false,
+  "contentSource": "reviewed snapshot",
+  "protection": "vercel_authentication",
+  "robotsMeta": "noindex, nofollow",
+  "robotsHeader": "noindex, nofollow, noarchive",
+  "robotsTxt": "User-Agent: *\nDisallow: /",
+  "canonicalBase": "https://dr-hani-website.vercel.app",
+  "rollbackSourceCommit": "2c14e4b",
+  "testsPassed": 15,
+  "cmsAcceptancePassed": true,
+  "buildsPassed": ["frontend", "backend"],
+  "viewportWidths": [360, 390, 430, 768, 1366, 1920]
+}

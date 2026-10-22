@@ -6,17 +6,16 @@ const fallbackSiteUrl = 'https://dr-hani-website.vercel.app'
 
 export function getSiteUrl() {
   const configuredUrl = process.env.FRONTEND_URL?.trim() || process.env.NEXT_PUBLIC_FRONTEND_URL?.trim()
-  const vercelUrl = process.env.VERCEL_URL?.trim()
 
   if (configuredUrl && !configuredUrl.includes('localhost')) {
     return configuredUrl.replace(/\/$/, '')
   }
 
-  if (vercelUrl) {
-    return `https://${vercelUrl}`.replace(/\/$/, '')
-  }
-
   return fallbackSiteUrl
+}
+
+export function isReviewDeployment() {
+  return process.env.VERCEL_ENV === 'preview' || process.env.SITE_NOINDEX === 'true'
 }
 
 export function buildMetadata(title: string, description: string, path = '/'): Metadata {
@@ -25,6 +24,7 @@ export function buildMetadata(title: string, description: string, path = '/'): M
   return {
     title,
     description,
+    robots: isReviewDeployment() ? { index: false, follow: false } : undefined,
     openGraph: {
       title: `${title} | ${siteContentV2.siteSettings.fullName}`,
       description,

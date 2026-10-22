@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server'
 import config from '@payload-config'
 import { getPayload } from 'payload'
 
-import { siteContentV2 } from '../../../../../../shared/site-content-v2'
 import { getPublicSiteContent } from '../../../../lib/public-site'
+import { publicContent } from '../../../../../../shared/public-content'
 
 export async function GET() {
   try {
@@ -11,17 +11,18 @@ export async function GET() {
     const backendUrl = process.env.BACKEND_PUBLIC_URL || process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000'
     const content = await getPublicSiteContent(cms, backendUrl)
 
-    return NextResponse.json(content, {
+    return NextResponse.json(publicContent(content), {
       headers: {
-        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
+        'Cache-Control': 'no-store',
       },
     })
   } catch (error) {
-      console.error('Falling back to shared site content for public site route', error)
+    console.error('Public CMS content is unavailable', error)
 
-    return NextResponse.json(siteContentV2, {
+    return NextResponse.json({ error: 'Content temporarily unavailable' }, {
+      status: 503,
       headers: {
-        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
+        'Cache-Control': 'no-store',
       },
     })
   }
