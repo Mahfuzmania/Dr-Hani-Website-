@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Cormorant_Garamond, Instrument_Sans, Noto_Serif_Bengali } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 
 import { getSiteUrl, isReviewDeployment } from '@/src/lib/metadata'
 import './globals.css'
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className={`${sans.variable} ${serif.variable} ${bengali.variable} bg-[var(--background)] text-[var(--foreground)] antialiased`}>
         {children}
+        <Analytics />
       </body>
     </html>
   )
